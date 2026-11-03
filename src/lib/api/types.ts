@@ -1009,3 +1009,26 @@ export interface AdminSpawnStorm {
 export interface AdminSpawnDebug {
   lines: string[];
 }
+
+/** `GET /api/discord-import/{discordId}`. What importing a Discord EeveeCore account would bring over. */
+export interface DiscordImportPreview {
+  discordAlreadyImported: boolean;
+  fluxerAlreadyImported: boolean;
+  started: boolean;
+  hasDiscordData: boolean;
+  currentPokemon: number;
+  pokemon: number;
+  shiny: number;
+  radiant: number;
+  parties: number;
+  credits: number;
+  redeems: number;
+  items: number;
+  milestones: number;
+}
+
+/** `POST /api/discord-import/{discordId}`. */
+export interface DiscordImportResponse {
+  message: string;
+  result: { pokemon: number; parties: number; milestones: number; dittobitties: number };
+}

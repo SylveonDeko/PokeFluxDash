@@ -28,4 +28,5 @@ export const dashboardSections: DashboardSection[] = [
   { href: "/dashboard/missions", label: m.features.missions, icon: "fa-utility-duo fa-regular fa-trophy" },
   { href: "/dashboard/inventory", label: m.features.inventory, icon: "fa-utility-duo fa-regular fa-briefcase" },
   { href: "/dashboard/servers", label: m.features.servers, icon: "fa-utility-duo fa-regular fa-server" },
+  { href: "/dashboard/import", label: m.features.import, icon: "fa-utility-duo fa-regular fa-arrow-right-arrow-left" },
 ];

@@ -509,6 +509,8 @@ export const m = {
     heldItems: () => t("dashboard", "held_items", "Held items"),
     /** Hunt */
     hunt: () => t("dashboard", "hunt", "Hunt"),
+    /** Bring your EeveeCore Pokémon over from Discord */
+    importSubtitle: () => t("dashboard", "import_subtitle", "Bring your EeveeCore Pokémon over from Discord"),
     /** Items you own and items your Pokémon hold */
     inventorySubtitle: () => t("dashboard", "inventory_subtitle", "Items you own and items your Pokémon hold"),
     /** Items ({count}) */
@@ -620,9 +622,73 @@ export const m = {
     /** Trainer */
     trainerTitle: () => t("dashboard", "trainer_title", "Trainer"),
   },
+  discordImport: {
+    /** This Discord account has already been imported. */
+    alreadyDiscord: () => t("discord-import", "already_discord", "This Discord account has already been imported."),
+    /** Your PokeFlux account has already received an import. */
+    alreadyFluxer: () => t("discord-import", "already_fluxer", "Your PokeFlux account has already received an import."),
+    /** I understand this can only be done once */
+    confirm: () => t("discord-import", "confirm", "I understand this can only be done once"),
+    /** Sign in with Discord */
+    connect: () => t("discord-import", "connect", "Sign in with Discord"),
+    /** Sign in with the Discord account you played EeveeCore on. PokeFlux only reads your acco... */
+    connectBody: () => t("discord-import", "connect_body", "Sign in with the Discord account you played EeveeCore on. PokeFlux only reads your account name and forgets it after 15 minutes."),
+    /** Find your Discord account */
+    connectTitle: () => t("discord-import", "connect_title", "Find your Discord account"),
+    /** Discord sign in was cancelled. */
+    denied: () => t("discord-import", "denied", "Discord sign in was cancelled."),
+    /** Nothing changes on Discord. Each Discord account can be imported once, into one PokeFlu... */
+    discordUnchanged: () => t("discord-import", "discord_unchanged", "Nothing changes on Discord. Each Discord account can be imported once, into one PokeFlux account."),
+    /** {pokemon} Pokémon and {parties} parties came over. */
+    doneBody: (p: { parties: P; pokemon: P }) => t("discord-import", "done_body", "{pokemon} Pokémon and {parties} parties came over.", p),
+    /** Import finished */
+    doneTitle: () => t("discord-import", "done_title", "Import finished"),
+    /** Discord sign in did not work. Try again. */
+    error: () => t("discord-import", "error", "Discord sign in did not work. Try again."),
+    /** Your Pokémon are added after the {count} you already have, and your currencies and item... */
+    howItWorks: (p: { count: P }) => t("discord-import", "how_it_works", "Your Pokémon are added after the {count} you already have, and your currencies and items are added to yours. Your selected Pokémon stays the same.", p),
+    /** Import */
+    import: () => t("discord-import", "import", "Import"),
+    /** Importing */
+    importing: () => t("discord-import", "importing", "Importing"),
+    /** This Discord account has never played EeveeCore. */
+    noData: () => t("discord-import", "no_data", "This Discord account has never played EeveeCore."),
+    /** Importing from Discord is not available yet. */
+    notConfigured: () => t("discord-import", "not_configured", "Importing from Discord is not available yet."),
+    /** Start playing PokeFlux first, then come back to import. */
+    notStarted: () => t("discord-import", "not_started", "Start playing PokeFlux first, then come back to import."),
+    /** Show your Pokémon */
+    openPokemon: () => t("discord-import", "open_pokemon", "Show your Pokémon"),
+    /** Could not read your Discord account: {error} */
+    previewFailed: (p: { error: P }) => t("discord-import", "preview_failed", "Could not read your Discord account: {error}", p),
+    /** What comes over */
+    previewTitle: () => t("discord-import", "preview_title", "What comes over"),
+    /** Signed in as {name} */
+    signedInAs: (p: { name: P }) => t("discord-import", "signed_in_as", "Signed in as {name}", p),
+    /** Credits */
+    statCredits: () => t("discord-import", "stat_credits", "Credits"),
+    /** Items */
+    statItems: () => t("discord-import", "stat_items", "Items"),
+    /** Milestones */
+    statMilestones: () => t("discord-import", "stat_milestones", "Milestones"),
+    /** Parties */
+    statParties: () => t("discord-import", "stat_parties", "Parties"),
+    /** Pokémon */
+    statPokemon: () => t("discord-import", "stat_pokemon", "Pokémon"),
+    /** Radiant */
+    statRadiant: () => t("discord-import", "stat_radiant", "Radiant"),
+    /** Redeems */
+    statRedeems: () => t("discord-import", "stat_redeems", "Redeems"),
+    /** Shiny */
+    statShiny: () => t("discord-import", "stat_shiny", "Shiny"),
+    /** Use another account */
+    switchAccount: () => t("discord-import", "switch_account", "Use another account"),
+  },
   features: {
     /** Hatchery & Breeding */
     hatchery: () => t("features", "hatchery", "Hatchery & Breeding"),
+    /** Import from Discord */
+    import: () => t("features", "import", "Import from Discord"),
     /** Inventory */
     inventory: () => t("features", "inventory", "Inventory"),
     /** Market */
@@ -2059,4 +2125,4 @@ export const m = {
 } as const;
 
 /** Module names that exist in the source locale, for loading other locales lazily later. */
-export const modules = ["_common","admin","commands","dashboard","features","home","layout","legal","pokeflux","pokeflux-collection","pokeflux-market","pokeflux-pokemon","widgets"] as const;
+export const modules = ["_common","admin","commands","dashboard","discord-import","features","home","layout","legal","pokeflux","pokeflux-collection","pokeflux-market","pokeflux-pokemon","widgets"] as const;

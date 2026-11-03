@@ -33,7 +33,7 @@ async function readBody(request: Request): Promise<unknown> {
 function forward(method: BotMethod): RequestHandler {
   return async ({ params, url, request, locals }: RequestEvent) => {
     const path = normalisePath(params.path);
-    if (!path) return json({ error: "not_found" }, { status: 404 });
+    if (!path || path.toLowerCase().split("/")[0] === "discord-import") return json({ error: "not_found" }, { status: 404 });
 
     const body = method === "GET" ? undefined : await readBody(request);
     if (body === null) return json({ error: "invalid_json" }, { status: 400 });

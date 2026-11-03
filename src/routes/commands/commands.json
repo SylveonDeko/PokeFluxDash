@@ -1,0 +1,1264 @@
+[
+  {
+    "name": "Achievements",
+    "commands": [
+      {
+        "name": "achievements leaderboard",
+        "summary": "View the leaderboard for an achievement.",
+        "aliases": [
+          "achievements lb",
+          "achievement leaderboard",
+          "achievement lb",
+          "ach leaderboard",
+          "ach lb"
+        ],
+        "usage": [
+          ";achievements leaderboard <achievement>"
+        ]
+      },
+      {
+        "name": "achievements loyalty",
+        "summary": "View your loyalty points and tier benefits.",
+        "aliases": [
+          "achievement loyalty",
+          "ach loyalty"
+        ],
+        "usage": [
+          ";achievements loyalty [user]"
+        ]
+      },
+      {
+        "name": "achievements progress",
+        "summary": "View another player's progress on an achievement.",
+        "aliases": [
+          "achievement progress",
+          "ach progress"
+        ],
+        "usage": [
+          ";achievements progress <user> <achievement>",
+          ";achievements progress <achievement>"
+        ]
+      },
+      {
+        "name": "achievements view",
+        "summary": "View your achievement progress and milestones.",
+        "aliases": [
+          "achievement view",
+          "ach view"
+        ],
+        "usage": [
+          ";achievements view [user]",
+          ";achievements view <category> [user]"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Breeding",
+    "commands": [
+      {
+        "name": "breeding breed",
+        "summary": "Breed a male Pokémon with a female from your breeding list.",
+        "aliases": [],
+        "usage": [
+          ";breeding breed <maleId>"
+        ]
+      },
+      {
+        "name": "breeding cancel",
+        "summary": "Stop automatically retrying a breed.",
+        "aliases": [],
+        "usage": [
+          ";breeding cancel"
+        ]
+      },
+      {
+        "name": "breeding clear",
+        "summary": "Clears your breeding list of female IDs.",
+        "aliases": [],
+        "usage": [
+          ";breeding clear"
+        ]
+      },
+      {
+        "name": "breeding setfemales",
+        "summary": "Set your female Pokémon IDs. Accepts space or comma-separated values.",
+        "aliases": [],
+        "usage": [
+          ";breeding setfemales <femaleIds>"
+        ]
+      },
+      {
+        "name": "breeding showfemales",
+        "summary": "Show detailed breeding stats for your selected female Pokémon.",
+        "aliases": [],
+        "usage": [
+          ";breeding showfemales [page]"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Catch",
+    "commands": [
+      {
+        "name": "catch",
+        "summary": "Catch the Pokémon that spawned in this channel.",
+        "aliases": [],
+        "usage": [
+          ";catch <name>"
+        ],
+        "serverOnly": true
+      }
+    ]
+  },
+  {
+    "name": "Duels",
+    "commands": [
+      {
+        "name": "duel challenge",
+        "summary": "Challenge another user to a Pokémon battle. Battle type is normal or inverse.",
+        "aliases": [],
+        "usage": [
+          ";duel challenge <opponent> [battleType]"
+        ],
+        "serverOnly": true
+      },
+      {
+        "name": "duel inverse",
+        "summary": "6v6 inverse battle with another user's selected party.",
+        "aliases": [],
+        "usage": [
+          ";duel inverse <opponent>"
+        ],
+        "serverOnly": true
+      },
+      {
+        "name": "duel npc",
+        "summary": "1v1 duel with an NPC AI.",
+        "aliases": [],
+        "usage": [
+          ";duel npc"
+        ],
+        "serverOnly": true
+      },
+      {
+        "name": "duel party",
+        "summary": "6v6 duel with another user's selected party.",
+        "aliases": [],
+        "usage": [
+          ";duel party <opponent>"
+        ],
+        "serverOnly": true
+      },
+      {
+        "name": "duel single",
+        "summary": "1v1 duel with another user's selected pokemon.",
+        "aliases": [],
+        "usage": [
+          ";duel single <opponent>"
+        ],
+        "serverOnly": true
+      }
+    ]
+  },
+  {
+    "name": "Extras",
+    "commands": [
+      {
+        "name": "bag",
+        "summary": "Lists your items. They are sent to your DMs.",
+        "aliases": [],
+        "usage": [
+          ";bag"
+        ]
+      },
+      {
+        "name": "bal",
+        "summary": "Lists credits, redeems, EV points, upvote points, and selected fishing rod. React 💰 for balances, 📦 for chests, 📋 for details and 🪙 for tokens.",
+        "aliases": [],
+        "usage": [
+          ";bal [user]"
+        ]
+      },
+      {
+        "name": "equip rod",
+        "summary": "Equip a fishing pole from your bag.",
+        "aliases": [
+          "rod"
+        ],
+        "usage": [
+          ";equip rod <fishingRod>"
+        ]
+      },
+      {
+        "name": "hunt",
+        "summary": "Set a Pokemon to hunt for shadow encounters.",
+        "aliases": [],
+        "usage": [
+          ";hunt <pokemon>"
+        ]
+      },
+      {
+        "name": "lookup ability",
+        "summary": "Look up information about a Pokémon ability. Add a page number to jump to a page of its Pokémon.",
+        "aliases": [],
+        "usage": [
+          ";lookup ability <ability>"
+        ]
+      },
+      {
+        "name": "lookup move",
+        "summary": "Look up information about a Pokémon move.",
+        "aliases": [],
+        "usage": [
+          ";lookup move <move>"
+        ]
+      },
+      {
+        "name": "lookup type",
+        "summary": "Look up type effectiveness information for one or two types.",
+        "aliases": [],
+        "usage": [
+          ";lookup type <type1> [type2]"
+        ]
+      },
+      {
+        "name": "poke addevs",
+        "summary": "Add ev's to one of your pokemon if you have ev points to spend.",
+        "aliases": [],
+        "usage": [
+          ";poke addevs <amount> <stat>"
+        ]
+      },
+      {
+        "name": "poke learn",
+        "summary": "Learn a move in a slot (1 to 4) for your selected Pokémon.",
+        "aliases": [],
+        "usage": [
+          ";poke learn <slot> <move>"
+        ]
+      },
+      {
+        "name": "poke learn_all",
+        "summary": "Learn all four moves for your selected Pokémon. Write moves with spaces using hyphens or quotes.",
+        "aliases": [
+          "poke learnall"
+        ],
+        "usage": [
+          ";poke learn_all <first> <second> <third> <fourth>"
+        ]
+      },
+      {
+        "name": "poke moves",
+        "summary": "Show moves your pokemon has learned.",
+        "aliases": [],
+        "usage": [
+          ";poke moves"
+        ]
+      },
+      {
+        "name": "poke moveset",
+        "summary": "Show moves your selected Pokemon can learn.",
+        "aliases": [],
+        "usage": [
+          ";poke moveset [page]"
+        ]
+      },
+      {
+        "name": "region",
+        "summary": "Set your region, affects your pokemon's regional evolutions.",
+        "aliases": [],
+        "usage": [
+          ";region <location>"
+        ]
+      },
+      {
+        "name": "set nature",
+        "summary": "Uses a nature capsule to change your selected Pokemon's nature.",
+        "aliases": [],
+        "usage": [
+          ";set nature <nature>"
+        ]
+      },
+      {
+        "name": "set nick",
+        "summary": "Set or reset your selected pokemon's nickname. Leave it out to reset.",
+        "aliases": [],
+        "usage": [
+          ";set nick [nick]"
+        ]
+      },
+      {
+        "name": "spread honey",
+        "summary": "Spread honey in the current channel to increase legendary and rare spawn rates.",
+        "aliases": [],
+        "usage": [
+          ";spread honey"
+        ],
+        "serverOnly": true
+      },
+      {
+        "name": "spread server",
+        "summary": "Server Honey Stats.",
+        "aliases": [],
+        "usage": [
+          ";spread server"
+        ],
+        "serverOnly": true
+      },
+      {
+        "name": "trainernick",
+        "summary": "Sets your trainer nickname for use in global leaderboards and other users.",
+        "aliases": [],
+        "usage": [
+          ";trainernick <name>"
+        ]
+      },
+      {
+        "name": "visible bal",
+        "summary": "Toggle your balance being visible to other users.",
+        "aliases": [],
+        "usage": [
+          ";visible bal"
+        ]
+      },
+      {
+        "name": "visible donations",
+        "summary": "Toggle your donation total being shown on your balance statement.",
+        "aliases": [],
+        "usage": [
+          ";visible donations [toggle]"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Fishing",
+    "commands": [
+      {
+        "name": "fish cast",
+        "summary": "Cast your fishing rod to catch Pokémon!",
+        "aliases": [],
+        "usage": [
+          ";fish cast"
+        ],
+        "serverOnly": true
+      }
+    ]
+  },
+  {
+    "name": "Games",
+    "commands": [
+      {
+        "name": "game guess",
+        "summary": "Guess a hidden Pokémon name in your word search.",
+        "aliases": [
+          "game g",
+          "games guess",
+          "games g"
+        ],
+        "usage": [
+          ";game guess <guess>"
+        ]
+      },
+      {
+        "name": "game help",
+        "summary": "Get help with the games system.",
+        "aliases": [
+          "games help"
+        ],
+        "usage": [
+          ";game help"
+        ]
+      },
+      {
+        "name": "game list",
+        "summary": "Show all available mini-games.",
+        "aliases": [
+          "games list"
+        ],
+        "usage": [
+          ";game list"
+        ]
+      },
+      {
+        "name": "game quit",
+        "summary": "Give up on your word search.",
+        "aliases": [
+          "games quit"
+        ],
+        "usage": [
+          ";game quit"
+        ]
+      },
+      {
+        "name": "game slotinfo",
+        "summary": "View slot machine win probabilities and payouts.",
+        "aliases": [
+          "game slot-info",
+          "games slotinfo",
+          "games slot-info"
+        ],
+        "usage": [
+          ";game slotinfo"
+        ]
+      },
+      {
+        "name": "game slots",
+        "summary": "Play the Pokémon slot machine.",
+        "aliases": [
+          "games slots"
+        ],
+        "usage": [
+          ";game slots"
+        ]
+      },
+      {
+        "name": "game wordsearch",
+        "summary": "Start a word search puzzle with hidden Pokémon names.",
+        "aliases": [
+          "game ws",
+          "games wordsearch",
+          "games ws"
+        ],
+        "usage": [
+          ";game wordsearch"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Gift",
+    "commands": [
+      {
+        "name": "gift credits",
+        "summary": "Gift credits to another user.",
+        "aliases": [],
+        "usage": [
+          ";gift credits <user> <amount>"
+        ]
+      },
+      {
+        "name": "gift help",
+        "summary": "Get help with gifting.",
+        "aliases": [],
+        "usage": [
+          ";gift help"
+        ]
+      },
+      {
+        "name": "gift pokemon",
+        "summary": "Gift a Pokemon to another user.",
+        "aliases": [],
+        "usage": [
+          ";gift pokemon <user> <pokemon>"
+        ]
+      },
+      {
+        "name": "gift redeems",
+        "summary": "Gift redeems to another user.",
+        "aliases": [],
+        "usage": [
+          ";gift redeems <user> <amount>"
+        ]
+      },
+      {
+        "name": "gift tokens",
+        "summary": "Gift radiant tokens to another user.",
+        "aliases": [],
+        "usage": [
+          ";gift tokens <user> <type> <amount>"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Hatchery",
+    "commands": [
+      {
+        "name": "hatchery",
+        "summary": "View your egg hatchery groups.",
+        "aliases": [
+          "hatchery view"
+        ],
+        "usage": [
+          ";hatchery [group]"
+        ]
+      },
+      {
+        "name": "hatchery remove",
+        "summary": "Remove an egg from your hatchery.",
+        "aliases": [],
+        "usage": [
+          ";hatchery remove <group> <slot>"
+        ]
+      },
+      {
+        "name": "hatchery set",
+        "summary": "Add multiple eggs to your hatchery group. Use - to skip a slot, for example `1 120 - 135`.",
+        "aliases": [],
+        "usage": [
+          ";hatchery set <group> <eggs>"
+        ]
+      },
+      {
+        "name": "hatchery swap",
+        "summary": "Swap two eggs in your hatchery.",
+        "aliases": [],
+        "usage": [
+          ";hatchery swap <egg1> <egg2>"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Help",
+    "commands": [
+      {
+        "name": "help",
+        "summary": "See every command category.",
+        "aliases": [
+          "h",
+          "commands",
+          "cmds"
+        ],
+        "usage": [
+          ";help",
+          ";help <name>"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Items",
+    "commands": [
+      {
+        "name": "items apply",
+        "summary": "Use an active item to evolve a poke.",
+        "aliases": [
+          "apply"
+        ],
+        "usage": [
+          ";items apply <itemName>"
+        ]
+      },
+      {
+        "name": "items drop",
+        "summary": "Have your selected pokemon drop their held item.",
+        "aliases": [],
+        "usage": [
+          ";items drop"
+        ]
+      },
+      {
+        "name": "items equip",
+        "summary": "Equip an item from your bag to your selected pokemon.",
+        "aliases": [
+          "equip"
+        ],
+        "usage": [
+          ";items equip <itemName>"
+        ]
+      },
+      {
+        "name": "items transfer",
+        "summary": "Transfer an item from your selected pokemon to another.",
+        "aliases": [],
+        "usage": [
+          ";items transfer <pokemonNumber>"
+        ]
+      },
+      {
+        "name": "items unequip",
+        "summary": "Unequip an item from your selected pokemon.",
+        "aliases": [],
+        "usage": [
+          ";items unequip"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Market",
+    "commands": [
+      {
+        "name": "market add",
+        "summary": "Add a Pokemon to the market.",
+        "aliases": [],
+        "usage": [
+          ";market add <pokemonPosition> <price>"
+        ]
+      },
+      {
+        "name": "market buy",
+        "summary": "Buy a Pokemon from the market.",
+        "aliases": [],
+        "usage": [
+          ";market buy <listingId>"
+        ]
+      },
+      {
+        "name": "market info",
+        "summary": "View information about a Pokemon listing.",
+        "aliases": [],
+        "usage": [
+          ";market info <listingId>"
+        ]
+      },
+      {
+        "name": "market list",
+        "summary": "Browse all Pokemon currently for sale on the market. Add a sort (price_asc, price_desc, level_desc, level_asc, iv_desc, recent, name), a filter (all, shiny, radiant, shadow, legendary), a page number or a name to search for, in any order.",
+        "aliases": [
+          "market browse",
+          "market search"
+        ],
+        "usage": [
+          ";market list [options]"
+        ]
+      },
+      {
+        "name": "market remove",
+        "summary": "Remove your Pokemon from the market.",
+        "aliases": [],
+        "usage": [
+          ";market remove <listingId>"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Missions",
+    "commands": [
+      {
+        "name": "missions buy",
+        "summary": "Buy an item from the Crystal Slime Exchange.",
+        "aliases": [
+          "mission buy"
+        ],
+        "usage": [
+          ";missions buy <item>"
+        ]
+      },
+      {
+        "name": "missions list",
+        "summary": "Lists all currently active missions.",
+        "aliases": [
+          "mission list"
+        ],
+        "usage": [
+          ";missions list"
+        ]
+      },
+      {
+        "name": "missions progress",
+        "summary": "Shows your progress on current missions.",
+        "aliases": [
+          "mission progress"
+        ],
+        "usage": [
+          ";missions progress"
+        ]
+      },
+      {
+        "name": "missions store",
+        "summary": "See what you can buy with Crystallized Slime.",
+        "aliases": [
+          "missions shop",
+          "mission store",
+          "mission shop"
+        ],
+        "usage": [
+          ";missions store"
+        ]
+      },
+      {
+        "name": "missions xp",
+        "summary": "Displays your current XP progress towards the next level.",
+        "aliases": [
+          "mission xp"
+        ],
+        "usage": [
+          ";missions xp"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Party",
+    "commands": [
+      {
+        "name": "party",
+        "summary": "View your loaded party.",
+        "aliases": [],
+        "usage": [
+          ";party"
+        ]
+      },
+      {
+        "name": "party add",
+        "summary": "Add a Pokémon to a slot in your party.",
+        "aliases": [],
+        "usage": [
+          ";party add <slot> [poke]"
+        ]
+      },
+      {
+        "name": "party deregister",
+        "summary": "Deregister a party from your saved parties.",
+        "aliases": [],
+        "usage": [
+          ";party deregister <partyName>"
+        ]
+      },
+      {
+        "name": "party list",
+        "summary": "List your saved parties.",
+        "aliases": [],
+        "usage": [
+          ";party list"
+        ]
+      },
+      {
+        "name": "party load",
+        "summary": "Load a registered party save by name.",
+        "aliases": [],
+        "usage": [
+          ";party load <partyName>"
+        ]
+      },
+      {
+        "name": "party register",
+        "summary": "Register your current party with a name.",
+        "aliases": [],
+        "usage": [
+          ";party register <partyName>"
+        ]
+      },
+      {
+        "name": "party remove",
+        "summary": "Remove a Pokémon from a slot in your party.",
+        "aliases": [],
+        "usage": [
+          ";party remove <slot>"
+        ]
+      },
+      {
+        "name": "party setup",
+        "summary": "See a saved party's slots and how to set them.",
+        "aliases": [],
+        "usage": [
+          ";party setup <partyName>",
+          ";party setup <partyName> <slot> <pokemon>"
+        ]
+      },
+      {
+        "name": "party view",
+        "summary": "View your loaded party or another party you have saved.",
+        "aliases": [],
+        "usage": [
+          ";party view [partyName]"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Pokemon",
+    "commands": [
+      {
+        "name": "pokemon forms deform",
+        "summary": "Reset your selected Pokémon to its base form.",
+        "aliases": [],
+        "usage": [
+          ";pokemon forms deform"
+        ]
+      },
+      {
+        "name": "pokemon forms form",
+        "summary": "Transform your selected Pokémon to a specific form.",
+        "aliases": [],
+        "usage": [
+          ";pokemon forms form <formName>"
+        ]
+      },
+      {
+        "name": "pokemon forms fuse",
+        "summary": "Fuse compatible Pokémon together.\nTypes: `white` (Kyurem + Reshiram), `black` (Kyurem + Zekrom), `ice` (Calyrex + Glastrier), `shadow` (Calyrex + Spectrier).",
+        "aliases": [],
+        "usage": [
+          ";pokemon forms fuse <fusionType> <number>"
+        ]
+      },
+      {
+        "name": "pokemon forms lunarize",
+        "summary": "Fuse Necrozma with one of your Lunala to create Dawn Wings form.",
+        "aliases": [],
+        "usage": [
+          ";pokemon forms lunarize <number>"
+        ]
+      },
+      {
+        "name": "pokemon forms mega",
+        "summary": "Mega evolve your selected Pokémon.",
+        "aliases": [],
+        "usage": [
+          ";pokemon forms mega"
+        ]
+      },
+      {
+        "name": "pokemon forms megax",
+        "summary": "Mega evolve your selected Pokémon to X form.",
+        "aliases": [],
+        "usage": [
+          ";pokemon forms megax"
+        ]
+      },
+      {
+        "name": "pokemon forms megay",
+        "summary": "Mega evolve your selected Pokémon to Y form.",
+        "aliases": [],
+        "usage": [
+          ";pokemon forms megay"
+        ]
+      },
+      {
+        "name": "pokemon forms solarize",
+        "summary": "Fuse Necrozma with one of your Solgaleo to create Dusk Mane form.",
+        "aliases": [],
+        "usage": [
+          ";pokemon forms solarize <number>"
+        ]
+      },
+      {
+        "name": "pokemon forms unmega",
+        "summary": "Devolve your mega Pokémon back to base form.",
+        "aliases": [],
+        "usage": [
+          ";pokemon forms unmega"
+        ]
+      },
+      {
+        "name": "pokemon info",
+        "summary": "Get information about a Pokémon.\nNo argument shows your selected Pokémon, `new` your newest, a number that Pokémon in your collection. A name shows the species, and `shiny`, `radiant` or `shadow` in the name shows that variant. ◀️ ▶️ page through your collection and ℹ️ shows forms and the evolution line.",
+        "aliases": [
+          "info",
+          "i"
+        ],
+        "usage": [
+          ";pokemon info [pokemon]"
+        ],
+        "serverOnly": true
+      },
+      {
+        "name": "pokemon list",
+        "summary": "Shows a detailed list of all your obtained Pokémon.\nOptions, in any order:\n`sort:<iv|level|name|recent|type|favorite|party|champion>`\n`filter:<all|shiny|radiant|shadow|legendary|favorite|champion|party|market>`\n`gender:<all|male|female|genderless>`\n`view:<detailed|normal|compact>`\n`page:<number>` or a bare number\n`search:<text>` or any other words\nFor example `;p shiny compact 2`.",
+        "aliases": [
+          "pokemon",
+          "p"
+        ],
+        "usage": [
+          ";pokemon list [options]"
+        ]
+      },
+      {
+        "name": "pokemon pokedex",
+        "summary": "View your Pokédex progress. Variants: `national`, `unowned`, `shadow`, `shiny`, `radiant`, `skin`.",
+        "aliases": [],
+        "usage": [
+          ";pokemon pokedex [variant] [page]"
+        ]
+      },
+      {
+        "name": "pokemon release",
+        "summary": "Release a Pokémon permanently.",
+        "aliases": [],
+        "usage": [
+          ";pokemon release <number>"
+        ]
+      },
+      {
+        "name": "pokemon resurrect",
+        "summary": "Attempt to resurrect dead Pokémon.",
+        "aliases": [],
+        "usage": [
+          ";pokemon resurrect"
+        ],
+        "serverOnly": true
+      },
+      {
+        "name": "pokemon sacrifice",
+        "summary": "Sacrifice a Pokémon to fill your soul-gauge.",
+        "aliases": [],
+        "usage": [
+          ";pokemon sacrifice <number>"
+        ]
+      },
+      {
+        "name": "pokemon select",
+        "summary": "Select a Pokémon by its number.",
+        "aliases": [
+          "select"
+        ],
+        "usage": [
+          ";pokemon select <number>"
+        ],
+        "serverOnly": true
+      }
+    ]
+  },
+  {
+    "name": "Server",
+    "commands": [
+      {
+        "name": "prefix",
+        "summary": "See the prefix in this server.",
+        "aliases": [],
+        "usage": [
+          ";prefix",
+          ";prefix <prefix>"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Shop",
+    "commands": [
+      {
+        "name": "shop",
+        "summary": "Open the shop and see its categories.",
+        "aliases": [
+          "shop browse"
+        ],
+        "usage": [
+          ";shop",
+          ";shop <category> [page]"
+        ]
+      },
+      {
+        "name": "shop balance",
+        "summary": "Check your current credit balance.",
+        "aliases": [],
+        "usage": [
+          ";shop balance"
+        ]
+      },
+      {
+        "name": "shop buy",
+        "summary": "Buy an item from the shop, for example `;shop buy protein 5`.",
+        "aliases": [
+          "buy",
+          "items buy"
+        ],
+        "usage": [
+          ";shop buy <input>"
+        ]
+      },
+      {
+        "name": "shop buy candy",
+        "summary": "Buy rare candy to level up your selected pokemon.",
+        "aliases": [
+          "buy candy",
+          "items buy candy"
+        ],
+        "usage": [
+          ";shop buy candy [amount]"
+        ]
+      },
+      {
+        "name": "shop buy chest",
+        "summary": "Buy a radiant chest: rare, mythic or legend, with credits or redeems.",
+        "aliases": [
+          "buy chest",
+          "items buy chest"
+        ],
+        "usage": [
+          ";shop buy chest <chestType> <currency>"
+        ]
+      },
+      {
+        "name": "shop buy daycare",
+        "summary": "Buy additional daycare spaces.",
+        "aliases": [
+          "buy daycare",
+          "items buy daycare"
+        ],
+        "usage": [
+          ";shop buy daycare [amount]"
+        ]
+      },
+      {
+        "name": "shop buy redeems",
+        "summary": "Buy redeems for credits, or see how many you bought this week.",
+        "aliases": [
+          "buy redeems",
+          "items buy redeems"
+        ],
+        "usage": [
+          ";shop buy redeems [amount]"
+        ]
+      },
+      {
+        "name": "shop buy vitamins",
+        "summary": "Buy vitamins for your selected pokemon: hp-up, protein, iron, calcium, zinc or carbos.",
+        "aliases": [
+          "buy vitamins",
+          "items buy vitamins"
+        ],
+        "usage": [
+          ";shop buy vitamins <vitaminName> <amount>"
+        ]
+      },
+      {
+        "name": "shop info",
+        "summary": "Learn about the shop.",
+        "aliases": [],
+        "usage": [
+          ";shop info"
+        ]
+      },
+      {
+        "name": "shop search",
+        "summary": "Search the shop. Filter with `type:<type>` or `max:<price>`, for example `;shop search boost type:fire max:20000`.",
+        "aliases": [],
+        "usage": [
+          ";shop search <query>"
+        ]
+      },
+      {
+        "name": "shop stats",
+        "summary": "View shop statistics and the items you can afford.",
+        "aliases": [],
+        "usage": [
+          ";shop stats"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Spawn",
+    "commands": [
+      {
+        "name": "spawn disable",
+        "summary": "Disable spawns in a channel.",
+        "aliases": [],
+        "usage": [
+          ";spawn disable [channel]"
+        ],
+        "permission": "Manage Guild",
+        "serverOnly": true
+      },
+      {
+        "name": "spawn enable",
+        "summary": "Enable spawns in a channel.",
+        "aliases": [],
+        "usage": [
+          ";spawn enable [channel]"
+        ],
+        "permission": "Manage Guild",
+        "serverOnly": true
+      },
+      {
+        "name": "spawn modalview",
+        "summary": "Only catch spawns with the catch command, on or off.",
+        "aliases": [
+          "spawn modal"
+        ],
+        "usage": [
+          ";spawn modalview <value>"
+        ],
+        "permission": "Manage Guild",
+        "serverOnly": true
+      },
+      {
+        "name": "spawn redirect",
+        "summary": "Add or remove a channel that spawns are redirected to.",
+        "aliases": [],
+        "usage": [
+          ";spawn redirect <option> [channel]"
+        ],
+        "permission": "Manage Guild",
+        "serverOnly": true
+      },
+      {
+        "name": "spawn settings",
+        "summary": "View the spawn settings.",
+        "aliases": [],
+        "usage": [
+          ";spawn settings",
+          ";spawn settings <setting> <value>"
+        ],
+        "permission": "Manage Guild",
+        "serverOnly": true
+      },
+      {
+        "name": "spawn smallimages",
+        "summary": "Show spawns as small thumbnails, on or off.",
+        "aliases": [
+          "spawn small"
+        ],
+        "usage": [
+          ";spawn smallimages <value>"
+        ],
+        "permission": "Manage Guild",
+        "serverOnly": true
+      },
+      {
+        "name": "spawn speed",
+        "summary": "Set the spawn speed, from 1 to 20.",
+        "aliases": [],
+        "usage": [
+          ";spawn speed [speed]"
+        ],
+        "permission": "Manage Guild",
+        "serverOnly": true
+      }
+    ]
+  },
+  {
+    "name": "Start",
+    "commands": [
+      {
+        "name": "start",
+        "summary": "Start your journey and pick a starter.",
+        "aliases": [],
+        "usage": [
+          ";start",
+          ";start <starter>"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Trade",
+    "commands": [
+      {
+        "name": "canceltrades",
+        "summary": "Cancel all your trade sessions.",
+        "aliases": [],
+        "usage": [
+          ";canceltrades"
+        ]
+      },
+      {
+        "name": "mytrades",
+        "summary": "View your current trade sessions.",
+        "aliases": [],
+        "usage": [
+          ";mytrades"
+        ]
+      },
+      {
+        "name": "quicktrade",
+        "summary": "Quickly start a trade with a specific Pokemon!",
+        "aliases": [],
+        "usage": [
+          ";quicktrade <user> <pokemon>"
+        ],
+        "serverOnly": true
+      },
+      {
+        "name": "trade",
+        "summary": "Begin a trade with another user!",
+        "aliases": [],
+        "usage": [
+          ";trade <user>"
+        ],
+        "serverOnly": true
+      },
+      {
+        "name": "trade add",
+        "summary": "Add Pokemon to your trade by position.",
+        "aliases": [],
+        "usage": [
+          ";trade add <positions>"
+        ]
+      },
+      {
+        "name": "trade cancel",
+        "summary": "Cancel your trade.",
+        "aliases": [],
+        "usage": [
+          ";trade cancel"
+        ]
+      },
+      {
+        "name": "trade confirm",
+        "summary": "Confirm your trade. It completes once both users confirm.",
+        "aliases": [],
+        "usage": [
+          ";trade confirm"
+        ]
+      },
+      {
+        "name": "trade credits",
+        "summary": "Set the credits you offer in your trade.",
+        "aliases": [],
+        "usage": [
+          ";trade credits <amount>"
+        ]
+      },
+      {
+        "name": "trade remove",
+        "summary": "Remove Pokemon from your trade by position.",
+        "aliases": [],
+        "usage": [
+          ";trade remove <positions>"
+        ]
+      },
+      {
+        "name": "trade tokens",
+        "summary": "Add radiant tokens to your trade.",
+        "aliases": [],
+        "usage": [
+          ";trade tokens <type> <amount>"
+        ]
+      },
+      {
+        "name": "trade untokens",
+        "summary": "Remove radiant tokens from your trade.",
+        "aliases": [],
+        "usage": [
+          ";trade untokens <type> <amount>"
+        ]
+      },
+      {
+        "name": "tradehelp",
+        "summary": "Get help with trading.",
+        "aliases": [],
+        "usage": [
+          ";tradehelp"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Vouchers",
+    "commands": [
+      {
+        "name": "voucher info",
+        "summary": "Learn about the voucher request system.",
+        "aliases": [],
+        "usage": [
+          ";voucher info"
+        ]
+      },
+      {
+        "name": "voucher request",
+        "summary": "See how to submit a voucher request for custom Pokemon artwork.",
+        "aliases": [],
+        "usage": [
+          ";voucher request",
+          ";voucher request <form>"
+        ]
+      },
+      {
+        "name": "voucher status",
+        "summary": "View the status of your voucher requests.",
+        "aliases": [],
+        "usage": [
+          ";voucher status"
+        ]
+      }
+    ]
+  }
+]

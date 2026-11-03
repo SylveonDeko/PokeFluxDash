@@ -1,0 +1,20 @@
+{
+  "aliases": "Aliases",
+  "count": "{count} commands",
+  "heading": "Command reference",
+  "link_to_command": "Link to this command",
+  "manage_community": "Needs Manage community",
+  "meta_description": "Every PokeFlux command with its usage, grouped by module.",
+  "module_option": "{module} ({count})",
+  "modules_label": "Command modules",
+  "no_results": "No commands match {query}.",
+  "page_title": "Commands · PokeFlux",
+  "preview_dm_label": "The direct message PokeFlux sends you for {command}",
+  "preview_label": "{command} in a Fluxer channel and the reply PokeFlux sends",
+  "search_placeholder": "Search commands or modules",
+  "select_module": "Module",
+  "server_only": "Servers only",
+  "show_reply": "Show the reply",
+  "showing": "{count} commands match",
+  "usage": "Usage"
+}

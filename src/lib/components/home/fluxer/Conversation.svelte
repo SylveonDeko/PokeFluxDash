@@ -1,0 +1,148 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later. Portions adapted from Fluxer (https://github.com/fluxerapp/fluxer). -->
+<script lang="ts">
+  import MessageGroup from "./MessageGroup.svelte";
+  import Embed from "./Embed.svelte";
+  import Markup from "./Markup.svelte";
+  import Reactions from "./Reactions.svelte";
+  import PinSystemMessage from "./PinSystemMessage.svelte";
+  import { chatUsers, type ChatMessage } from "./types";
+
+  let { messages, mobile = false }: { messages: ChatMessage[]; mobile?: boolean } = $props();
+
+  const groupedWithPrevious = (index: number) => {
+    const message = messages[index];
+    const previous = messages[index - 1];
+    return (
+      !!previous &&
+      message.kind !== "pin" &&
+      previous.kind !== "pin" &&
+      previous.author === message.author &&
+      previous.time === message.time
+    );
+  };
+</script>
+
+<div class="messagesWrapper">
+  <div class="scrollerContainer">
+    <div class="scrollerWrap">
+      <div class="scroller">
+        <div class="scrollerContent">
+          <div class="scrollerInner" class:scrollerInnerMobile={mobile} role="log">
+            {#each messages as message, index (index)}
+              {@const user = chatUsers[message.author]}
+              {@const grouped = groupedWithPrevious(index)}
+              {#if index > 0 && !grouped}<div class="groupSpacer"></div>{/if}
+              {#if message.kind === "pin"}
+                <PinSystemMessage name={user.name} time={message.time} {mobile} />
+              {:else}
+                {@const hasAccessories = !!message.embeds?.length || !!message.reactions?.length}
+                <MessageGroup
+                  name={user.name}
+                  avatar={user.avatar}
+                  avatarColor={user.color}
+                  bot={user.bot}
+                  time={message.time}
+                  {grouped}
+                  {mobile}
+                  text={message.text ? textSnippet : undefined}
+                  accessories={hasAccessories ? accessorySnippet : undefined}
+                />
+                {#snippet textSnippet()}<Markup text={message.text ?? ""} />{/snippet}
+                {#snippet accessorySnippet()}
+                  {#each message.embeds ?? [] as embed, e (e)}
+                    <Embed {embed} />
+                  {/each}
+                  {#if message.reactions?.length}
+                    <Reactions reactions={message.reactions} />
+                  {/if}
+                {/snippet}
+              {/if}
+            {/each}
+            <div class="scrollerSpacer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .messagesWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%;
+    min-height: 0;
+    min-width: 0;
+    height: 100%;
+    font-size: 16px;
+  }
+
+  .scrollerContainer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .scrollerWrap {
+    position: relative;
+    display: flex;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    flex: 1 1 auto;
+  }
+
+  .scroller {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    flex: 1 1 auto;
+    overflow: hidden;
+    clip-path: inset(0);
+  }
+
+  .scrollerContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    min-height: 100%;
+  }
+
+  .scrollerInner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 100%;
+    padding-inline-start: 16px;
+    padding-inline-end: 16px;
+    position: relative;
+  }
+
+  .scrollerInnerMobile {
+    padding-inline-start: 12px;
+    padding-inline-end: 12px;
+  }
+
+  .groupSpacer {
+    flex: 0 0 auto;
+    height: 16px;
+  }
+
+  .scrollerSpacer {
+    display: block;
+    height: 24px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+</style>

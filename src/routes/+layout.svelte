@@ -128,9 +128,11 @@
 <svelte:head>
   <meta content={$themeStore === "aero" ? "#04122b" : "#ff5a5f"} name="theme-color" />
   <meta content="website" property="og:type" />
-  <meta content="{SITE_URL}/img/pokeflux.png" property="og:image" />
+  <meta content="{SITE_URL}/img/og-banner.png" property="og:image" />
+  <meta content="1200" property="og:image:width" />
+  <meta content="630" property="og:image:height" />
   <meta content="PokeFlux" property="og:site_name" />
-  <meta content="summary" name="twitter:card" />
+  <meta content="summary_large_image" name="twitter:card" />
   <meta content="index, follow" name="robots" />
 </svelte:head>
 

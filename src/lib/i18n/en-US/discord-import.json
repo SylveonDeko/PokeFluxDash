@@ -6,7 +6,7 @@
   "connect_body": "Sign in with the Discord account you played EeveeCore on. PokeFlux only reads your account name and forgets it after 15 minutes.",
   "connect_title": "Find your Discord account",
   "denied": "Discord sign in was cancelled.",
-  "discord_unchanged": "Nothing changes on Discord. Each Discord account can be imported once, into one PokeFlux account.",
+  "discord_unchanged": "Nothing changes on Discord. Your data comes from a copy of EeveeCore taken on 3 November 2026, so anything you catch or get on Discord after that stays there. Each Discord account can be imported once, into one PokeFlux account.",
   "done_body": "{pokemon} Pokémon and {parties} parties came over.",
   "done_title": "Import finished",
   "error": "Discord sign in did not work. Try again.",

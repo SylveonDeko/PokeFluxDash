@@ -637,8 +637,8 @@ export const m = {
     connectTitle: () => t("discord-import", "connect_title", "Find your Discord account"),
     /** Discord sign in was cancelled. */
     denied: () => t("discord-import", "denied", "Discord sign in was cancelled."),
-    /** Nothing changes on Discord. Each Discord account can be imported once, into one PokeFlu... */
-    discordUnchanged: () => t("discord-import", "discord_unchanged", "Nothing changes on Discord. Each Discord account can be imported once, into one PokeFlux account."),
+    /** Nothing changes on Discord. Your data comes from a copy of EeveeCore taken on 3 Novembe... */
+    discordUnchanged: () => t("discord-import", "discord_unchanged", "Nothing changes on Discord. Your data comes from a copy of EeveeCore taken on 3 November 2026, so anything you catch or get on Discord after that stays there. Each Discord account can be imported once, into one PokeFlux account."),
     /** {pokemon} Pokémon and {parties} parties came over. */
     doneBody: (p: { parties: P; pokemon: P }) => t("discord-import", "done_body", "{pokemon} Pokémon and {parties} parties came over.", p),
     /** Import finished */

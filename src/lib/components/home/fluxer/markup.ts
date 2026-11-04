@@ -7,17 +7,19 @@ export type Inline =
   | { t: "time"; v: string }
   | { t: "mention"; v: string }
   | { t: "channel"; v: string }
-  | { t: "emoji"; v: string; src: string };
+  | { t: "emoji"; v: string; src: string }
+  | { t: "link"; c: Inline[] };
 
 export type Block =
   | { t: "text"; c: Inline[] }
   | { t: "heading"; level: 1 | 2 | 3; c: Inline[] }
   | { t: "quote"; c: Inline[] }
+  | { t: "subtext"; c: Inline[] }
   | { t: "list"; ordered: boolean; start: number; items: Inline[][] };
 
 const emoji = String.raw`[0-9#*]️?⃣|\p{Extended_Pictographic}(?:️|‍\p{Extended_Pictographic}️?)*`;
 const inlinePattern = new RegExp(
-  String.raw`\x60\x60\x60([^\x60]+)\x60\x60\x60|(\x60\x60)|(\x60[^\x60]+\x60)|\*\*(.+?)\*\*|__(.+?)__|~~(.+?)~~|\*([^*\s][^*]*?)\*|<t:(-?\d+):R>|<@(\w+)>|<#([^>\s]+)>|(${emoji})|<a?:(\w+):(\d+)>`,
+  String.raw`\x60\x60\x60([^\x60]+)\x60\x60\x60|(\x60\x60)|(\x60[^\x60]+\x60)|\*\*(.+?)\*\*|__(.+?)__|~~(.+?)~~|\*([^*\s][^*]*?)\*|<t:(-?\d+):R>|<@(\w+)>|<#([^>\s]+)>|(${emoji})|<a?:(\w+):(\d+)>|\[([^\]\n]+)\]\(<?https?:\/\/[^)\s>]+>?\)`,
   "u",
 );
 
@@ -46,7 +48,8 @@ export function parseInline(text: string): Inline[] {
       break;
     }
     if (match.index > 0) out.push({ t: "text", v: rest.slice(0, match.index) });
-    const [whole, block, empty, code, strong, underline, del, em, time, mention, channel, glyph, customName, customId] = match;
+    const [whole, block, empty, code, strong, underline, del, em, time, mention, channel, glyph, customName, customId, linkText] =
+      match;
     if (block) out.push({ t: "code", v: block });
     else if (empty) out.push({ t: "text", v: empty });
     else if (code) out.push({ t: "code", v: code.slice(1, -1) });
@@ -60,12 +63,13 @@ export function parseInline(text: string): Inline[] {
     else if (channel !== undefined) out.push({ t: "channel", v: channel });
     else if (glyph) out.push({ t: "emoji", v: glyph, src: emojiUrl(glyph) });
     else if (customId) out.push({ t: "emoji", v: `:${customName}:`, src: `https://fluxerusercontent.com/emojis/${customId}.webp` });
+    else if (linkText !== undefined) out.push({ t: "link", c: parseInline(linkText) });
     rest = rest.slice(match.index + whole.length);
   }
   return out;
 }
 
-/** Parses the markdown subset bot replies use: headings, bullet lists and inline styles. */
+/** Parses the markdown subset bot replies use: headings, subtext, quotes, lists and inline styles. */
 export function parseMarkup(text: string): Block[] {
   const blocks: Block[] = [];
   let lines: string[] = [];
@@ -75,11 +79,15 @@ export function parseMarkup(text: string): Block[] {
   };
   for (const line of text.split("\n")) {
     const heading = /^(#{1,3}) (.*)$/.exec(line);
+    const subtext = /^-# (.*)$/.exec(line);
     const quote = /^> (.*)$/.exec(line);
     const item = /^(?:[-*]|(\d+)\.) (.*)$/.exec(line);
     if (heading) {
       flush();
       blocks.push({ t: "heading", level: heading[1].length as 1 | 2 | 3, c: parseInline(heading[2]) });
+    } else if (subtext) {
+      flush();
+      blocks.push({ t: "subtext", c: parseInline(subtext[1]) });
     } else if (quote) {
       flush();
       const last = blocks.at(-1);

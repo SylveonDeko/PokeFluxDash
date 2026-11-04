@@ -1,8 +1,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later. Portions adapted from Fluxer (https://github.com/fluxerapp/fluxer).
 import type { Component } from "svelte";
 
-/** A chat author, keyed into `chatUsers`. */
-export type ChatAuthor = "ash" | "misty" | "bot";
+/** Someone who takes part in a scene. */
+export interface ChatUser {
+  name: string;
+  avatar?: string;
+  color?: string;
+  bot?: boolean;
+}
 
 export interface ChatImage {
   src: string;
@@ -45,7 +50,8 @@ export interface ChatReaction {
 
 export interface ChatTextMessage {
   kind?: "message";
-  author: ChatAuthor;
+  /** A key into the scene's `users`. */
+  author: string;
   time: string;
   text?: string;
   embeds?: ChatEmbed[];
@@ -55,7 +61,7 @@ export interface ChatTextMessage {
 /** The system line Fluxer posts when someone pins a message. */
 export interface ChatPinMessage {
   kind: "pin";
-  author: ChatAuthor;
+  author: string;
   time: string;
 }
 
@@ -72,14 +78,15 @@ export interface ChatScene {
   channel: string;
   /** Makes the scene a DM with this user. */
   dm?: ChatRecipient;
+  /** The scene's participants by key. Messages name their author and `<@key>` mentions one. */
+  users: Record<string, ChatUser>;
+  /** The participant signed in, shown in the desktop user area. */
+  self?: string;
   messages: ChatMessage[];
 }
 
-export const chatUsers: Record<ChatAuthor, { name: string; avatar?: string; color?: string; bot?: boolean }> = {
-  bot: { name: "PokeFlux", avatar: "/img/pokeflux.png", bot: true },
-  misty: { name: "misty", avatar: "https://cdn.mewdeko.tech/eevee/46ab822699d701249dc7e7f7ecc3e8ac.png", color: "#00bba7" },
-  ash: { name: "ash", avatar: "https://cdn.mewdeko.tech/eevee/8877d7c106dc8ed788a4d8723d413dd4.png", color: "#d63c3c" },
-};
+/** The context key the scene's users are shared under. */
+export const chatUsersKey = Symbol("chat users");
 
 /** Writes a Fluxer relative timestamp that renders as this many seconds ago. */
 export const ago = (seconds: number) => `<t:-${seconds}:R>`;

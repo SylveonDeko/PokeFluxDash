@@ -1,4 +1,5 @@
-import { chatUsers, type ChatEmbed, type ChatReaction, type ChatScene, type ChatTextMessage } from "$lib/components/home/fluxer/types";
+import { users } from "$lib/components/home/scenes";
+import type { ChatEmbed, ChatReaction, ChatScene, ChatTextMessage } from "$lib/components/home/fluxer/types";
 
 /** A command's reply as the bot sends it, with the frame height that fits it. */
 export interface CommandPreview {
@@ -52,12 +53,13 @@ export const ash = (text: string, reactions?: ChatReaction[]) => message("ash", 
 export const misty = (text: string, reactions?: ChatReaction[]) => message("misty", text, reactions);
 export const bot = (content: Content, reactions?: ChatReaction[]) => message("bot", content, reactions);
 
-export const chat = (...messages: ChatTextMessage[]): ChatScene => ({ channel: "general", messages });
+export const chat = (...messages: ChatTextMessage[]): ChatScene => ({ channel: "general", users, messages });
 
 /** The user's DM with the bot. */
 export const dmChat = (...messages: ChatTextMessage[]): ChatScene => ({
-  channel: chatUsers.bot.name,
-  dm: { name: chatUsers.bot.name, avatar: chatUsers.bot.avatar, bot: true },
+  channel: users.bot.name,
+  dm: { name: users.bot.name, avatar: users.bot.avatar, bot: true },
+  users,
   messages,
 });
 

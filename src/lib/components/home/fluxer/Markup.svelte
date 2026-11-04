@@ -1,14 +1,16 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-or-later. Portions adapted from Fluxer (https://github.com/fluxerapp/fluxer). -->
 <script lang="ts">
+  import { getContext } from "svelte";
   import Code from "./Code.svelte";
   import Icon from "./Icon.svelte";
   import { parseInline, parseMarkup, type Inline } from "./markup";
-  import { chatUsers, type ChatAuthor } from "./types";
+  import { chatUsersKey, type ChatUser } from "./types";
 
   let { text, inline = false }: { text: string; inline?: boolean } = $props();
 
+  const users = getContext<(() => Record<string, ChatUser>) | undefined>(chatUsersKey);
   const blocks = $derived(inline ? [{ t: "text" as const, c: parseInline(text) }] : parseMarkup(text));
-  const mentionName = (key: string) => chatUsers[key as ChatAuthor]?.name ?? key;
+  const mentionName = (key: string) => users?.()[key]?.name ?? key;
 </script>
 
 {#snippet inlines(items: Inline[])}{#each items as item, i (i)}{#if item.t === "text"}<span>{item.v}</span
@@ -19,14 +21,16 @@
     >{:else if item.t === "code"}<Code text={item.v}
     />{:else if item.t === "time"}<span class="timestamp">{item.v}</span
     >{:else if item.t === "mention"}<span class="mention">@{mentionName(item.v)}</span
-    >{:else if item.t === "channel"}<span class="mention"><Icon name="textChannel" size={16} class="channelIcon" />{"⁠"}<span
+    >{:else if item.t === "channel"}<span class="mention"><Icon name="textChannel" size={16} class="channelIcon" />&#8288;<span
           class="label">{item.v}</span></span
     >{:else if item.t === "emoji"}<img class="emoji" src={item.src} alt={item.v} draggable="false"
-    />{/if}{/each}{/snippet}
+    />{:else if item.t === "link"}<span class="link">{@render inlines(item.c)}</span
+    >{/if}{/each}{/snippet}
 
 <span class="markupRoot" class:inlineFormat={inline}
   >{#each blocks as block, i (i)}{#if block.t === "text"}{@render inlines(block.c)}{:else if block.t === "heading"}<svelte:element
         this={`h${block.level}`}>{@render inlines(block.c)}</svelte:element
+      >{:else if block.t === "subtext"}<small>{@render inlines(block.c)}</small
       >{:else if block.t === "quote"}<div class="blockquoteContainer"><div class="blockquoteDivider"></div><blockquote
           class="blockquoteContent">{@render inlines(block.c)}</blockquote></div
       >{:else if block.ordered}<ol start={block.start} style="--totalCharacters: {String(block.start + block.items.length - 1).length};"
@@ -56,6 +60,17 @@
 
   del {
     text-decoration: line-through;
+  }
+
+  .link {
+    color: var(--text-link);
+  }
+
+  small {
+    display: block;
+    color: var(--text-chat-muted);
+    font-size: 0.8125em;
+    line-height: 1.375;
   }
 
   u {

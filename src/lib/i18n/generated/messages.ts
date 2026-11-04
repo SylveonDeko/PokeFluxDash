@@ -45,8 +45,8 @@ export const m = {
     logout: () => t("_common", "logout", "Logout"),
     /** No */
     no: () => t("_common", "no", "No"),
-    /** No servers available */
-    noServersAvailable: () => t("_common", "no_servers_available", "No servers available"),
+    /** No communities available */
+    noServersAvailable: () => t("_common", "no_servers_available", "No communities available"),
     /** None */
     none: () => t("_common", "none", "None"),
     /** Not found */
@@ -65,8 +65,8 @@ export const m = {
     saved: () => t("_common", "saved", "Saved"),
     /** Search... */
     searchPlaceholder: () => t("_common", "search_placeholder", "Search..."),
-    /** Search servers... */
-    searchServersPlaceholder: () => t("_common", "search_servers_placeholder", "Search servers..."),
+    /** Search communities... */
+    searchServersPlaceholder: () => t("_common", "search_servers_placeholder", "Search communities..."),
     /** Select... */
     selectPlaceholder: () => t("_common", "select_placeholder", "Select..."),
     /** {count} selected */
@@ -321,8 +321,8 @@ export const m = {
     spawnDebug: () => t("admin", "spawn_debug", "Spawn debug"),
     /** Spawn storm */
     spawnStorm: () => t("admin", "spawn_storm", "Spawn storm"),
-    /** While it is on, every message in every server spawns a Pokémon. */
-    spawnStormHint: () => t("admin", "spawn_storm_hint", "While it is on, every message in every server spawns a Pokémon."),
+    /** While it is on, every message in every community spawns a Pokémon. */
+    spawnStormHint: () => t("admin", "spawn_storm_hint", "While it is on, every message in every community spawns a Pokémon."),
     /** Staff ID */
     staffId: () => t("admin", "staff_id", "Staff ID"),
     /** Owner spawn tools */
@@ -331,8 +331,8 @@ export const m = {
     staffSpawnToolsHint: () => t("admin", "staff_spawn_tools_hint", "Only bot owners can see this panel."),
     /** Start spawn storm */
     startStorm: () => t("admin", "start_storm", "Start spawn storm"),
-    /** Every message in every server will spawn a Pokémon until you stop it. */
-    startStormMessage: () => t("admin", "start_storm_message", "Every message in every server will spawn a Pokémon until you stop it."),
+    /** Every message in every community will spawn a Pokémon until you stop it. */
+    startStormMessage: () => t("admin", "start_storm_message", "Every message in every community will spawn a Pokémon until you stop it."),
     /** Blocked trades */
     statBlocked: () => t("admin", "stat_blocked", "Blocked trades"),
     /** High risk */
@@ -355,8 +355,8 @@ export const m = {
     statusPending: () => t("admin", "status_pending", "Pending"),
     /** Stop spawn storm */
     stopStorm: () => t("admin", "stop_storm", "Stop spawn storm"),
-    /** Spawns go back to each server's normal speed. */
-    stopStormMessage: () => t("admin", "stop_storm_message", "Spawns go back to each server's normal speed."),
+    /** Spawns go back to each community's normal speed. */
+    stopStormMessage: () => t("admin", "stop_storm_message", "Spawns go back to each community's normal speed."),
     /** Spawn storm is off. */
     stormOff: () => t("admin", "storm_off", "Spawn storm is off."),
     /** Spawn storm is on. */
@@ -453,8 +453,8 @@ export const m = {
     searchPlaceholder: () => t("commands", "search_placeholder", "Search commands or modules"),
     /** Module */
     selectModule: () => t("commands", "select_module", "Module"),
-    /** Servers only */
-    serverOnly: () => t("commands", "server_only", "Servers only"),
+    /** Communities only */
+    serverOnly: () => t("commands", "server_only", "Communities only"),
     /** Show the reply */
     showReply: () => t("commands", "show_reply", "Show the reply"),
     /** {count} commands match */
@@ -469,8 +469,8 @@ export const m = {
     activeListings: () => t("dashboard", "active_listings", "Active listings"),
     /** Active missions ({count}) */
     activeMissions: (p: { count: P }) => t("dashboard", "active_missions", "Active missions ({count})", p),
-    /** All servers */
-    allServers: () => t("dashboard", "all_servers", "All servers"),
+    /** All communities */
+    allServers: () => t("dashboard", "all_servers", "All communities"),
     /** Breeding */
     breedingTitle: () => t("dashboard", "breeding_title", "Breeding"),
     /** Caught */
@@ -537,8 +537,8 @@ export const m = {
     myListings: () => t("dashboard", "my_listings", "My listings"),
     /** My listings ({count}) */
     myListingsCount: (p: { count: P }) => t("dashboard", "my_listings_count", "My listings ({count})", p),
-    /** Pick a starter with the start command in any server with PokeFlux and your profile show... */
-    notStartedHint: () => t("dashboard", "not_started_hint", "Pick a starter with the start command in any server with PokeFlux and your profile shows up here."),
+    /** Pick a starter with the start command in any community with PokeFlux and your profile s... */
+    notStartedHint: () => t("dashboard", "not_started_hint", "Pick a starter with the start command in any community with PokeFlux and your profile shows up here."),
     /** You have not started yet */
     notStartedTitle: () => t("dashboard", "not_started_title", "You have not started yet"),
     /** Your trainer profile */
@@ -571,12 +571,12 @@ export const m = {
     region: () => t("dashboard", "region", "Region"),
     /** Saved parties ({count}) */
     savedParties: (p: { count: P }) => t("dashboard", "saved_parties", "Saved parties ({count})", p),
-    /** Spawns and prefix for this server */
-    serverSettingsSubtitle: () => t("dashboard", "server_settings_subtitle", "Spawns and prefix for this server"),
-    /** Server settings */
-    serverSettingsTitle: () => t("dashboard", "server_settings_title", "Server settings"),
-    /** Servers you manage that PokeFlux is in */
-    serversSubtitle: () => t("dashboard", "servers_subtitle", "Servers you manage that PokeFlux is in"),
+    /** Spawns and prefix for this community */
+    serverSettingsSubtitle: () => t("dashboard", "server_settings_subtitle", "Spawns and prefix for this community"),
+    /** Community settings */
+    serverSettingsTitle: () => t("dashboard", "server_settings_title", "Community settings"),
+    /** Communities you manage that PokeFlux is in */
+    serversSubtitle: () => t("dashboard", "servers_subtitle", "Communities you manage that PokeFlux is in"),
     /** Shadow */
     shadow: () => t("dashboard", "shadow", "Shadow"),
     /** Shiny */
@@ -703,16 +703,16 @@ export const m = {
     pokedex: () => t("features", "pokedex", "Pokédex"),
     /** Pokémon */
     pokemon: () => t("features", "pokemon", "Pokémon"),
-    /** Servers */
-    servers: () => t("features", "servers", "Servers"),
+    /** Communities */
+    servers: () => t("features", "servers", "Communities"),
     /** Shop */
     shop: () => t("features", "shop", "Shop"),
   },
   home: {
     /** Add to Fluxer */
     addToFluxer: () => t("home", "add_to_fluxer", "Add to Fluxer"),
-    /** A Fluxer server where PokeFlux spawns a Ditto and a member catches it */
-    catchMockDesktopLabel: () => t("home", "catch_mock_desktop_label", "A Fluxer server where PokeFlux spawns a Ditto and a member catches it"),
+    /** A Fluxer community where PokeFlux spawns a Ditto and a member catches it */
+    catchMockDesktopLabel: () => t("home", "catch_mock_desktop_label", "A Fluxer community where PokeFlux spawns a Ditto and a member catches it"),
     /** Fluxer on a phone, where PokeFlux spawns a Ditto and a member catches it */
     catchMockMobileLabel: () => t("home", "catch_mock_mobile_label", "Fluxer on a phone, where PokeFlux spawns a Ditto and a member catches it"),
     /** A Fluxer channel where ash challenges misty to a duel and both pick a move */
@@ -727,8 +727,8 @@ export const m = {
     featureBreedText: () => t("home", "feature_breed_text", "Breed two Pokémon to get an egg, then put it in the hatchery. Eggs hatch as you keep chatting."),
     /** Breed and hatch */
     featureBreedTitle: () => t("home", "feature_breed_title", "Breed and hatch"),
-    /** Pokémon spawn in your server's channels and the first person to type the name catches i... */
-    featureCatchText: () => t("home", "feature_catch_text", "Pokémon spawn in your server's channels and the first person to type the name catches it. Everything you catch shows up in the dashboard."),
+    /** Pokémon spawn in your community's channels and the first person to type the name catche... */
+    featureCatchText: () => t("home", "feature_catch_text", "Pokémon spawn in your community's channels and the first person to type the name catches it. Everything you catch shows up in the dashboard."),
     /** Catch in chat */
     featureCatchTitle: () => t("home", "feature_catch_title", "Catch in chat"),
     /** Challenge another trainer and each turn the bot posts a picture of the battle, then you... */
@@ -736,7 +736,7 @@ export const m = {
     /** Duel other trainers */
     featureDuelTitle: () => t("home", "feature_duel_title", "Duel other trainers"),
     /** Missions pay out crystal slime, which you spend in the mission store. The leaderboard r... */
-    featureProgressText: () => t("home", "feature_progress_text", "Missions pay out crystal slime, which you spend in the mission store. The leaderboard ranks trainers across every server."),
+    featureProgressText: () => t("home", "feature_progress_text", "Missions pay out crystal slime, which you spend in the mission store. The leaderboard ranks trainers across every community."),
     /** Missions and achievements */
     featureProgressTitle: () => t("home", "feature_progress_title", "Missions and achievements"),
     /** List a Pokémon for credits or buy one from another trainer. A listing stays up until so... */
@@ -871,8 +871,8 @@ export const m = {
   legal: {
     /** The right to a human review: If PokeFlux bans you from trading or the market automatica... */
     privacyAskAPersonToReview: () => t("legal", "privacy_ask_a_person_to_review", "The right to a human review: If PokeFlux bans you from trading or the market automatically, you can ask a member of staff to look at the decision again."),
-    /** The bot's logs record which command was run, the user ID that ran it, the server and ch... */
-    privacyBotLogsRecord: () => t("legal", "privacy_bot_logs_record", "The bot's logs record which command was run, the user ID that ran it, the server and channel IDs, and how long it took. Errors are logged with the same details. These logs are kept for 30 days."),
+    /** The bot's logs record which command was run, the user ID that ran it, the community and... */
+    privacyBotLogsRecord: () => t("legal", "privacy_bot_logs_record", "The bot's logs record which command was run, the user ID that ran it, the community and channel IDs, and how long it took. Errors are logged with the same details. These logs are kept for 30 days."),
     /** Changes to our privacy policy */
     privacyChangesToOurPrivacyPolicy: () => t("legal", "privacy_changes_to_our_privacy_policy", "Changes to our privacy policy"),
     /** How to contact the appropriate authority */
@@ -880,7 +880,7 @@ export const m = {
     /** The website also saves your theme, font, language and sidebar choices in your browser, ... */
     privacyDashboardBrowserStorage: () => t("legal", "privacy_dashboard_browser_storage", "The website also saves your theme, font, language and sidebar choices in your browser, along with a colour palette taken from your avatar. These are only used to show the site the way you set it up."),
     /** When you sign in to the website, Fluxer gives it tokens for your account. The website o... */
-    privacyDashboardSignIn: () => t("legal", "privacy_dashboard_sign_in", "When you sign in to the website, Fluxer gives it tokens for your account. The website only asks Fluxer for the identify scope, which covers your user ID, username, display name, avatar and banner. It does not ask for your email address or your server list."),
+    privacyDashboardSignIn: () => t("legal", "privacy_dashboard_sign_in", "When you sign in to the website, Fluxer gives it tokens for your account. The website only asks Fluxer for the identify scope, which covers your user ID, username, display name, avatar and banner. It does not ask for your email address or your community list."),
     /** The tokens are encrypted and kept in cookies in your browser, and in a session store on... */
     privacyDashboardTokensStorage: () => t("legal", "privacy_dashboard_tokens_storage", "The tokens are encrypted and kept in cookies in your browser, and in a session store on our server together with your basic profile. A session ends after 24 hours without use. Signing out deletes the session and the cookies and tells Fluxer to revoke the refresh token."),
     /** Game data does not expire on its own. It is kept until you ask us to delete it. */
@@ -888,7 +888,7 @@ export const m = {
     /** Deleting your data */
     privacyDeletingYourData: () => t("legal", "privacy_deleting_your_data", "Deleting your data"),
     /** PokeFlux does not have a delete command yet. To have your data deleted, contact us at {... */
-    privacyDeletionHow: (p: { email: P }) => t("legal", "privacy_deletion_how", "PokeFlux does not have a delete command yet. To have your data deleted, contact us at {email} or in the support server at https://fluxer.gg/ROQQFi38 from the Fluxer account the data belongs to. Deleting your data removes your Pokémon and all other progress for good.", p),
+    privacyDeletionHow: (p: { email: P }) => t("legal", "privacy_deletion_how", "PokeFlux does not have a delete command yet. To have your data deleted, contact us at {email} or in the support community at https://fluxer.gg/ROQQFi38 from the Fluxer account the data belongs to. Deleting your data removes your Pokémon and all other progress for good.", p),
     /** Trade logs and moderation records that involve you, such as fraud check results and sta... */
     privacyDeletionKeptRecords: () => t("legal", "privacy_deletion_kept_records", "Trade logs and moderation records that involve you, such as fraud check results and staff audit entries, may be kept for 30 days after deletion, so that bans keep working and the other player's records stay complete."),
     /** Privacy Policy for PokeFlux */
@@ -929,8 +929,8 @@ export const m = {
     privacyListNames: () => t("legal", "privacy_list_names", "Your username and avatar while you use the website, and the trainer nickname and Pokémon nicknames you choose"),
     /** Risk scores and flags from automatic trade checks (see <a class="underline" href="#trad... */
     privacyListRiskScores: () => t("legal", "privacy_list_risk_scores", "Risk scores and flags from automatic trade checks (see <a class=\"underline\" href=\"#trading\">Trading and fair play</a> below)"),
-    /** The IDs of servers and channels where you use PokeFlux, and the settings server staff c... */
-    privacyListServerIds: () => t("legal", "privacy_list_server_ids", "The IDs of servers and channels where you use PokeFlux, and the settings server staff choose for it"),
+    /** The IDs of communities and channels where you use PokeFlux, and the settings community ... */
+    privacyListServerIds: () => t("legal", "privacy_list_server_ids", "The IDs of communities and channels where you use PokeFlux, and the settings community staff choose for it"),
     /** Sign in tokens issued by Fluxer when you sign in to the website */
     privacyListSignInTokens: () => t("legal", "privacy_list_sign_in_tokens", "Sign in tokens issued by Fluxer when you sign in to the website"),
     /** Trades, gifts and market listings, including who was involved and what changed hands */
@@ -938,7 +938,7 @@ export const m = {
     /** Your Fluxer user ID */
     privacyListUserId: () => t("legal", "privacy_list_user_id", "Your Fluxer user ID"),
     /** Some events are also posted to private staff channels on Fluxer. These include complete... */
-    privacyLogsStaffChannel: () => t("legal", "privacy_logs_staff_channel", "Some events are also posted to private staff channels on Fluxer. These include completed trades and market sales, level ups, hunt results and errors. When PokeFlux joins a server, it posts the server's name, ID, member count and owner ID there."),
+    privacyLogsStaffChannel: () => t("legal", "privacy_logs_staff_channel", "Some events are also posted to private staff channels on Fluxer. These include completed trades and market sales, level ups, hunt results and errors. When PokeFlux joins a community, it posts the community's name, ID, member count and owner ID there."),
     /** Message content */
     privacyMessageContent: () => t("legal", "privacy_message_content", "Message content"),
     /** PokeFlux does not store the text of your messages. */
@@ -965,8 +965,8 @@ export const m = {
     privacyRightToRestrict: () => t("legal", "privacy_right_to_restrict", "The right to restrict processing: You can ask us to limit how we use your personal data."),
     /** You have rights over your personal data. These include: */
     privacyRightsIntro: () => t("legal", "privacy_rights_intro", "You have rights over your personal data. These include:"),
-    /** Your game data is stored in a PostgreSQL database. Server settings, mission progress, t... */
-    privacyStorageDatabases: () => t("legal", "privacy_storage_databases", "Your game data is stored in a PostgreSQL database. Server settings, mission progress, the bot ban list and Pokémon reference data are stored in MongoDB. Short lived data such as cooldowns and trade locks is kept in Redis."),
+    /** Your game data is stored in a PostgreSQL database. Community settings, mission progress... */
+    privacyStorageDatabases: () => t("legal", "privacy_storage_databases", "Your game data is stored in a PostgreSQL database. Community settings, mission progress, the bot ban list and Pokémon reference data are stored in MongoDB. Short lived data such as cooldowns and trade locks is kept in Redis."),
     /** If a trade looks high risk, PokeFlux can block it or ban the accounts involved from tra... */
     privacyTradingActions: () => t("legal", "privacy_trading_actions", "If a trade looks high risk, PokeFlux can block it or ban the accounts involved from trading and the market straight away. Staff can review these results on the staff pages of this website and lift bans that were a mistake. Every staff action there is saved in an audit log, including who did it, which account it affected and why."),
     /** Trading and fair play */
@@ -1013,8 +1013,8 @@ export const m = {
     termsFairPlayBugs: () => t("legal", "terms_fair_play_bugs", "Exploit bugs instead of reporting them"),
     /** Break Fluxer's Terms of Service while using PokeFlux */
     termsFairPlayFluxer: () => t("legal", "terms_fair_play_fluxer", "Break Fluxer's Terms of Service while using PokeFlux"),
-    /** Harass other players or flood servers with the bot */
-    termsFairPlayHarass: () => t("legal", "terms_fair_play_harass", "Harass other players or flood servers with the bot"),
+    /** Harass other players or flood communities with the bot */
+    termsFairPlayHarass: () => t("legal", "terms_fair_play_harass", "Harass other players or flood communities with the bot"),
     /** You agree not to: */
     termsFairPlayIntro: () => t("legal", "terms_fair_play_intro", "You agree not to:"),
     /** Use trades, gifts or the market to get around a ban or to take advantage of other players */
@@ -1029,8 +1029,8 @@ export const m = {
     termsLicenceBody: () => t("legal", "terms_licence_body", "The source code of the bot is at https://github.com/SylveonDeko/PokeFlux and of this website at https://github.com/SylveonDeko/PokeFluxDash. The bot is released under the GNU General Public License v3 and this website under the GNU Affero General Public License v3. Those licences cover the code. These Terms cover your use of the official Service, which is a separate matter. If you run your own copy, these Terms do not apply to it."),
     /** Moderation */
     termsModeration: () => t("legal", "terms_moderation", "Moderation"),
-    /** If you think a decision was wrong, you can appeal in the support server at https://flux... */
-    termsModerationAppeals: () => t("legal", "terms_moderation_appeals", "If you think a decision was wrong, you can appeal in the support server at https://fluxer.gg/ROQQFi38."),
+    /** If you think a decision was wrong, you can appeal in the support community at https://f... */
+    termsModerationAppeals: () => t("legal", "terms_moderation_appeals", "If you think a decision was wrong, you can appeal in the support community at https://fluxer.gg/ROQQFi38."),
     /** If staff believe you have broken these Terms, they can ban you from trading and the mar... */
     termsModerationBody: () => t("legal", "terms_moderation_body", "If staff believe you have broken these Terms, they can ban you from trading and the market, or from the bot as a whole. They can also remove your market listings and remove or reset anything on your account, up to the whole account. They can do this with or without a warning. Some trade and market bans are applied automatically by PokeFlux's trade checks and are then reviewed by staff."),
     /** Do not buy, sell or trade anything from PokeFlux for real money, or for goods or servic... */
@@ -1559,8 +1559,8 @@ export const m = {
     ivTotal: () => t("pokeflux-market", "iv_total", "IV total"),
     /** Top trainers by {kind} */
     leaderboardCaption: (p: { kind: P }) => t("pokeflux-market", "leaderboard_caption", "Top trainers by {kind}", p),
-    /** The top 25 trainers across every server. */
-    leaderboardDescription: () => t("pokeflux-market", "leaderboard_description", "The top 25 trainers across every server."),
+    /** The top 25 trainers across every community. */
+    leaderboardDescription: () => t("pokeflux-market", "leaderboard_description", "The top 25 trainers across every community."),
     /** No trainers on this board yet */
     leaderboardEmpty: () => t("pokeflux-market", "leaderboard_empty", "No trainers on this board yet"),
     /** Leaderboard type */
@@ -1641,10 +1641,10 @@ export const m = {
     noMissions: () => t("pokeflux-market", "no_missions", "No active missions right now"),
     /** No moves known. */
     noMoves: () => t("pokeflux-market", "no_moves", "No moves known."),
-    /** Your servers show up here once PokeFlux is in them and you have Manage Server. */
-    noServersHint: () => t("pokeflux-market", "no_servers_hint", "Your servers show up here once PokeFlux is in them and you have Manage Server."),
-    /** PokeFlux cannot see any text channels in this server. */
-    noTextChannels: () => t("pokeflux-market", "no_text_channels", "PokeFlux cannot see any text channels in this server."),
+    /** Your communities show up here once PokeFlux is in them and you have Manage Community. */
+    noServersHint: () => t("pokeflux-market", "no_servers_hint", "Your communities show up here once PokeFlux is in them and you have Manage Community."),
+    /** PokeFlux cannot see any text channels in this community. */
+    noTextChannels: () => t("pokeflux-market", "no_text_channels", "PokeFlux cannot see any text channels in this community."),
     /** Not enough */
     notEnough: () => t("pokeflux-market", "not_enough", "Not enough"),
     /** Off */
@@ -1883,8 +1883,8 @@ export const m = {
     dexSkin: () => t("pokeflux-pokemon", "dex_skin", "Skins"),
     /** Unowned */
     dexUnowned: () => t("pokeflux-pokemon", "dex_unowned", "Unowned"),
-    /** Catch Pokémon on a server with PokeFlux and they show up here. */
-    emptyHint: () => t("pokeflux-pokemon", "empty_hint", "Catch Pokémon on a server with PokeFlux and they show up here."),
+    /** Catch Pokémon in a community with PokeFlux and they show up here. */
+    emptyHint: () => t("pokeflux-pokemon", "empty_hint", "Catch Pokémon in a community with PokeFlux and they show up here."),
     /** No Pokémon yet */
     emptyTitle: () => t("pokeflux-pokemon", "empty_title", "No Pokémon yet"),
     /** Evolution line */

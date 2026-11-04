@@ -13,7 +13,7 @@
   "preview_label": "{command} in a Fluxer channel and the reply PokeFlux sends",
   "search_placeholder": "Search commands or modules",
   "select_module": "Module",
-  "server_only": "Servers only",
+  "server_only": "Communities only",
   "show_reply": "Show the reply",
   "showing": "{count} commands match",
   "usage": "Usage"

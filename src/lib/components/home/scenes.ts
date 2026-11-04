@@ -1,7 +1,14 @@
 import BattleImage, { type BattleImageProps } from "./fluxer/BattleImage.svelte";
-import { ago, type ChatComponentImage, type ChatEmbed, type ChatMessage, type ChatScene } from "./fluxer/types";
+import { ago, type ChatComponentImage, type ChatEmbed, type ChatMessage, type ChatScene, type ChatUser } from "./fluxer/types";
 
 const CDN = "https://cdn.mewdeko.tech/eevee";
+
+/** The cast of every PokeFlux scene. */
+export const users = {
+  bot: { name: "PokeFlux", avatar: "/img/pokeflux.png", bot: true },
+  misty: { name: "misty", avatar: `${CDN}/46ab822699d701249dc7e7f7ecc3e8ac.png`, color: "#00bba7" },
+  ash: { name: "ash", avatar: `${CDN}/8877d7c106dc8ed788a4d8723d413dd4.png`, color: "#d63c3c" },
+} satisfies Record<string, ChatUser>;
 
 /** Regular sprites hosted on the bot's CDN. */
 export const sprites = {
@@ -31,6 +38,8 @@ export const caughtEmbed: ChatEmbed = {
 /** The landing page catch: a Ditto spawns and ash catches it. */
 export const catchScene: ChatScene = {
   channel: "general",
+  users,
+  self: "ash",
   messages: [
     { author: "misty", time: "Today at 4:02 PM", text: "ash, you still owe me a bike" },
     { author: "ash", time: "Today at 4:03 PM", text: "i'll pay you back once i catch something good" },
@@ -52,6 +61,7 @@ export interface SpawnPreviewSettings {
 export function spawnScene(settings: SpawnPreviewSettings): ChatScene {
   return {
     channel: "general",
+    users,
     messages: [{ author: "bot", time: "Today at 4:05 PM", embeds: [spawnEmbed(sprites.ditto, settings.smallImages, settings.modalView)] }],
   };
 }
@@ -77,12 +87,13 @@ export function caughtScene(settings: SpawnPreviewSettings, prefix: string): Cha
     { author: "bot", time: "Today at 4:05 PM", embeds: [caughtEmbed] },
   );
   if (settings.pin && !settings.delete) messages.push({ kind: "pin", author: "bot", time: "Today at 4:05 PM" });
-  return { channel: "general", messages };
+  return { channel: "general", users, messages };
 }
 
 /** `;start` and the starter list StartModule replies with. */
 export const startScene: ChatScene = {
   channel: "general",
+  users,
   messages: [
     { author: "ash", time: "Today at 3:58 PM", text: ";start" },
     {
@@ -127,6 +138,7 @@ export const battleImage: ChatComponentImage<BattleImageProps> = {
 export function duelScene(): ChatScene {
   return {
     channel: "general",
+    users,
     messages: [
       { author: "ash", time: "Today at 6:12 PM", text: ";duel single <@misty>" },
       {
@@ -180,6 +192,7 @@ export function duelScene(): ChatScene {
 /** The hatch notice HatcheryService posts when a chat message finishes an egg. */
 export const hatchScene: ChatScene = {
   channel: "general",
+  users,
   messages: [
     { author: "ash", time: "Today at 5:20 PM", text: "still saving up for that bike" },
     { author: "bot", time: "Today at 5:20 PM", embeds: [{ color: "#ff49e6", description: "Congratulations!\nYour Larvesta Egg has hatched!" }] },
@@ -190,6 +203,7 @@ export const hatchScene: ChatScene = {
 export function spawnEnableScene(prefix: string, channel: string): ChatScene {
   return {
     channel,
+    users,
     messages: [
       { author: "ash", time: "Today at 3:40 PM", text: `${prefix}spawn enable` },
       { author: "bot", time: "Today at 3:40 PM", embeds: [{ color: "#2ecc71", description: `Enabled spawns in <#${channel}>` }] },
@@ -202,6 +216,7 @@ const missionEmoji ="<:mission:1566977482307932160>";
 /** The missions list command with today's real missions. */
 export const missionsScene: ChatScene = {
   channel: "general",
+  users,
   messages: [
     { author: "misty", time: "Today at 7:02 PM", text: ";missions list" },
     {

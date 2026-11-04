@@ -56,7 +56,7 @@
                       <div class="chatAreaSlot">
                         <div class="chatContainer">
                           <section class="messagesArea">
-                            <Conversation messages={scene.messages} mobile />
+                            <Conversation messages={scene.messages} users={scene.users} mobile />
                           </section>
                           <section class="textareaArea">
                             <Composer placeholder="Message #{scene.channel}" mobile />

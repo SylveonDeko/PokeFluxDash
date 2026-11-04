@@ -46,7 +46,7 @@ const helpCategories: [string, number][] = [
   ["Missions", 5],
   ["Party", 10],
   ["Pokemon", 16],
-  ["Server", 2],
+  ["Community", 2],
   ["Shop", 12],
   ["Spawn", 10],
   ["Start", 2],
@@ -195,7 +195,7 @@ export const extrasPreviews: Record<string, CommandPreview> = {
     ";spread server",
     {
       color: "#ffbc61",
-      title: "Server Stats",
+      title: "Community Stats",
       description: "**Honey** active in:\n<#general> -> `Expires:` <t:2520:R>\n\n**Honey** active in:\n<#trades> -> `Expires:` <t:900:R>",
     },
     355,

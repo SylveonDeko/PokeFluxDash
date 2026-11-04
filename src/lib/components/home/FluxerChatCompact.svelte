@@ -43,7 +43,7 @@
     </div>
     <div class="chatContainer">
       <section class="messagesArea">
-        <Conversation messages={scene.messages} />
+        <Conversation messages={scene.messages} users={scene.users} />
       </section>
       {#if composer}
         <section class="textareaArea">

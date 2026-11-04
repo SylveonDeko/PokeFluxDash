@@ -1,5 +1,5 @@
-import { DUEL_PINK, actions, battleImage, missionsScene } from "$lib/components/home/scenes";
-import { ago, chatUsers, type ChatEmbed } from "$lib/components/home/fluxer/types";
+import { DUEL_PINK, actions, battleImage, missionsScene, users } from "$lib/components/home/scenes";
+import { ago, type ChatEmbed } from "$lib/components/home/fluxer/types";
 import { BLUE, GOLD, GREEN, ORANGE, PURPLE, RED, ash, bot, chat, confirmed, ok, picture, reply, type CommandPreview } from "./chat";
 
 const ACHIEVEMENT_GOLD = "#ffd700";
@@ -7,7 +7,7 @@ const BRONZE = "#cd7f32";
 const SILVER = "#c0c0c0";
 const SLIME_STORE = "#000010";
 const SLIME = "<:CrystallizedSlime:1566977393170583552>";
-const avatar = { src: chatUsers.ash.avatar!, width: 128, height: 128 };
+const avatar = { src: users.ash.avatar, width: 128, height: 128 };
 
 /** A Fluxer timestamp that renders as this many seconds from now. */
 const later = (seconds: number) => `<t:${seconds}:R>`;

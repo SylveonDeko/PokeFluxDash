@@ -5,9 +5,12 @@
   import Markup from "./Markup.svelte";
   import Reactions from "./Reactions.svelte";
   import PinSystemMessage from "./PinSystemMessage.svelte";
-  import { chatUsers, type ChatMessage } from "./types";
+  import { setContext } from "svelte";
+  import { chatUsersKey, type ChatMessage, type ChatUser } from "./types";
 
-  let { messages, mobile = false }: { messages: ChatMessage[]; mobile?: boolean } = $props();
+  let { messages, users, mobile = false }: { messages: ChatMessage[]; users: Record<string, ChatUser>; mobile?: boolean } = $props();
+
+  setContext(chatUsersKey, () => users);
 
   const groupedWithPrevious = (index: number) => {
     const message = messages[index];
@@ -29,7 +32,7 @@
         <div class="scrollerContent">
           <div class="scrollerInner" class:scrollerInnerMobile={mobile} role="log">
             {#each messages as message, index (index)}
-              {@const user = chatUsers[message.author]}
+              {@const user = users[message.author] ?? { name: message.author }}
               {@const grouped = groupedWithPrevious(index)}
               {#if index > 0 && !grouped}<div class="groupSpacer"></div>{/if}
               {#if message.kind === "pin"}

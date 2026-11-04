@@ -1,4 +1,4 @@
-import { caughtEmbed, spawnEmbed, sprites, startScene } from "$lib/components/home/scenes";
+import { caughtEmbed, spawnEmbed, sprites, startScene, users } from "$lib/components/home/scenes";
 import { BLUE, GOLD, GREEN, OK, PURPLE, TIME, confirm, reply, type CommandPreview } from "./replies/chat";
 import { extrasPreviews } from "./replies/extras";
 import { pokemonPreviews } from "./replies/pokemon";
@@ -13,6 +13,7 @@ export const previews: Record<string, CommandPreview> = {
   catch: {
     scene: {
       channel: "general",
+      users,
       messages: [
         { author: "bot", time: TIME, embeds: [spawnEmbed(sprites.ditto, true, false)] },
         { author: "ash", time: TIME, text: ";catch ditto", reactions: [{ emoji: "✅", count: 1 }] },
@@ -71,7 +72,7 @@ export const previews: Record<string, CommandPreview> = {
         },
         {
           name: "🆘 **Need More Help?**",
-          value: "• Join our support server\n• Ask questions in community channels\n• Check out the full guide online\n• Contact staff for technical issues",
+          value: "• Join our support community\n• Ask questions in community channels\n• Check out the full guide online\n• Contact staff for technical issues",
         },
       ],
       footer: "Have fun gaming! 🎮",

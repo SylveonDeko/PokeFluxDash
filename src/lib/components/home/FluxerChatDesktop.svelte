@@ -5,7 +5,7 @@
   import Composer from "./fluxer/Composer.svelte";
   import Avatar from "./fluxer/Avatar.svelte";
   import Icon, { type IconName } from "./fluxer/Icon.svelte";
-  import { chatUsers, type ChatScene } from "./fluxer/types";
+  import type { ChatScene } from "./fluxer/types";
 
   interface Props {
     scene: ChatScene;
@@ -36,6 +36,8 @@
   );
 
   const headerActions: IconName[] = ["bellFill", "pushPinFill", "starBold", "usersFill"];
+
+  const me = $derived((scene.self && scene.users[scene.self]) || { name: "You" });
 </script>
 
 {#snippet category(name: string)}
@@ -221,7 +223,7 @@
                         <div class="chatAreaSlot">
                           <div class="chatContainer">
                             <section class="messagesArea">
-                              <Conversation messages={scene.messages} />
+                              <Conversation messages={scene.messages} users={scene.users} />
                             </section>
                             <section class="textareaArea">
                               <Composer placeholder="Message #{scene.channel}" />
@@ -243,12 +245,12 @@
       <div class="userAreaInnerWrapper">
         <div class="userAreaContainer">
           <div class="userInfo" role="button">
-            <Avatar size={32} src={chatUsers.ash.avatar} fill={chatUsers.ash.color} online />
+            <Avatar size={32} src={me.avatar} fill={me.color} online />
             <div class="userInfoText">
-              <div class="userName">ash</div>
+              <div class="userName">{me.name}</div>
               <div class="userStatus">
                 <div class="hoverRoll">
-                  <div class="hovered">ash#0001</div>
+                  <div class="hovered">{me.name}#0001</div>
                   <div class="defaultState"><span class="userStatus">Online</span></div>
                 </div>
               </div>

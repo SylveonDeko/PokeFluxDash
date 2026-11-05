@@ -124,22 +124,15 @@
   <link href="{SITE_URL}/commands" rel="canonical" />
 </svelte:head>
 
-<main
+<div
   class="min-h-screen"
   style="--color-primary: {$colorStore.primary};
          --color-secondary: {$colorStore.secondary};
          --color-accent: {$colorStore.accent};
          --color-text: {$colorStore.text};
-         --color-muted: {$colorStore.muted};
-         background: radial-gradient(circle at center,
-           {$colorStore.gradientStart}15 0%,
-           {$colorStore.gradientEnd}10 50%,
-           {$colorStore.gradientEnd}05 100%
-         );"
+         --color-muted: {$colorStore.muted};"
 >
-  <div class="py-4 border-b"
-       style="background: linear-gradient(135deg, {$colorStore.gradientStart}15 0%, {$colorStore.gradientEnd}10 100%);
-              border-color: {$colorStore.primary}30;">
+  <div class="py-4 border-b" style="border-color: {$colorStore.primary}20;">
     <div class="container mx-auto px-3 sm:px-4 lg:px-6 py-2 sm:py-3">
       <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
@@ -181,15 +174,14 @@
             />
           </div>
 
-          <div class="hidden md:block border-b" style="border-color: {$colorStore.primary}30;">
-            <div class="-mb-px flex space-x-1 overflow-x-auto pb-2" role="tablist" aria-label={m.commands.modulesLabel()}
-                 style="scrollbar-color: {$colorStore.primary}30 transparent;">
+          <div class="hidden md:block">
+            <div class="flex flex-wrap gap-1.5" role="tablist" aria-label={m.commands.modulesLabel()}>
               {#each filteredModules as module, index (module.name)}
                 <button
-                  class="tab-button group inline-flex items-center px-3 py-2 border-b-2 font-medium text-sm whitespace-nowrap transition-all duration-200 focus:outline-hidden"
+                  class="tab-button group inline-flex items-center px-3 py-2 border rounded-lg font-medium text-sm whitespace-nowrap transition-colors focus:outline-hidden"
                   style="{index === activeTabIndex
-                    ? `border-color: ${$colorStore.primary}; color: ${$colorStore.text};`
-                    : `border-color: transparent; color: ${$colorStore.muted};`}"
+                    ? `background: ${$colorStore.selectedSurface}; border-color: ${$colorStore.selectedBorder}; color: ${$colorStore.text};`
+                    : `background: transparent; border-color: ${$colorStore.primary}20; color: ${$colorStore.muted};`}"
                   role="tab"
                   aria-selected={index === activeTabIndex}
                   aria-controls="tabpanel-{index}"
@@ -198,17 +190,9 @@
                   onclick={() => (activeTabIndex = index)}
                   onkeydown={(e) => handleTabKeydown(e, index)}
                 >
-                  <div class="shrink-0 w-6 h-6 rounded-md flex items-center justify-center mr-2 text-xs font-bold"
-                       style="{index === activeTabIndex
-                         ? `background: linear-gradient(135deg, ${$colorStore.gradientStart}40, ${$colorStore.gradientMid}50); color: ${$colorStore.text};`
-                         : `background: ${$colorStore.primary}20; color: ${$colorStore.text};`}">
-                    {module.name.charAt(0)}
-                  </div>
                   <span class="truncate">{module.name}</span>
                   <span class="ml-2 px-1.5 py-0.5 text-xs rounded-full"
-                        style="{index === activeTabIndex
-                          ? `background: ${$colorStore.primary}30; color: ${$colorStore.text};`
-                          : `background: ${$colorStore.primary}15; color: ${$colorStore.muted};`}">
+                        style="background: {$colorStore.primary}15; color: {index === activeTabIndex ? $colorStore.text : $colorStore.muted};">
                     {module.commands.length}
                   </span>
                 </button>
@@ -219,11 +203,7 @@
 
         {#if activeModule}
           <div class="pb-8" role="tabpanel" aria-labelledby="tab-{activeTabIndex}" id="tabpanel-{activeTabIndex}" tabindex="0">
-            <div class="mb-4 flex items-center gap-3">
-              <div class="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center"
-                   style="background: linear-gradient(135deg, {$colorStore.gradientStart}40, {$colorStore.gradientMid}50); border: 1px solid {$colorStore.primary}30;">
-                <span class="text-base font-bold" style="color: {$colorStore.text}">{activeModule.name.charAt(0)}</span>
-              </div>
+            <div class="mb-4">
               <div>
                 <h2 class="text-lg font-bold leading-tight" style="color: {$colorStore.text};">{activeModule.name}</h2>
                 <p class="text-xs opacity-80" style="color: {$colorStore.text};">{m.commands.count({ count: activeModule.commands.length })}</p>
@@ -290,7 +270,7 @@
                     {#if preview}
                       <button
                         type="button"
-                        class="ml-auto inline-flex items-center px-2 py-1 text-xs font-medium rounded-md transition-all hover:opacity-80"
+                        class="ml-auto inline-flex items-center px-2 py-1 text-xs font-medium rounded-md transition-opacity hover:opacity-80"
                         style="background: {$colorStore.primary}20; color: {$colorStore.text}; border: 1px solid {$colorStore.primary}30;"
                         aria-haspopup="dialog"
                         onclick={() => showPreview(command.name)}
@@ -309,7 +289,7 @@
       {/if}
     </div>
   </div>
-</main>
+</div>
 
 {#if previewing && previews[previewing]}
   <Modal bind:open={previewOpen} title=";{previewing}" icon="fa-solid fa-comment" size="lg" onclose={() => (previewing = null)}>
@@ -341,7 +321,5 @@
 
   .tab-button:not([aria-selected="true"]):hover {
     color: var(--color-text);
-    border-color: var(--color-primary);
-    opacity: 0.8;
   }
 </style>

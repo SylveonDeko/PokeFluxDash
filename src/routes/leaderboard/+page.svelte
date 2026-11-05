@@ -15,9 +15,9 @@
   let { data }: { data: PageData } = $props();
 
   const KIND_INFO: Record<LeaderboardKind, { label: () => string; value: () => string; icon: string }> = {
-    pokemon: { label: m.features.pokemon, value: m.pokefluxMarket.leaderboardPokemonValue, icon: "fa-paw" },
-    shiny: { label: m.dashboard.shiny, value: m.pokefluxMarket.leaderboardShinyValue, icon: "fa-star" },
-    credits: { label: m.dashboard.credits, value: m.dashboard.credits, icon: "fa-circle-dollar" },
+    pokemon: { label: m.common.pokemon, value: m.pokefluxMarket.leaderboardPokemonValue, icon: "fa-paw" },
+    shiny: { label: m.common.shiny, value: m.pokefluxMarket.leaderboardShinyValue, icon: "fa-star" },
+    credits: { label: m.common.credits, value: m.common.credits, icon: "fa-circle-dollar" },
   };
 
   const MEDALS = ["#FFD700", "#C0C0C0", "#CD7F32"];

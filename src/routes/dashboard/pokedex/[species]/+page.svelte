@@ -71,7 +71,7 @@
       {@render backLink()}
     {/snippet}
 
-    <section class="rounded-2xl border overflow-hidden shadow-2xl transition-all" style={sectionStyle($colorStore)}>
+    <section class="rounded-2xl border overflow-hidden" style={sectionStyle($colorStore)}>
       <div class="grid lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)]">
         <div class="flex flex-col items-center justify-center gap-2 p-4 lg:p-5" style="background: {$colorStore.primary}05;">
           <PokemonSprite src={sprite} alt={name} size={160} eager />
@@ -93,7 +93,7 @@
                   onclick={() => (shinyChoice = value)}
                 >
                   {#if value}<i class="fa-solid fa-sparkles" aria-hidden="true"></i>{/if}
-                  {value ? m.dashboard.shiny() : m.pokefluxPokemon.speciesNormal()}
+                  {value ? m.common.shiny() : m.common.normal()}
                 </button>
               {/each}
             </div>
@@ -148,7 +148,7 @@
         <StatBars baseStats={species.baseStats} view="base" switchable={false} />
       </Panel>
 
-      <Panel icon="fa-solid fa-egg" title={m.pokefluxPokemon.speciesBreeding()}>
+      <Panel icon="fa-solid fa-egg" title={m.common.breeding()}>
         <SpeciesBreeding {species} />
       </Panel>
     </div>

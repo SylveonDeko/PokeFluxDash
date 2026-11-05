@@ -55,7 +55,7 @@
       <Panel icon="fa-solid fa-circle-exclamation" title={m.admin.riskiestToday()}>
         {#snippet actions()}
           <a href="/dashboard/admin/detections" class={linkClass} style={buttonStyle($colorStore)}>
-            {m.admin.viewAll()}<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            {m.admin.viewAll()}
           </a>
         {/snippet}
         <StaffState response={data.detections}>
@@ -72,7 +72,7 @@
       <Panel icon="fa-solid fa-clipboard-check" title={m.admin.recentActions()}>
         {#snippet actions()}
           <a href="/dashboard/admin/audit" class={linkClass} style={buttonStyle($colorStore)}>
-            {m.admin.viewAll()}<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            {m.admin.viewAll()}
           </a>
         {/snippet}
         <StaffState response={data.audit}>

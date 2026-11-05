@@ -19,7 +19,20 @@ interface ColorPalette {
   gradientStart: string;
   gradientMid: string;
   gradientEnd: string;
+  /** Text to put on a solid primary fill: black or white, whichever reads better. */
+  onPrimary?: string;
+  /** Text to put on a solid secondary fill. */
+  onSecondary?: string;
+  /** Text to put on a solid accent fill. */
+  onAccent?: string;
+  /** Fill for selected and active states. Normal text stays readable on it with any palette. */
+  selectedSurface?: string;
+  /** Border for selected and active states. */
+  selectedBorder?: string;
 }
+
+/** Dark text used on light fills. */
+const DARK_TEXT = "#0b1020";
 
 /** The brand colors, used when there is no avatar or server icon to take colors from. */
 const DEFAULT_PALETTE: ColorPalette = {
@@ -152,8 +165,8 @@ function createColorStore() {
       const eased = 1 - Math.pow(1 - t, 3);
       const mixed = { ...target };
       for (const key of Object.keys(target) as (keyof ColorPalette)[]) {
-        const a = toRgb(from[key]);
-        const b = toRgb(target[key]);
+        const a = toRgb(from[key] ?? "");
+        const b = toRgb(target[key] ?? "");
         if (a && b) mixed[key] = rgbToHex(a[0] + (b[0] - a[0]) * eased, a[1] + (b[1] - a[1]) * eased, a[2] + (b[2] - a[2]) * eased);
       }
       shown = t < 1 ? mixed : target;
@@ -773,9 +786,32 @@ function createColorStore() {
    * shifts text and background to the night glass tones, and softens the
    * gradient stops. The transform is idempotent for cached palettes.
    */
-  function themePalette(palette: ColorPalette): ColorPalette {
-    if (themeStore.current !== "aero") return palette;
+  /** Black or white, whichever has more contrast against the given fill. */
+  function readableOn(fill: string, light: string): string {
+    const rgb = toRgb(fill);
+    if (!rgb) return light;
+    const fillLuminance = getLuminance(...rgb);
+    const lightRgb = toRgb(light) ?? [255, 255, 255];
+    const darkRgb = toRgb(DARK_TEXT)!;
+    const onLight = getContrastRatio(fillLuminance, getLuminance(...lightRgb));
+    const onDark = getContrastRatio(fillLuminance, getLuminance(...darkRgb));
+    return onLight >= onDark ? light : DARK_TEXT;
+  }
+
+  function withReadableColors(palette: ColorPalette): ColorPalette {
     return {
+      ...palette,
+      onPrimary: readableOn(palette.primary, palette.text),
+      onSecondary: readableOn(palette.secondary, palette.text),
+      onAccent: readableOn(palette.accent, palette.text),
+      selectedSurface: `color-mix(in srgb, ${palette.primary} 22%, ${palette.background})`,
+      selectedBorder: `color-mix(in srgb, ${palette.primary} 65%, ${palette.background})`,
+    };
+  }
+
+  function themePalette(palette: ColorPalette): ColorPalette {
+    if (themeStore.current !== "aero") return withReadableColors(palette);
+    return withReadableColors({
       ...palette,
       text: "#f3f9ff",
       muted: "#c9deef",
@@ -783,7 +819,7 @@ function createColorStore() {
       gradientStart: aeroGradientStop(palette.gradientStart),
       gradientMid: aeroGradientStop(palette.gradientMid),
       gradientEnd: aeroGradientStop(palette.gradientEnd),
-    };
+    });
   }
 
   return {
@@ -805,6 +841,9 @@ function createColorStore() {
         --color-accent: ${currentPalette.accent};
         --color-text: ${currentPalette.text};
         --color-muted: ${currentPalette.muted};
+        --color-on-primary: ${currentPalette.onPrimary};
+        --color-selected-surface: ${currentPalette.selectedSurface};
+        --color-selected-border: ${currentPalette.selectedBorder};
         --gradient-start: ${currentPalette.gradientStart};
         --gradient-mid: ${currentPalette.gradientMid};
         --gradient-end: ${currentPalette.gradientEnd};

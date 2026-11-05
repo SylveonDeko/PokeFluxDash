@@ -78,7 +78,7 @@ export const TYPE_EMOJIS: Partial<Record<TypeName, string>> = {
 };
 
 const TYPE_LABELS: Record<TypeName, () => string> = {
-  normal: m.pokeflux.typeNormal,
+  normal: m.common.normal,
   fire: m.pokeflux.typeFire,
   water: m.pokeflux.typeWater,
   electric: m.pokeflux.typeElectric,

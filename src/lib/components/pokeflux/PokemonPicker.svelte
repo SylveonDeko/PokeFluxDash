@@ -259,7 +259,7 @@ load them another way.
     <p class="text-sm flex-1" style="color: {$colorStore.muted};" aria-live="polite">
       {max !== undefined
         ? m.pokeflux.selectedCountMax({ count: picked.length, max })
-        : m.pokeflux.selectedCount({ count: picked.length })}
+        : m.common.selectedCount({ count: picked.length })}
       {#if picked.length}
         <button
           type="button"
@@ -267,7 +267,7 @@ load them another way.
           style="color: {$colorStore.primary}; --tw-ring-color: {$colorStore.primary};"
           onclick={() => (picked = [])}
         >
-          {m.pokeflux.clearSelection()}
+          {m.common.clear()}
         </button>
       {/if}
     </p>

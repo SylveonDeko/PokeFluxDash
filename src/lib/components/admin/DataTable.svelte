@@ -44,7 +44,7 @@ A staff list: a table on wide screens and a card per row on phones, styled like 
   {#each rows as item (key(item))}
     <li
       class="rounded-2xl border p-3"
-      style="background: linear-gradient(135deg, {$colorStore.gradientStart}10, {$colorStore.gradientMid}15); border-color: {$colorStore.primary}30;"
+      style="background: {$colorStore.primary}08; border-color: {$colorStore.primary}30;"
     >
       {@render card(item)}
     </li>

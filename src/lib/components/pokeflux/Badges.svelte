@@ -53,8 +53,8 @@ Compact icons for a Pokémon's flags, each with a tooltip and a label for screen
     const skin = skinOf({ skin: pokemon.skin ?? null });
     const shadow = isShadow({ skin: pokemon.skin ?? null });
     const all: (Badge | false)[] = [
-      !!pokemon.shiny && { kind: "shiny", ...FLAGS.shiny, label: m.dashboard.shiny() },
-      !!pokemon.radiant && { kind: "radiant", ...FLAGS.radiant, label: m.dashboard.radiant() },
+      !!pokemon.shiny && { kind: "shiny", ...FLAGS.shiny, label: m.common.shiny() },
+      !!pokemon.radiant && { kind: "radiant", ...FLAGS.radiant, label: m.common.radiant() },
       shadow && { kind: "shadow", ...FLAGS.shadow, label: m.dashboard.shadow() },
       !!skin && !shadow && {
         kind: "skin",
@@ -62,9 +62,9 @@ Compact icons for a Pokémon's flags, each with a tooltip and a label for screen
         color: "#0ea5e9",
         label: m.pokeflux.badgeSkin({ name: humanize(skin) }),
       },
-      !!pokemon.favorite && { kind: "favorite", ...FLAGS.favorite, label: m.pokeflux.badgeFavorite() },
+      !!pokemon.favorite && { kind: "favorite", ...FLAGS.favorite, label: m.common.favorite() },
       !!pokemon.inParty && { kind: "inParty", icon: "fa-users", color: $colorStore.primary, label: m.pokeflux.badgeInParty() },
-      !!pokemon.selected && { kind: "selected", icon: "fa-location-crosshairs", color: "#22c55e", label: m.pokeflux.badgeSelected() },
+      !!pokemon.selected && { kind: "selected", icon: "fa-location-crosshairs", color: "#22c55e", label: m.common.selectedPokemon() },
       !!pokemon.champion && { kind: "champion", icon: "fa-trophy", color: "#ca8a04", label: m.pokeflux.badgeChampion() },
       !!pokemon.marketListed && { kind: "marketListed", icon: "fa-tag", color: "#14b8a6", label: m.pokeflux.badgeMarketListed() },
     ];

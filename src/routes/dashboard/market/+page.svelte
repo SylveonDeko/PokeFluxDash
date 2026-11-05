@@ -198,7 +198,7 @@
         {:else if market.items.length === 0}
           <EmptyState
             title={filtered ? m.pokefluxMarket.noMatches() : m.pokefluxMarket.marketEmpty()}
-            message={filtered ? m.pokeflux.noResultsHint() : m.pokefluxMarket.marketEmptyHint()}
+            message={filtered ? m.pokeflux.noResultsHint() : undefined}
             icon={filtered ? "fa-solid fa-magnifying-glass" : "fa-solid fa-store"}
           >
             {#if filtered}
@@ -240,7 +240,7 @@
         {#if loading}
           <LoadingGrid count={6} />
         {:else if mine.length === 0}
-          <EmptyState title={m.pokefluxMarket.noListings()} message={m.pokefluxMarket.noListingsHint()} icon="fa-solid fa-tags">
+          <EmptyState title={m.pokefluxMarket.noListings()} icon="fa-solid fa-tags">
             <button type="button" class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all hover:scale-[1.02] min-h-[38px]" style={buttonStyle($colorStore)} onclick={() => (sellOpen = true)}>
               {m.pokefluxMarket.sellPokemon()}
             </button>

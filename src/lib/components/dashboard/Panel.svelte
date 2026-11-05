@@ -38,7 +38,7 @@
   </h2>
 {/snippet}
 
-<section class="rounded-2xl border p-4 md:p-5 shadow-2xl transition-all {className}" style={sectionStyle($colorStore)} {...rest}>
+<section class="rounded-2xl border p-4 md:p-5 transition-all {className}" style={sectionStyle($colorStore)} {...rest}>
   {#if title}
     {#if actions}
       <div class="flex flex-wrap items-center gap-2 {subtitle ? '' : gap}">

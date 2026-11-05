@@ -364,7 +364,7 @@
   <div
     class="absolute inset-y-0 left-0 w-full rounded-2xl border overflow-hidden pointer-events-none"
     style="{palette
-      ? `background: linear-gradient(135deg, ${palette.primary}14, ${palette.secondary}0a); border-color: ${palette.primary}30;`
+      ? `background: ${palette.primary}10; border-color: ${palette.primary}30;`
       : sectionStyle($colorStore)} transform: translateX({x}px);"
     aria-hidden="true"
   >
@@ -418,7 +418,7 @@
       class="min-h-[38px] px-3 rounded-xl inline-flex items-center gap-2 text-sm font-medium transition-all hover:scale-[1.02] outline-none focus-visible:ring-2"
       style={buttonStyle($colorStore)}
     >
-      <i class="fa-solid fa-grid-2" aria-hidden="true"></i><span>{m.pokefluxPokemon.backToList()}</span>
+      <i class="fa-solid fa-grid-2" aria-hidden="true"></i><span>{m.common.allPokemon()}</span>
     </a>
     {#if data.detail.ok}
       <div class="flex items-center gap-2">
@@ -471,13 +471,13 @@
       {#if nextCard}{@render stripCard(nextCard, dragX + slot)}{/if}
     {/if}
     <section
-      class="relative rounded-2xl border overflow-hidden shadow-2xl"
+      class="relative rounded-2xl border overflow-hidden"
       style="{sectionStyle($colorStore)} transform: translateX({dragX}px); visibility: {stale ? 'hidden' : 'visible'};"
     >
       <div class="grid lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)]">
         <div
           class="relative flex flex-col items-center justify-center gap-2 p-4 lg:p-5"
-          style="background: linear-gradient(135deg, {$colorStore.gradientStart}05, {$colorStore.gradientMid}08);"
+          style="background: {$colorStore.primary}05;"
         >
           <div
             class="relative flex flex-col items-center gap-2"
@@ -524,7 +524,7 @@
               </svg>
               <div class="absolute inset-0 flex flex-col items-center justify-center">
                 <span class="text-base font-bold tabular-nums leading-none" style="color: {ivColor(iv)};">{iv.toFixed(1)}%</span>
-                <span class="text-xs mt-0.5" style="color: {$colorStore.muted};">{m.pokefluxPokemon.iv()}</span>
+                <span class="text-xs mt-0.5" style="color: {$colorStore.muted};">{m.common.iv()}</span>
               </div>
             </div>
 
@@ -542,12 +542,12 @@
           </div>
 
           <dl class="grid grid-cols-2 xl:grid-cols-3 gap-2">
-            {@render fact("fa-leaf", m.pokefluxPokemon.nature(), pokemon.nature || m.common.none())}
-            {@render fact("fa-bolt", m.pokefluxPokemon.ability(), pokemon.ability ? humanize(pokemon.ability) : m.common.none())}
-            {@render fact("fa-hand-holding", m.pokefluxPokemon.heldItemLabel(), pokemon.heldItem ? humanize(pokemon.heldItem) : m.common.none())}
+            {@render fact("fa-leaf", m.common.nature(), pokemon.nature || m.common.none())}
+            {@render fact("fa-bolt", m.common.ability(), pokemon.ability ? humanize(pokemon.ability) : m.common.none())}
+            {@render fact("fa-hand-holding", m.common.heldItem(), pokemon.heldItem ? humanize(pokemon.heldItem) : m.common.none())}
             {@render fact("fa-face-smile", m.pokefluxPokemon.happiness(), pokemon.happiness.toLocaleString(), "#f59e0b")}
-            {@render fact(gender.icon, m.pokefluxPokemon.gender(), gender.label(), gender.color)}
-            {@render fact("fa-calendar", m.pokefluxPokemon.caught(), caught ? formatDate(caught.toISOString()) : m.pokefluxPokemon.unknown())}
+            {@render fact(gender.icon, m.common.gender(), gender.label(), gender.color)}
+            {@render fact("fa-calendar", m.common.caught(), caught ? formatDate(caught.toISOString()) : m.pokefluxPokemon.unknown())}
             {@render fact("fa-id-card", m.pokefluxPokemon.trainer(), pokemon.caughtBy ?? m.pokefluxPokemon.unknown())}
             {@render fact(pokemon.tradable ? "fa-right-left" : "fa-lock", m.pokefluxPokemon.tradable(), pokemon.tradable ? m.common.yes() : m.common.no(), pokemon.tradable ? "#22c55e" : "#ef4444")}
             {@render fact(pokemon.breedable ? "fa-egg" : "fa-lock", m.pokefluxPokemon.breedable(), pokemon.breedable ? m.common.yes() : m.common.no(), pokemon.breedable ? "#22c55e" : "#ef4444")}
@@ -563,7 +563,7 @@
               onclick={() => select(pokemon)}
             >
               <i class="fa-solid {busy === 'select' ? 'fa-spinner fa-spin' : 'fa-location-crosshairs'}" style="font-size: 16px;" aria-hidden="true"></i>
-              {pokemon.selected ? m.pokefluxPokemon.isSelected() : m.pokefluxPokemon.select()}
+              {pokemon.selected ? m.common.selected() : m.pokefluxPokemon.select()}
             </button>
             <button
               type="button"
@@ -574,7 +574,7 @@
               onclick={() => toggleFavorite(pokemon)}
             >
               <i class="{favorite ? 'fa-solid' : 'fa-utility-duo fa-regular'} fa-heart" style="font-size: 16px;" aria-hidden="true"></i>
-              {m.pokefluxPokemon.favorite()}
+              {m.common.favorite()}
             </button>
             <button
               type="button"
@@ -583,7 +583,7 @@
               disabled={busy !== null}
               onclick={() => openNickname(pokemon)}
             >
-              <i class="fa-solid fa-pen-to-square" style="font-size: 16px;" aria-hidden="true"></i>{m.pokefluxPokemon.nickname()}
+              <i class="fa-solid fa-pen-to-square" style="font-size: 16px;" aria-hidden="true"></i>{m.common.nickname()}
             </button>
             <button
               type="button"
@@ -601,11 +601,11 @@
     </div>
 
     <div class="grid lg:grid-cols-2 gap-4">
-      <Panel icon="fa-solid fa-chart-simple" title={m.pokefluxPokemon.statsTitle()}>
+      <Panel icon="fa-solid fa-chart-simple" title={m.common.stats()}>
         <StatBars ivs={pokemon.ivs} evs={pokemon.evs} baseStats={pokemon.baseStats} stats={pokemon.stats} bind:view={statView} />
       </Panel>
 
-      <Panel icon="fa-solid fa-wand-sparkles" title={m.pokefluxPokemon.movesTitle()}>
+      <Panel icon="fa-solid fa-wand-sparkles" title={m.common.moves()}>
         <ul class="grid sm:grid-cols-2 gap-3">
           {#each { length: 4 }, i (i)}
             {@const slot = (i + 1) as MoveSlot}
@@ -658,7 +658,7 @@
                   <a
                     href={speciesHref(species.speciesId)}
                     class="flex flex-col items-center gap-1 px-3 py-2 rounded-xl text-sm font-medium border transition-all hover:scale-[1.02] outline-none focus-visible:ring-2"
-                    style="background: {current ? `${$colorStore.primary}20` : `${$colorStore.primary}05`}; border-color: {current ? `${$colorStore.primary}30` : `${$colorStore.primary}20`}; color: {current ? $colorStore.primary : $colorStore.text}; --tw-ring-color: {$colorStore.primary};"
+                    style="background: {current ? $colorStore.selectedSurface : `${$colorStore.primary}05`}; border-color: {current ? $colorStore.selectedBorder : `${$colorStore.primary}20`}; color: {$colorStore.text}; --tw-ring-color: {$colorStore.primary};"
                     aria-current={current ? "true" : undefined}
                     title={m.pokefluxPokemon.openInPokedex({ name: species.name })}
                   >
@@ -737,7 +737,7 @@
       }}
     >
       <label class="block">
-        <span class="text-sm font-medium" style="color: {$colorStore.text};">{m.pokefluxPokemon.nicknameLabel()}</span>
+        <span class="text-sm font-medium" style="color: {$colorStore.text};">{m.common.nickname()}</span>
         <input
           type="text"
           bind:value={nicknameValue}
@@ -797,7 +797,7 @@
     {/if}
   </ConfirmDialog>
 {:else}
-  <DashboardPageLayout title={m.features.pokemon()} subtitle={m.dashboard.pokemonSubtitle()} icon="fa-paw">
+  <DashboardPageLayout title={m.common.pokemon()} subtitle={m.dashboard.pokemonSubtitle()} icon="fa-paw">
     {#snippet actions()}
       {@render stepper()}
     {/snippet}
@@ -812,7 +812,7 @@
         </button>
       {/if}
       <a href={backHref} class={actionClass} style={buttonStyle($colorStore)}>
-        {m.pokefluxPokemon.backToList()}
+        {m.common.allPokemon()}
       </a>
     </EmptyState>
   </DashboardPageLayout>

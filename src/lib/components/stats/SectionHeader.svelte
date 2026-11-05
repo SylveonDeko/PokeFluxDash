@@ -19,7 +19,7 @@
   <div class="flex items-center gap-2.5 min-w-0">
     <div
       class="w-9 h-9 rounded-lg shrink-0 flex items-center justify-center"
-      style="background: linear-gradient(135deg, {$colorStore.primary}20, {$colorStore.secondary}20);"
+      style="background: {$colorStore.primary}20;"
     >
       <i
         class="fa-utility-duo fa-regular {icon}"

@@ -56,11 +56,6 @@ A unified navigation component that provides responsive navigation.
   let dropdownOpen = $state(false);
   let isMobile = $state(false);
 
-  // Mouse tracking for nav hover effects
-  let navItemMousePositions = $state<{ [key: string]: { x: number, y: number } }>({});
-  let navMouseX = $state(0);
-  let navMouseY = $state(0);
-  let isNavHovered = $state(false);
   let navElement = $state<HTMLElement>();
 
   // Computed - only access page in browser
@@ -87,35 +82,6 @@ A unified navigation component that provides responsive navigation.
         timer = setTimeout(() => fn(...args), ms);
       }
     };
-  }
-
-  function handleNavMouseMove(e: MouseEvent, itemId: string) {
-    const target = e.currentTarget as HTMLElement;
-    const rect = target.getBoundingClientRect();
-    navItemMousePositions[itemId] = {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    };
-  }
-
-  function handleNavMouseLeave(itemId: string) {
-    delete navItemMousePositions[itemId];
-  }
-
-  function handleNavContainerMouseMove(e: MouseEvent) {
-    if (!browser) return;
-    const nav = e.currentTarget as HTMLElement;
-    const rect = nav.getBoundingClientRect();
-    navMouseX = e.clientX - rect.left;
-    navMouseY = e.clientY - rect.top;
-  }
-
-  function handleNavContainerEnter() {
-    isNavHovered = true;
-  }
-
-  function handleNavContainerLeave() {
-    isNavHovered = false;
   }
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -237,24 +203,7 @@ A unified navigation component that provides responsive navigation.
 
     <!-- Center section (nav items) - Hidden in minimal mode -->
     {#if !isMinimalMode}
-      <div class="grow flex justify-center z-20 relative"
-           role="presentation"
-           onmousemove={handleNavContainerMouseMove}
-           onmouseenter={handleNavContainerEnter}
-           onmouseleave={handleNavContainerLeave}>
-        <div
-          class="pointer-events-none absolute rounded-full"
-          style="width: 120px;
-                     height: 120px;
-                     background: radial-gradient(circle at center, {$colorStore.primary}40, transparent 60%);
-                     left: {navMouseX}px;
-                     top: {navMouseY}px;
-                     transform: translate(-50%, -50%);
-                     filter: blur(20px);
-                     opacity: {isNavHovered ? 0.3 : 0};
-                     transition: opacity 300ms ease-out;
-                     z-index: 0;"
-        ></div>
+      <div class="grow flex justify-center z-20 relative">
         <div
           class="hidden md:flex flex-row p-2 space-x-1 xl:space-x-4 text-[15px] font-medium relative z-10"
           role="navigation"
@@ -263,25 +212,11 @@ A unified navigation component that provides responsive navigation.
             {#if item.wrapped}
               <div class="relative group" in:slide|local={{ duration: 300, delay: i * 50, axis: 'x' }}>
                 <button
-                  class="relative overflow-hidden flex items-center space-x-2 px-2 py-1.5 xl:px-3 rounded-md transition-all duration-200 ease-out min-h-[36px] hover:scale-[1.02]"
+                  class="nav-link relative flex items-center space-x-2 px-2 py-1.5 xl:px-3 rounded-md transition-colors duration-200 min-h-[36px]"
                   style="color: {$colorStore.text};"
                   aria-expanded="false"
                   aria-haspopup="true"
-                  onmousemove={(e) => handleNavMouseMove(e, `dropdown-${i}`)}
-                  onmouseleave={() => handleNavMouseLeave(`dropdown-${i}`)}
                 >
-                  {#if navItemMousePositions[`dropdown-${i}`]}
-                    <div
-                      class="pointer-events-none absolute w-16 h-16 rounded-full opacity-25"
-                      style="background: radial-gradient(circle at center, {$colorStore.primary}50, transparent 70%);
-                             left: {navItemMousePositions[`dropdown-${i}`].x}px;
-                             top: {navItemMousePositions[`dropdown-${i}`].y}px;
-                             transform: translate(-50%, -50%);
-                             filter: blur(10px);"
-                    ></div>
-                  {/if}
-                  <div class="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-200"
-                       style="background: linear-gradient(135deg, {$colorStore.primary}10, {$colorStore.secondary}08);"></div>
                   <span class="relative z-10">{item.title}</span>
                   <svg class="relative z-10 w-4 h-4 transition-transform group-hover:rotate-180 duration-200"
                        viewBox="0 0 20 20" fill="currentColor">
@@ -293,8 +228,8 @@ A unified navigation component that provides responsive navigation.
                   </svg>
                 </button>
                 <div
-                  class="absolute left-0 mt-2 w-48 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 backdrop-blur-md border"
-                  style="background: linear-gradient(135deg, {$colorStore.gradientStart}95, {$colorStore.gradientEnd}95);
+                  class="absolute left-0 mt-2 w-48 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border"
+                  style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background});
                          border-color: {$colorStore.primary}30;
                          z-index: 100;"
                   role="menu"
@@ -304,24 +239,10 @@ A unified navigation component that provides responsive navigation.
                       href={child.href || '#'}
                       data-sveltekit-preload-data="hover"
                       data-sveltekit-noscroll
-                      class="relative overflow-hidden flex items-center p-2 transition-all duration-200 hover:scale-[1.01]"
+                      class="nav-link relative flex items-center p-2 transition-colors duration-150"
                       style="color: {$colorStore.text};"
                       role="menuitem"
-                      onmousemove={(e) => handleNavMouseMove(e, `dropdown-child-${i}-${childIdx}`)}
-                      onmouseleave={() => handleNavMouseLeave(`dropdown-child-${i}-${childIdx}`)}
                     >
-                      {#if navItemMousePositions[`dropdown-child-${i}-${childIdx}`]}
-                        <div
-                          class="pointer-events-none absolute w-14 h-14 rounded-full opacity-20"
-                          style="background: radial-gradient(circle at center, {$colorStore.primary}40, transparent 70%);
-                                 left: {navItemMousePositions[`dropdown-child-${i}-${childIdx}`].x}px;
-                                 top: {navItemMousePositions[`dropdown-child-${i}-${childIdx}`].y}px;
-                                 transform: translate(-50%, -50%);
-                                 filter: blur(8px);"
-                        ></div>
-                      {/if}
-                      <div class="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-150"
-                           style="background: {$colorStore.primary}10;"></div>
                       {#if child.icon}
                         <i class="relative z-10 fa-utility-duo fa-regular {child.icon} mr-2 text-base"
                            aria-hidden="true"
@@ -339,25 +260,13 @@ A unified navigation component that provides responsive navigation.
                 rel={item.href?.startsWith("http") ? "noreferrer" : undefined}
                 data-sveltekit-preload-data={item.href?.startsWith("http") ? "off" : "hover"}
                 data-sveltekit-noscroll
-                class="relative overflow-hidden flex items-center space-x-2 px-2 py-1.5 xl:px-3 rounded-md transition-all duration-200 ease-out min-h-[36px] hover:scale-[1.02]"
+                class="nav-link relative flex items-center space-x-2 px-2 py-1.5 xl:px-3 rounded-md border transition-colors duration-200 min-h-[36px]"
                 in:slide|local={{ duration: 300, delay: i * 50, axis: 'x' }}
-                style="background: {current === item.href ? `${$colorStore.primary}25` : 'transparent'};
+                style="color: {$colorStore.text};
+                       background: {current === item.href ? $colorStore.selectedSurface : 'transparent'};
+                       border-color: {current === item.href ? $colorStore.selectedBorder : 'transparent'};
                        z-index: 10;"
-                onmousemove={(e) => handleNavMouseMove(e, `nav-${i}`)}
-                onmouseleave={() => handleNavMouseLeave(`nav-${i}`)}
               >
-                {#if navItemMousePositions[`nav-${i}`]}
-                  <div
-                    class="pointer-events-none absolute w-16 h-16 rounded-full opacity-25"
-                    style="background: radial-gradient(circle at center, {$colorStore.primary}50, transparent 70%);
-                           left: {navItemMousePositions[`nav-${i}`].x}px;
-                           top: {navItemMousePositions[`nav-${i}`].y}px;
-                           transform: translate(-50%, -50%);
-                           filter: blur(10px);"
-                  ></div>
-                {/if}
-                <div class="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-200"
-                     style="background: linear-gradient(135deg, {$colorStore.primary}10, {$colorStore.secondary}08);"></div>
                 {#if item.icon}
                   <i class="relative z-10 fa-utility-duo fa-regular {item.icon} mr-2 text-base"
                      aria-hidden="true"
@@ -379,9 +288,9 @@ A unified navigation component that provides responsive navigation.
       <!-- Dyslexia-friendly font toggle - always visible, no login required -->
       <button
         type="button"
-        class="hidden md:flex relative z-30 items-center justify-center w-9 h-9 rounded-lg transition-all duration-200 ease-in-out hover:scale-[1.05] border shrink-0"
-        style="background: {$dyslexicFontStore ? `${$colorStore.primary}30` : 'transparent'};
-               border-color: {$colorStore.primary}40;
+        class="hidden md:flex relative z-30 items-center justify-center w-9 h-9 rounded-lg transition-colors duration-200 border shrink-0"
+        style="background: {$dyslexicFontStore ? $colorStore.selectedSurface : 'transparent'};
+               border-color: {$dyslexicFontStore ? $colorStore.selectedBorder : `${$colorStore.primary}30`};
                color: {$colorStore.text};"
         onclick={() => dyslexicFontStore.toggle()}
         aria-pressed={$dyslexicFontStore}
@@ -393,9 +302,9 @@ A unified navigation component that provides responsive navigation.
       <!-- Frutiger Aero theme toggle - always visible, no login required -->
       <button
         type="button"
-        class="hidden md:flex relative z-30 items-center justify-center w-9 h-9 rounded-lg transition-all duration-200 ease-in-out hover:scale-[1.05] border shrink-0"
-        style="background: {$themeStore === 'aero' ? `${$colorStore.primary}30` : 'transparent'};
-               border-color: {$colorStore.primary}40;
+        class="hidden md:flex relative z-30 items-center justify-center w-9 h-9 rounded-lg transition-colors duration-200 border shrink-0"
+        style="background: {$themeStore === 'aero' ? $colorStore.selectedSurface : 'transparent'};
+               border-color: {$themeStore === 'aero' ? $colorStore.selectedBorder : `${$colorStore.primary}30`};
                color: {$colorStore.text};"
         onclick={() => themeStore.toggleAero()}
         aria-pressed={$themeStore === "aero"}
@@ -407,20 +316,18 @@ A unified navigation component that provides responsive navigation.
       {#if !currentUser}
         <a href="/api/auth/login"
            data-sveltekit-reload
-           class=" rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg  border inline-block"
-           style="background: linear-gradient(135deg, {$colorStore.primary}80, {$colorStore.secondary}80);
-                  color: {$colorStore.text};
-                  border-color: {$colorStore.primary}50;
-                  box-shadow: 0 2px 8px {$colorStore.primary}30;">
+           class="rounded-lg px-3 py-1.5 text-sm font-medium transition-opacity hover:opacity-90 border inline-block"
+           style="background: {$colorStore.primary};
+                  color: {$colorStore.onPrimary};
+                  border-color: {$colorStore.primary};">
           {m.common.login()}
         </a>
       {:else}
         <div class="hidden md:flex relative" use:clickOutside onclickoutside={closeDropdown}>
           <button
-            class=" flex items-center gap-2 p-1.5 pl-2 pr-3 rounded-lg transition-all duration-200 ease-in-out  border hover:scale-[1.02] shadow-lg hover:shadow-xl"
-            style="background: linear-gradient(135deg, {$colorStore.primary}20, {$colorStore.secondary}20);
-                   border-color: {$colorStore.primary}40;
-                   box-shadow: 0 2px 8px {$colorStore.primary}15;"
+            class="flex items-center gap-2 p-1.5 pl-2 pr-3 rounded-lg transition-colors duration-200 border"
+            style="background: {$colorStore.primary}10;
+                   border-color: {$colorStore.primary}30;"
                   onclick={toggleDropdown}
             aria-expanded={dropdownOpen}
             aria-haspopup="true"
@@ -461,25 +368,16 @@ A unified navigation component that provides responsive navigation.
 
           <!-- Desktop Dropdown -->
           {#if dropdownOpen}
-            <!-- Dropdown arrow -->
-            <div class="absolute right-4 top-full w-0 h-0 z-40"
-                 style="border-left: 8px solid transparent;
-                        border-right: 8px solid transparent;
-                        border-bottom: 8px solid {$colorStore.primary}50;
-                        margin-top: -1px;"></div>
-
             <div
-                    class="absolute right-0 top-full mt-1 w-72 rounded-xl p-3 flex flex-col space-y-3 shadow-2xl z-50 backdrop-blur-lg border"
-              style="background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(0,0,0,0.9)), linear-gradient(135deg, {$colorStore.gradientStart}20, {$colorStore.gradientMid}25, {$colorStore.gradientEnd}20);
-                    border-color: {$colorStore.primary}50;
-                    box-shadow: 0 12px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);"
+                    class="absolute right-0 top-full mt-1 w-72 rounded-xl p-3 flex flex-col space-y-3 z-50 border"
+              style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background});
+                    border-color: {$colorStore.primary}30;"
               role="menu"
               transition:slide|local={{ duration: 200 }}
             >
-              <!-- Enhanced User Info -->
-              <div class="p-3 rounded-lg mb-3 border "
-                   style="background: linear-gradient(135deg, {$colorStore.primary}15, {$colorStore.secondary}15);
-                          border-color: {$colorStore.primary}40;">
+              <div class="p-3 rounded-lg mb-3 border"
+                   style="background: {$colorStore.primary}10;
+                          border-color: {$colorStore.primary}20;">
                     <div class="flex items-center space-x-2">
                   <div class="relative">
                     <img
@@ -487,12 +385,8 @@ A unified navigation component that provides responsive navigation.
                         ? (cdn.userAvatarUrl(currentUser.id, currentUser.avatar))
                         : cdn.defaultAvatarUrl()}
                       alt={currentUser.username}
-                      class="w-10 h-10 rounded-lg border-2"
-                      style="border-color: {$colorStore.primary}50;"
+                      class="w-10 h-10 rounded-lg"
                     >
-                    <!-- Online indicator -->
-                      <div class="absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-black"
-                         style="background: #10b981;"></div>
                   </div>
                   <div class="flex-1 min-w-0">
                       <div class="flex items-center space-x-1">
@@ -506,8 +400,7 @@ A unified navigation component that provides responsive navigation.
                 </div>
               </div>
 
-              <!-- Logout -->
-              <div class="pt-2 border-t border-opacity-30" style="border-color: {$colorStore.primary};">
+              <div class="pt-2 border-t" style="border-color: {$colorStore.primary}20;">
                 <form
                   action="/api/auth/logout"
                   method="GET"
@@ -515,11 +408,10 @@ A unified navigation component that provides responsive navigation.
                 >
                   <button
                     type="submit"
-                    class=" block w-full text-center px-3 py-2 rounded-lg transition-all duration-200 ease-in-out hover:scale-[1.02] border text-sm font-medium"
-                    style="background: linear-gradient(135deg, {$colorStore.accent}15, {$colorStore.accent}20);
+                    class="block w-full text-center px-3 py-2 rounded-lg transition-colors border text-sm font-medium"
+                    style="background: {$colorStore.accent}15;
                            color: {$colorStore.text};
-                           border-color: {$colorStore.accent}30;
-                           box-shadow: 0 2px 8px {$colorStore.accent}10;"
+                           border-color: {$colorStore.accent}30;"
                   >
                     {m.common.logout()}
                   </button>
@@ -592,7 +484,7 @@ A unified navigation component that provides responsive navigation.
   <!-- Mobile menu -->
   {#if (menuOpen || sidebarOpen) && isMobile}
     <div
-            class="fixed inset-0 backdrop-blur-sm z-40"
+            class="fixed inset-0 z-40"
             style="background: rgba(0, 0, 0, 0.6);"
             onclick={closeMobileMenu}
       transition:fade={{ duration: 300, easing: cubicOut }}
@@ -600,10 +492,9 @@ A unified navigation component that provides responsive navigation.
     ></div>
 
     <div
-      class="fixed inset-y-0 right-0 w-72 z-50 flex flex-col overflow-hidden backdrop-blur-lg border-l shadow-2xl"
-      style="background: linear-gradient(135deg, rgba(18, 24, 40, 0.98), rgba(18, 24, 40, 0.95)), linear-gradient(135deg, {$colorStore.gradientStart}15, {$colorStore.gradientMid}20, {$colorStore.gradientEnd}15);
-             border-color: {$colorStore.primary}30;
-             box-shadow: -8px 0 32px {$colorStore.primary}20, inset 0 0 0 1px {$colorStore.primary}10;"
+      class="fixed inset-y-0 right-0 w-72 z-50 flex flex-col overflow-hidden border-l"
+      style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background});
+             border-color: {$colorStore.primary}30;"
       transition:slide={{ duration: 300, easing: cubicOut, axis: 'x' }}
       id="mobile-menu"
       role="dialog"
@@ -611,23 +502,18 @@ A unified navigation component that provides responsive navigation.
       aria-labelledby="mobile-menu-title"
     >
       <!-- Mobile Header -->
-      <div class="p-4 border-b border-opacity-30" style="border-color: {$colorStore.primary};">
+      <div class="p-4 border-b" style="border-color: {$colorStore.primary}20;">
         <div class="flex justify-between items-center">
           <div id="mobile-menu-title" class="sr-only">{m.layout.navMobileMenuTitle()}</div>
           {#if currentUser}
             <div class="flex items-center space-x-3">
-              <div class="relative">
-                <img
-                  src={currentUser.avatar
-                    ? (cdn.userAvatarUrl(currentUser.id, currentUser.avatar))
-                    : cdn.defaultAvatarUrl()}
-                  alt={currentUser.username}
-                  class="w-10 h-10 rounded-lg border-2"
-                  style="border-color: {$colorStore.primary}50;"
-                >
-                <div class="absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-black"
-                     style="background: #10b981;"></div>
-              </div>
+              <img
+                src={currentUser.avatar
+                  ? (cdn.userAvatarUrl(currentUser.id, currentUser.avatar))
+                  : cdn.defaultAvatarUrl()}
+                alt={currentUser.username}
+                class="w-10 h-10 rounded-lg"
+              >
               <div class="flex-1 min-w-0">
                 <div class="flex items-center space-x-1">
                   <h2 class="font-semibold text-base truncate"
@@ -640,7 +526,7 @@ A unified navigation component that provides responsive navigation.
             </div>
           {/if}
           <button
-                  class="p-2 rounded-lg transition-all hover:bg-white/10"
+                  class="p-2 rounded-lg transition-colors hover:bg-white/10"
                   style="color: {$colorStore.text};"
                   onclick={closeMobileMenu}
             aria-label={m.layout.navCloseMenu()}
@@ -655,8 +541,8 @@ A unified navigation component that provides responsive navigation.
       <!-- Mobile Navigation Content -->
       <div class="flex-1 overflow-y-auto">
         <!-- OpenDyslexic toggle -->
-        <div class="px-4 py-3 border-b border-opacity-30 flex items-center justify-between"
-             style="border-color: {$colorStore.primary};">
+        <div class="px-4 py-3 border-b flex items-center justify-between"
+             style="border-color: {$colorStore.primary}20;">
           <div class="flex items-center gap-3">
             <i class="fa-solid fa-universal-access" style="color: {$colorStore.primary}; font-size: 16px;"></i>
             <span class="font-medium" style="color: {$colorStore.text};">{m.common.dyslexiaFriendlyFont()}</span>
@@ -668,10 +554,11 @@ A unified navigation component that provides responsive navigation.
               onchange={() => dyslexicFontStore.toggle()}
               class="sr-only"
             >
-            <span class="w-11 h-6 rounded-full transition-all relative shadow-inner block"
+            <span class="w-11 h-6 rounded-full transition-colors relative block"
                   style="background: {$dyslexicFontStore ? $colorStore.primary : '#374151'};">
               <span
-                class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform block"
+                class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full transition-transform block"
+                style="background: {$dyslexicFontStore ? $colorStore.onPrimary : '#ffffff'};"
                 class:translate-x-5={$dyslexicFontStore}>
               </span>
             </span>
@@ -679,8 +566,8 @@ A unified navigation component that provides responsive navigation.
         </div>
 
         <!-- Frutiger Aero theme toggle -->
-        <div class="px-4 py-3 border-b border-opacity-30 flex items-center justify-between"
-             style="border-color: {$colorStore.primary};">
+        <div class="px-4 py-3 border-b flex items-center justify-between"
+             style="border-color: {$colorStore.primary}20;">
           <div class="flex items-center gap-3">
             <i class="fa-solid fa-palette" style="color: {$colorStore.primary}; font-size: 16px;"></i>
             <span class="font-medium" style="color: {$colorStore.text};">{m.layout.navAeroTheme()}</span>
@@ -692,10 +579,11 @@ A unified navigation component that provides responsive navigation.
               onchange={() => themeStore.toggleAero()}
               class="sr-only"
             >
-            <span class="w-11 h-6 rounded-full transition-all relative shadow-inner block"
+            <span class="w-11 h-6 rounded-full transition-colors relative block"
                   style="background: {$themeStore === 'aero' ? $colorStore.primary : '#374151'};">
               <span
-                class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform block"
+                class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full transition-transform block"
+                style="background: {$themeStore === 'aero' ? $colorStore.onPrimary : '#ffffff'};"
                 class:translate-x-5={$themeStore === "aero"}>
               </span>
             </span>
@@ -711,10 +599,10 @@ A unified navigation component that provides responsive navigation.
                   {#each item.children || [] as child (child.href)}
                     <a
                       href={child.href || '#'}
-                      class=" flex items-center px-4 py-3 rounded-lg transition-all duration-200 ease-in-out min-h-[44px] border hover:bg-white/5"
+                      class="flex items-center px-4 py-3 rounded-lg transition-colors min-h-[44px] border hover:bg-white/5"
                       style="color: {$colorStore.text};
-                             background: {current === child.href ? `${$colorStore.primary}20` : 'transparent'};
-                             border-color: {current === child.href ? $colorStore.primary + '30' : 'transparent'};"
+                             background: {current === child.href ? $colorStore.selectedSurface : 'transparent'};
+                             border-color: {current === child.href ? $colorStore.selectedBorder : 'transparent'};"
                       onclick={closeMobileMenu}
                     >
                       {#if child.icon}
@@ -731,10 +619,10 @@ A unified navigation component that provides responsive navigation.
                   href={item.href || '#'}
                   target={item.href?.startsWith("http") ? "_blank" : undefined}
                   rel={item.href?.startsWith("http") ? "noreferrer" : undefined}
-                  class=" flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ease-in-out min-h-[44px] border hover:bg-white/5"
+                  class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors min-h-[44px] border hover:bg-white/5"
                   style="color: {$colorStore.text};
-                         background: {current === item.href ? `${$colorStore.primary}20` : 'transparent'};
-                         border-color: {current === item.href ? $colorStore.primary + '30' : 'transparent'};"
+                         background: {current === item.href ? $colorStore.selectedSurface : 'transparent'};
+                         border-color: {current === item.href ? $colorStore.selectedBorder : 'transparent'};"
                   onclick={closeMobileMenu}
                 >
                   {#if item.icon}
@@ -751,7 +639,7 @@ A unified navigation component that provides responsive navigation.
       </div>
 
       <!-- Mobile Footer -->
-      <div class="p-4 border-t border-opacity-30" style="border-color: {$colorStore.primary};">
+      <div class="p-4 border-t" style="border-color: {$colorStore.primary}20;">
         <form
           action="/api/auth/logout"
           method="GET"
@@ -759,11 +647,10 @@ A unified navigation component that provides responsive navigation.
         >
           <button
             type="submit"
-            class=" block w-full text-center px-4 py-3 rounded-lg transition-all duration-200 ease-in-out hover:scale-[1.02] border font-medium"
-            style="background: linear-gradient(135deg, {$colorStore.accent}15, {$colorStore.accent}20);
+            class="block w-full text-center px-4 py-3 rounded-lg transition-colors border font-medium"
+            style="background: {$colorStore.accent}15;
                    color: {$colorStore.text};
-                   border-color: {$colorStore.accent}30;
-                   box-shadow: 0 2px 8px {$colorStore.accent}10;"
+                   border-color: {$colorStore.accent}30;"
           >
             {m.common.logout()}
           </button>
@@ -776,8 +663,11 @@ A unified navigation component that provides responsive navigation.
 <style lang="postcss">
     @reference '../../../app.css';
 
-    /* Ensure dropdowns appear above other content */
     .group:hover .group-hover\:visible {
         z-index: 100;
+    }
+
+    .nav-link:hover {
+        background: color-mix(in srgb, var(--color-primary) 12%, transparent);
     }
 </style>

@@ -53,7 +53,7 @@
                 <a
                   href="/dashboard/servers/{guild.id}"
                   class="flex items-center gap-3 p-3 rounded-xl border transition-all duration-200 hover:scale-[1.02] focus:outline-hidden text-left"
-                  style="background: linear-gradient(135deg, {$colorStore.gradientStart}08, {$colorStore.gradientMid}12); border-color: {$colorStore.primary}20;"
+                  style="background: {$colorStore.primary}08; border-color: {$colorStore.primary}20;"
                 >
                   <GuildIcon name={guild.name} src={guild.iconUrl} />
                   <div class="min-w-0 flex-1">

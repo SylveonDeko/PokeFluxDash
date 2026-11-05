@@ -250,18 +250,15 @@
   <title>{title} - PokeFlux</title>
 </svelte:head>
 
-<div class="min-h-screen p-4 md:p-5 overflow-x-hidden w-full transition-all duration-500 relative z-10"
-     style="background: radial-gradient(circle at top,
-       {$colorStore.gradientStart}15 0%,
-       {$colorStore.gradientMid}10 50%,
-       {$colorStore.gradientEnd}05 100%);"
+<div class="min-h-screen p-4 md:p-5 overflow-x-clip w-full transition-all duration-500 relative z-10"
+     style="background: {$colorStore.primary}08;"
      in:fade={{ duration: 300 }}>
 
   <!-- Page Header -->
   <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 mb-5">
     <div class="flex items-center gap-3 min-w-0">
       <div class="w-11 h-11 shrink-0 rounded-xl flex items-center justify-center"
-           style="background: linear-gradient(135deg, {$colorStore.primary}20, {$colorStore.secondary}20);">
+           style="background: {$colorStore.primary}20;">
         {#if icon.includes("fa-brands")}
           <i class={icon} style="color: {$colorStore.primary}; font-size: 22px;"></i>
         {:else}
@@ -321,7 +318,7 @@
         {#if tabsOverflow}
           <button
             class="shrink-0 p-2 rounded-lg transition-all hover:scale-[1.02] "
-            style="background: rgba(15, 23, 42, 0.9); border: 1px solid {$colorStore.primary}30; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"
+            style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background}); border: 1px solid {$colorStore.primary}30;"
             onclick={() => scrollTabs('left', tabContainer)}
             aria-label={m.layout.pageLayoutScrollTabsLeft()}
           >
@@ -341,9 +338,9 @@
             <button
                     class="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg transition-all font-medium whitespace-nowrap shrink-0 focus:outline-hidden focus:ring-2 focus:ring-offset-2 hover:scale-[1.02]"
               class:active={activeTab === tab.id}
-              style="color: {activeTab === tab.id ? $colorStore.primary : $colorStore.muted};
-                     background: {activeTab === tab.id ? $colorStore.primary + '20' : 'transparent'};
-                     border: 1px solid {activeTab === tab.id ? $colorStore.primary + '40' : 'transparent'};
+              style="color: {activeTab === tab.id ? $colorStore.text : $colorStore.muted};
+                     background: {activeTab === tab.id ? $colorStore.selectedSurface : 'transparent'};
+                     border: 1px solid {activeTab === tab.id ? $colorStore.selectedBorder : 'transparent'};
                      focus:ring-color: {$colorStore.primary};"
                     onclick={() => handleTabChange(tab.id)}
                     onkeydown={(e) => handleKeyDown(e, tabs, activeTab)}
@@ -363,7 +360,7 @@
         {#if tabsOverflow}
           <button
             class="shrink-0 p-2 rounded-lg transition-all hover:scale-[1.02] "
-            style="background: rgba(15, 23, 42, 0.9); border: 1px solid {$colorStore.primary}30; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"
+            style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background}); border: 1px solid {$colorStore.primary}30;"
             onclick={() => scrollTabs('right', tabContainer)}
             aria-label={m.layout.pageLayoutScrollTabsRight()}
           >
@@ -377,24 +374,13 @@
   <!-- Sub-Tab Navigation -->
   {#if currentSubTabs.length > 0}
     <div class="mb-4 -mt-2" transition:fade={{ duration: 200 }}>
-      <!-- Context indicator -->
-      <div class="flex items-center justify-center mb-3 px-2">
-        <div class="flex items-center gap-2">
-          <div class="h-px w-16" style="background: {$colorStore.primary}10;"></div>
-          <span class="text-xs font-medium px-3 whitespace-nowrap" style="color: {$colorStore.muted};">
-            {m.layout.pageLayoutSubTabOptions({ tab: tabs.find(t => t.id === activeTab)?.label || '' })}
-          </span>
-          <div class="h-px w-16" style="background: {$colorStore.primary}10;"></div>
-        </div>
-      </div>
-
       <nav aria-label={m.layout.pageLayoutSubNavAria()}>
         <div class="relative">
           <!-- Mobile scroll buttons for sub-tabs -->
           {#if subTabsOverflow}
             <button
               class="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-lg md:hidden transition-opacity"
-              style="background: #0f172a; border: 1px solid {$colorStore.primary}20;"
+              style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background}); border: 1px solid {$colorStore.primary}20;"
               onclick={() => scrollTabs('left', subTabContainer)}
               aria-label={m.layout.pageLayoutScrollSubTabsLeft()}
             >
@@ -403,7 +389,7 @@
 
             <button
               class="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-lg md:hidden transition-opacity"
-              style="background: #0f172a; border: 1px solid {$colorStore.primary}20;"
+              style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background}); border: 1px solid {$colorStore.primary}20;"
               onclick={() => scrollTabs('right', subTabContainer)}
               aria-label={m.layout.pageLayoutScrollSubTabsRight()}
             >
@@ -425,8 +411,8 @@
                 class="relative flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium whitespace-nowrap focus:outline-hidden focus:ring-2 focus:ring-offset-1 transition-all duration-200 rounded-lg hover:scale-[1.02]"
                 class:active={activeSubTab === subTab.id}
                 style="color: {activeSubTab === subTab.id ? $colorStore.text : $colorStore.muted};
-                       background: {activeSubTab === subTab.id ? $colorStore.primary + '25' : 'transparent'};
-                       {activeSubTab === subTab.id ? `border: 1px solid ${$colorStore.primary}30;` : 'border: 1px solid transparent;'};
+                       background: {activeSubTab === subTab.id ? $colorStore.selectedSurface : 'transparent'};
+                       border: 1px solid {activeSubTab === subTab.id ? $colorStore.selectedBorder : 'transparent'};
                        focus:ring-color: {$colorStore.primary};"
                 onclick={() => handleSubTabChange(subTab.id)}
                 onkeydown={(e) => handleKeyDown(e, currentSubTabs, activeSubTab, true)}

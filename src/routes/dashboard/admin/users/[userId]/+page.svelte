@@ -117,8 +117,8 @@
   <StaffState response={data.user}>
     {#snippet children(user)}
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-2">
-        <StatTile label={m.dashboard.credits()} value={user.credits} />
-        <StatTile label={m.dashboard.redeems()} value={user.redeems} tint={$colorStore.secondary} />
+        <StatTile label={m.common.credits()} value={user.credits} />
+        <StatTile label={m.common.redeems()} value={user.redeems} tint={$colorStore.secondary} />
         <StatTile label={m.pokefluxMarket.leaderboardPokemonValue()} value={user.pokemonCount} />
         <StatTile label={m.admin.colRank()} value={user.staffRank} tint={$colorStore.secondary} />
       </div>
@@ -162,7 +162,7 @@
         </dl>
       </Panel>
 
-      <Panel icon="fa-solid fa-arrow-right-arrow-left" title={m.admin.tradesAndGifts()} subtitle={m.admin.tradesAndGiftsHint()}>
+      <Panel icon="fa-solid fa-arrow-right-arrow-left" title={m.admin.tradesAndGifts()}>
         {#if user.recentTrades.length === 0}
           <EmptyState title={m.admin.noTrades()} icon="fa-solid fa-arrow-right-arrow-left" compact />
         {:else}
@@ -226,7 +226,6 @@
   <SettingToggle
     id="pf-market-ban"
     label={m.admin.alsoMarketBan()}
-    hint={m.admin.alsoMarketBanHint()}
     checked={marketBan}
     onchange={(checked) => (marketBan = checked)}
   />

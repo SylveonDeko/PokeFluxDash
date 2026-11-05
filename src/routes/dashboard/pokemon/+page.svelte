@@ -47,7 +47,7 @@
   let filtered = $derived(query.filter !== "all" || query.gender !== "all" || !!query.search || !!query.heldItem);
 
   const GENDER_OPTIONS: Record<GenderFilter, { icon: string; color: string; label: () => string }> = {
-    all: { icon: "fa-venus-mars", color: "", label: m.pokefluxPokemon.genderAll },
+    all: { icon: "fa-venus-mars", color: "", label: m.common.all },
     ...GENDERS,
   };
 
@@ -168,7 +168,7 @@
   />
 {/snippet}
 
-<DashboardPageLayout title={m.features.pokemon()} subtitle={m.dashboard.pokemonSubtitle()} icon="fa-paw">
+<DashboardPageLayout title={m.common.pokemon()} subtitle={m.dashboard.pokemonSubtitle()} icon="fa-paw">
   {#snippet actions()}
     {@render densityToggle()}
   {/snippet}
@@ -181,7 +181,7 @@
 
       <Panel class="flex flex-col sm:flex-row sm:items-center gap-3" aria-label={m.pokefluxPokemon.summaryLabel()}>
         <div class="grid grid-cols-2 sm:flex gap-2 shrink-0">
-          <div class="sm:w-36"><StatTile label={m.pokefluxPokemon.collection()} value={list.stats.totalCount} /></div>
+          <div class="sm:w-36"><StatTile label={m.common.collection()} value={list.stats.totalCount} /></div>
           {#if filtered}
             <div class="sm:w-36"><StatTile label={m.pokefluxPokemon.matching()} value={list.stats.total} tint={$colorStore.secondary} /></div>
           {/if}
@@ -262,7 +262,7 @@
         </div>
 
         <div class="flex flex-wrap items-center justify-between gap-2">
-          <div class="inline-flex items-center gap-1 p-1 rounded-xl flex-wrap" style="background: {$colorStore.primary}10;" role="radiogroup" aria-label={m.pokefluxPokemon.genderLabel()}>
+          <div class="inline-flex items-center gap-1 p-1 rounded-xl flex-wrap" style="background: {$colorStore.primary}10;" role="radiogroup" aria-label={m.common.gender()}>
             {#each GENDER_FILTERS as value (value)}
               {@const option = GENDER_OPTIONS[value]}
               {@const active = query.gender === value}
@@ -306,7 +306,7 @@
         </div>
       </Panel>
 
-      <section class="space-y-3" aria-label={m.features.pokemon()}>
+      <section class="space-y-3" aria-label={m.common.pokemon()}>
         <div class="flex flex-wrap items-center justify-between gap-2 min-h-9">
           <p class="text-sm tabular-nums" style="color: {$colorStore.muted};" aria-live="polite">
             {#if loading}
@@ -321,7 +321,7 @@
         {#if list.stats.totalCount === 0}
           <EmptyState title={m.pokefluxPokemon.emptyTitle()} message={m.pokefluxPokemon.emptyHint()} icon="fa-solid fa-paw" />
         {:else if list.items.length === 0 && list.total > 0}
-          <EmptyState title={m.pokefluxPokemon.pastEndTitle()} message={m.pokefluxPokemon.pastEndHint()} icon="fa-solid fa-book-open">
+          <EmptyState title={m.pokefluxPokemon.pastEndTitle()} icon="fa-solid fa-book-open">
             <a href={hrefFor({ ...query, page: pages })} class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all hover:scale-[1.02] outline-none focus-visible:ring-2" style={buttonStyle($colorStore)}>
               {m.pokefluxPokemon.goLastPage()}
             </a>

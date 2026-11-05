@@ -7,54 +7,98 @@ type P = string | number;
 
 export const m = {
   common: {
+    /** Ability */
+    ability: () => t("_common", "ability", "Ability"),
+    /** All */
+    all: () => t("_common", "all", "All"),
+    /** All Pokémon */
+    allPokemon: () => t("_common", "all_pokemon", "All Pokémon"),
     /** Clear search */
     ariaClearSearch: () => t("_common", "aria_clear_search", "Clear search"),
     /** Dismiss notification */
     ariaDismissNotification: () => t("_common", "aria_dismiss_notification", "Dismiss notification"),
     /** Remove {name} */
     ariaRemoveNamed: (p: { name: P }) => t("_common", "aria_remove_named", "Remove {name}", p),
+    /** Breeding */
+    breeding: () => t("_common", "breeding", "Breeding"),
     /** Cancel */
     cancel: () => t("_common", "cancel", "Cancel"),
+    /** Caught */
+    caught: () => t("_common", "caught", "Caught"),
+    /** Clear */
+    clear: () => t("_common", "clear", "Clear"),
+    /** Collection */
+    collection: () => t("_common", "collection", "Collection"),
     /** Commands */
     commands: () => t("_common", "commands", "Commands"),
+    /** Community */
+    community: () => t("_common", "community", "Community"),
     /** Confirm */
     confirm: () => t("_common", "confirm", "Confirm"),
     /** Confirm Action */
     confirmAction: () => t("_common", "confirm_action", "Confirm Action"),
+    /** Credits */
+    credits: () => t("_common", "credits", "Credits"),
     /** Dashboard */
     dashboard: () => t("_common", "dashboard", "Dashboard"),
     /** Dyslexia-friendly Font */
     dyslexiaFriendlyFont: () => t("_common", "dyslexia_friendly_font", "Dyslexia-friendly Font"),
     /** An unexpected error occurred */
     errorUnexpected: () => t("_common", "error_unexpected", "An unexpected error occurred"),
+    /** Favorite */
+    favorite: () => t("_common", "favorite", "Favorite"),
+    /** Gender */
+    gender: () => t("_common", "gender", "Gender"),
+    /** Held item */
+    heldItem: () => t("_common", "held_item", "Held item"),
     /** Hide Error Details */
     hideErrorDetails: () => t("_common", "hide_error_details", "Hide Error Details"),
     /** Home */
     home: () => t("_common", "home", "Home"),
     /** Invite PokeFlux */
     inviteBot: () => t("_common", "invite_bot", "Invite PokeFlux"),
+    /** IV */
+    iv: () => t("_common", "iv", "IV"),
     /** Language */
     language: () => t("_common", "language", "Language"),
     /** Loading... */
     loading: () => t("_common", "loading", "Loading..."),
+    /** Locked */
+    locked: () => t("_common", "locked", "Locked"),
     /** Login */
     login: () => t("_common", "login", "Login"),
     /** Login with Fluxer */
     loginWithFluxer: () => t("_common", "login_with_fluxer", "Login with Fluxer"),
     /** Logout */
     logout: () => t("_common", "logout", "Logout"),
+    /** Milestones */
+    milestones: () => t("_common", "milestones", "Milestones"),
+    /** Moves */
+    moves: () => t("_common", "moves", "Moves"),
+    /** Nature */
+    nature: () => t("_common", "nature", "Nature"),
+    /** Nickname */
+    nickname: () => t("_common", "nickname", "Nickname"),
     /** No */
     no: () => t("_common", "no", "No"),
     /** No communities available */
     noServersAvailable: () => t("_common", "no_servers_available", "No communities available"),
     /** None */
     none: () => t("_common", "none", "None"),
+    /** Normal */
+    normal: () => t("_common", "normal", "Normal"),
     /** Not found */
     notFound: () => t("_common", "not_found", "Not found"),
     /** Nothing here yet */
     nothingHereYet: () => t("_common", "nothing_here_yet", "Nothing here yet"),
+    /** Pokémon */
+    pokemon: () => t("_common", "pokemon", "Pokémon"),
     /** Privacy */
     privacy: () => t("_common", "privacy", "Privacy"),
+    /** Radiant */
+    radiant: () => t("_common", "radiant", "Radiant"),
+    /** Redeems */
+    redeems: () => t("_common", "redeems", "Redeems"),
     /** Request failed (HTTP {status}) */
     requestFailed: (p: { status: P }) => t("_common", "request_failed", "Request failed (HTTP {status})", p),
     /** Retry */
@@ -63,22 +107,38 @@ export const m = {
     save: () => t("_common", "save", "Save"),
     /** Saved */
     saved: () => t("_common", "saved", "Saved"),
+    /** Search items */
+    searchItems: () => t("_common", "search_items", "Search items"),
     /** Search... */
     searchPlaceholder: () => t("_common", "search_placeholder", "Search..."),
     /** Search communities... */
     searchServersPlaceholder: () => t("_common", "search_servers_placeholder", "Search communities..."),
     /** Select... */
     selectPlaceholder: () => t("_common", "select_placeholder", "Select..."),
+    /** Selected */
+    selected: () => t("_common", "selected", "Selected"),
     /** {count} selected */
     selectedCount: (p: { count: P }) => t("_common", "selected_count", "{count} selected", p),
+    /** Selected Pokémon */
+    selectedPokemon: () => t("_common", "selected_pokemon", "Selected Pokémon"),
+    /** Shiny */
+    shiny: () => t("_common", "shiny", "Shiny"),
     /** Show Error Details */
     showErrorDetails: () => t("_common", "show_error_details", "Show Error Details"),
+    /** Slot {slot} */
+    slotLabel: (p: { slot: P }) => t("_common", "slot_label", "Slot {slot}", p),
     /** Something went wrong */
     somethingWentWrong: () => t("_common", "something_went_wrong", "Something went wrong"),
+    /** Stats */
+    stats: () => t("_common", "stats", "Stats"),
     /** Terms */
     terms: () => t("_common", "terms", "Terms"),
+    /** Trainer */
+    trainer: () => t("_common", "trainer", "Trainer"),
     /** Try Again */
     tryAgain: () => t("_common", "try_again", "Try Again"),
+    /** Type */
+    type: () => t("_common", "type", "Type"),
     /** Yes */
     yes: () => t("_common", "yes", "Yes"),
   },
@@ -95,14 +155,12 @@ export const m = {
     allDetections: () => t("admin", "all_detections", "All detections"),
     /** Also ban from the market */
     alsoMarketBan: () => t("admin", "also_market_ban", "Also ban from the market"),
-    /** Stops them listing or buying on the market as well as trading. */
-    alsoMarketBanHint: () => t("admin", "also_market_ban_hint", "Stops them listing or buying on the market as well as trading."),
     /** Apply filters */
     applyFilters: () => t("admin", "apply_filters", "Apply filters"),
-    /** Actions taken through the dashboard. Commands are not listed here. */
-    auditHint: () => t("admin", "audit_hint", "Actions taken through the dashboard. Commands are not listed here."),
-    /** Every staff action taken through the dashboard, with who took it and why. */
-    auditSubtitle: () => t("admin", "audit_subtitle", "Every staff action taken through the dashboard, with who took it and why."),
+    /** Dashboard actions only. */
+    auditHint: () => t("admin", "audit_hint", "Dashboard actions only."),
+    /** Who did what and why */
+    auditSubtitle: () => t("admin", "audit_subtitle", "Who did what and why"),
     /** Automatic action */
     automatedAction: () => t("admin", "automated_action", "Automatic action"),
     /** Balanced trades */
@@ -117,8 +175,8 @@ export const m = {
     botBanned: () => t("admin", "bot_banned", "Bot banned"),
     /** Buyer ID */
     buyerId: () => t("admin", "buyer_id", "Buyer ID"),
-    /** The risk scores and trade analysis behind this detection. */
-    caseSubtitle: () => t("admin", "case_subtitle", "The risk scores and trade analysis behind this detection."),
+    /** Risk scores and trade analysis */
+    caseSubtitle: () => t("admin", "case_subtitle", "Risk scores and trade analysis"),
     /** Case #{id} */
     caseTitle: (p: { id: P }) => t("admin", "case_title", "Case #{id}", p),
     /** Action */
@@ -161,8 +219,8 @@ export const m = {
     daysCount: (p: { count: P }) => t("admin", "days_count", "{count} days", p),
     /** Detections with a risk score of {min} or more, riskiest first. {total} in this window. */
     detectionsHint: (p: { min: P; total: P }) => t("admin", "detections_hint", "Detections with a risk score of {min} or more, riskiest first. {total} in this window.", p),
-    /** Trades the fraud checks flagged as high risk. */
-    detectionsSubtitle: () => t("admin", "detections_subtitle", "Trades the fraud checks flagged as high risk."),
+    /** High-risk trades */
+    detectionsSubtitle: () => t("admin", "detections_subtitle", "High-risk trades"),
     /** Filters */
     filters: () => t("admin", "filters", "Filters"),
     /** Find a user */
@@ -229,8 +287,8 @@ export const m = {
     marketBanLabel: () => t("admin", "market_ban_label", "Market ban"),
     /** Market banned */
     marketBanned: () => t("admin", "market_banned", "Market banned"),
-    /** Listings and purchases across the whole market, newest first. */
-    marketSubtitle: () => t("admin", "market_subtitle", "Listings and purchases across the whole market, newest first."),
+    /** All listings and purchases */
+    marketSubtitle: () => t("admin", "market_subtitle", "All listings and purchases"),
     /** Highest price */
     maxPrice: () => t("admin", "max_price", "Highest price"),
     /** Lowest price */
@@ -269,20 +327,18 @@ export const m = {
     noUsers: () => t("admin", "no_users", "No users match that search"),
     /** Not banned */
     notBanned: () => t("admin", "not_banned", "Not banned"),
-    /** Fraud detection numbers and the latest staff actions. */
-    overviewSubtitle: () => t("admin", "overview_subtitle", "Fraud detection numbers and the latest staff actions."),
+    /** Fraud detection and staff actions */
+    overviewSubtitle: () => t("admin", "overview_subtitle", "Fraud detection and staff actions"),
     /** Enter two user IDs */
     pairPrompt: () => t("admin", "pair_prompt", "Enter two user IDs"),
-    /** You will see how often they trade and how even their trades are. */
-    pairPromptHint: () => t("admin", "pair_prompt_hint", "You will see how often they trade and how even their trades are."),
     /** Pokémon: {count} */
     pokemonCount: (p: { count: P }) => t("admin", "pokemon_count", "Pokémon: {count}", p),
     /** Pokémon no longer exists */
     pokemonGone: () => t("admin", "pokemon_gone", "Pokémon no longer exists"),
     /** Flagged user */
     primaryUser: () => t("admin", "primary_user", "Flagged user"),
-    /** {length} of {max} characters. This goes in the staff action log. */
-    reasonHint: (p: { length: P; max: P }) => t("admin", "reason_hint", "{length} of {max} characters. This goes in the staff action log.", p),
+    /** {length} of {max} characters, saved in the staff log. */
+    reasonHint: (p: { length: P; max: P }) => t("admin", "reason_hint", "{length} of {max} characters, saved in the staff log.", p),
     /** Reason */
     reasonLabel: () => t("admin", "reason_label", "Reason"),
     /** Why are you doing this? */
@@ -297,12 +353,12 @@ export const m = {
     recentPurchases: () => t("admin", "recent_purchases", "Their purchases"),
     /** Refresh */
     refresh: () => t("admin", "refresh", "Refresh"),
-    /** How two users trade with each other and whether the fraud checks have flagged them. */
-    relationshipSubtitle: () => t("admin", "relationship_subtitle", "How two users trade with each other and whether the fraud checks have flagged them."),
+    /** How two users trade with each other */
+    relationshipSubtitle: () => t("admin", "relationship_subtitle", "How two users trade with each other"),
     /** Remove bans */
     removeBans: () => t("admin", "remove_bans", "Remove bans"),
-    /** This lifts both the trade ban and the market ban. Fraud detection still checks their tr... */
-    removeBansMessage: () => t("admin", "remove_bans_message", "This lifts both the trade ban and the market ban. Fraud detection still checks their trades afterwards."),
+    /** This lifts the trade ban and the market ban. */
+    removeBansMessage: () => t("admin", "remove_bans_message", "This lifts the trade ban and the market ban."),
     /** Remove trade and market bans? */
     removeBansTitle: () => t("admin", "remove_bans_title", "Remove trade and market bans?"),
     /** Listing #{id} ({name}) comes off the market and the Pokémon goes back to the seller. */
@@ -321,14 +377,10 @@ export const m = {
     spawnDebug: () => t("admin", "spawn_debug", "Spawn debug"),
     /** Spawn storm */
     spawnStorm: () => t("admin", "spawn_storm", "Spawn storm"),
-    /** While it is on, every message in every community spawns a Pokémon. */
-    spawnStormHint: () => t("admin", "spawn_storm_hint", "While it is on, every message in every community spawns a Pokémon."),
     /** Staff ID */
     staffId: () => t("admin", "staff_id", "Staff ID"),
     /** Owner spawn tools */
     staffSpawnTools: () => t("admin", "staff_spawn_tools", "Owner spawn tools"),
-    /** Only bot owners can see this panel. */
-    staffSpawnToolsHint: () => t("admin", "staff_spawn_tools_hint", "Only bot owners can see this panel."),
     /** Start spawn storm */
     startStorm: () => t("admin", "start_storm", "Start spawn storm"),
     /** Every message in every community will spawn a Pokémon until you stop it. */
@@ -387,8 +439,6 @@ export const m = {
     tradeLock: () => t("admin", "trade_lock", "Trade lock"),
     /** Trades and gifts */
     tradesAndGifts: () => t("admin", "trades_and_gifts", "Trades and gifts"),
-    /** The newest entries in the trade log, where gifts are recorded too. */
-    tradesAndGiftsHint: () => t("admin", "trades_and_gifts_hint", "The newest entries in the trade log, where gifts are recorded too."),
     /** Trades per day */
     tradesPerDay: () => t("admin", "trades_per_day", "Trades per day"),
     /** Rules that fired */
@@ -399,14 +449,12 @@ export const m = {
     userId: () => t("admin", "user_id", "User ID"),
     /** Search for a user */
     userPrompt: () => t("admin", "user_prompt", "Search for a user"),
-    /** Use their user ID or part of their trainer nickname. */
-    userPromptHint: () => t("admin", "user_prompt_hint", "Use their user ID or part of their trainer nickname."),
     /** User ID or nickname */
     userSearchPlaceholder: () => t("admin", "user_search_placeholder", "User ID or nickname"),
-    /** This user's bans and their recent activity. */
-    userSubtitle: () => t("admin", "user_subtitle", "This user's bans and their recent activity."),
-    /** Find a player by user ID or trainer nickname. */
-    usersSubtitle: () => t("admin", "users_subtitle", "Find a player by user ID or trainer nickname."),
+    /** Bans and recent activity */
+    userSubtitle: () => t("admin", "user_subtitle", "Bans and recent activity"),
+    /** Find a player */
+    usersSubtitle: () => t("admin", "users_subtitle", "Find a player"),
     /** Value ratio */
     valueRatio: () => t("admin", "value_ratio", "Value ratio"),
     /** View all */
@@ -471,18 +519,10 @@ export const m = {
     activeMissions: (p: { count: P }) => t("dashboard", "active_missions", "Active missions ({count})", p),
     /** All communities */
     allServers: () => t("dashboard", "all_servers", "All communities"),
-    /** Breeding */
-    breedingTitle: () => t("dashboard", "breeding_title", "Breeding"),
-    /** Caught */
-    caught: () => t("dashboard", "caught", "Caught"),
     /** Chain */
     chain: () => t("dashboard", "chain", "Chain"),
-    /** Collection */
-    collectionTitle: () => t("dashboard", "collection_title", "Collection"),
     /** Cooldown */
     cooldown: () => t("dashboard", "cooldown", "Cooldown"),
-    /** Credits */
-    credits: () => t("dashboard", "credits", "Credits"),
     /** Current party */
     currentParty: () => t("dashboard", "current_party", "Current party"),
     /** Daycare */
@@ -503,68 +543,62 @@ export const m = {
     fishingLevel: () => t("dashboard", "fishing_level", "Fishing level"),
     /** Group {group} */
     hatcheryGroup: (p: { group: P }) => t("dashboard", "hatchery_group", "Group {group}", p),
-    /** Your eggs and the Pokémon you breed from */
-    hatcherySubtitle: () => t("dashboard", "hatchery_subtitle", "Your eggs and the Pokémon you breed from"),
+    /** Eggs and breeding */
+    hatcherySubtitle: () => t("dashboard", "hatchery_subtitle", "Eggs and breeding"),
     /** Held items */
     heldItems: () => t("dashboard", "held_items", "Held items"),
     /** Hunt */
     hunt: () => t("dashboard", "hunt", "Hunt"),
-    /** Bring your EeveeCore Pokémon over from Discord */
-    importSubtitle: () => t("dashboard", "import_subtitle", "Bring your EeveeCore Pokémon over from Discord"),
-    /** Items you own and items your Pokémon hold */
-    inventorySubtitle: () => t("dashboard", "inventory_subtitle", "Items you own and items your Pokémon hold"),
+    /** Bring over your EeveeCore Pokémon */
+    importSubtitle: () => t("dashboard", "import_subtitle", "Bring over your EeveeCore Pokémon"),
+    /** Items and held items */
+    inventorySubtitle: () => t("dashboard", "inventory_subtitle", "Items and held items"),
     /** Items ({count}) */
     itemCount: (p: { count: P }) => t("dashboard", "item_count", "Items ({count})", p),
     /** Legendary */
     legendary: () => t("dashboard", "legendary", "Legendary"),
     /** Could not load this section (HTTP {status}) */
     loadFailed: (p: { status: P }) => t("dashboard", "load_failed", "Could not load this section (HTTP {status})", p),
-    /** Locked */
-    locked: () => t("dashboard", "locked", "Locked"),
     /** Loyalty: {points} points, tier {tier} */
     loyalty: (p: { points: P; tier: P }) => t("dashboard", "loyalty", "Loyalty: {points} points, tier {tier}", p),
-    /** Buy and sell Pokémon with other trainers */
-    marketSubtitle: () => t("dashboard", "market_subtitle", "Buy and sell Pokémon with other trainers"),
+    /** Buy and sell Pokémon */
+    marketSubtitle: () => t("dashboard", "market_subtitle", "Buy and sell Pokémon"),
     /** {minutes} min left */
     minutesLeft: (p: { minutes: P }) => t("dashboard", "minutes_left", "{minutes} min left", p),
     /** Mission level {level} */
     missionLevel: (p: { level: P }) => t("dashboard", "mission_level", "Mission level {level}", p),
     /** Mission XP */
     missionXp: () => t("dashboard", "mission_xp", "Mission XP"),
-    /** Your mission progress and achievements */
-    missionsSubtitle: () => t("dashboard", "missions_subtitle", "Your mission progress and achievements"),
+    /** Progress and achievements */
+    missionsSubtitle: () => t("dashboard", "missions_subtitle", "Progress and achievements"),
     /** My listings */
     myListings: () => t("dashboard", "my_listings", "My listings"),
     /** My listings ({count}) */
     myListingsCount: (p: { count: P }) => t("dashboard", "my_listings_count", "My listings ({count})", p),
-    /** Pick a starter with the start command in any community with PokeFlux and your profile s... */
-    notStartedHint: () => t("dashboard", "not_started_hint", "Pick a starter with the start command in any community with PokeFlux and your profile shows up here."),
+    /** Pick a starter with the start command. */
+    notStartedHint: () => t("dashboard", "not_started_hint", "Pick a starter with the start command."),
     /** You have not started yet */
     notStartedTitle: () => t("dashboard", "not_started_title", "You have not started yet"),
     /** Your trainer profile */
     overviewSubtitle: () => t("dashboard", "overview_subtitle", "Your trainer profile"),
     /** Page {page} of {pages} */
     pageOf: (p: { page: P; pages: P }) => t("dashboard", "page_of", "Page {page} of {pages}", p),
-    /** Your active party and saved parties */
-    partySubtitle: () => t("dashboard", "party_subtitle", "Your active party and saved parties"),
-    /** Every species you have caught */
-    pokedexSubtitle: () => t("dashboard", "pokedex_subtitle", "Every species you have caught"),
+    /** Active and saved parties */
+    partySubtitle: () => t("dashboard", "party_subtitle", "Active and saved parties"),
+    /** Species you have caught */
+    pokedexSubtitle: () => t("dashboard", "pokedex_subtitle", "Species you have caught"),
     /** #{number} · Lv. {level} · {iv}% */
     pokemonLine: (p: { iv: P; level: P; number: P }) => t("dashboard", "pokemon_line", "#{number} · Lv. {level} · {iv}%", p),
     /** Lv. {level} · {iv}% */
     pokemonLineUnowned: (p: { iv: P; level: P }) => t("dashboard", "pokemon_line_unowned", "Lv. {level} · {iv}%", p),
-    /** Browse and manage your collection */
-    pokemonSubtitle: () => t("dashboard", "pokemon_subtitle", "Browse and manage your collection"),
+    /** Browse your collection */
+    pokemonSubtitle: () => t("dashboard", "pokemon_subtitle", "Browse your collection"),
     /** Command prefix */
     prefixTitle: () => t("dashboard", "prefix_title", "Command prefix"),
     /** {price} by {seller} */
     priceBy: (p: { price: P; seller: P }) => t("dashboard", "price_by", "{price} by {seller}", p),
-    /** Radiant */
-    radiant: () => t("dashboard", "radiant", "Radiant"),
     /** Recent listings */
     recentListings: () => t("dashboard", "recent_listings", "Recent listings"),
-    /** Redeems */
-    redeems: () => t("dashboard", "redeems", "Redeems"),
     /** Redirect channels */
     redirectChannels: () => t("dashboard", "redirect_channels", "Redirect channels"),
     /** Region */
@@ -579,14 +613,10 @@ export const m = {
     serversSubtitle: () => t("dashboard", "servers_subtitle", "Communities you manage that PokeFlux is in"),
     /** Shadow */
     shadow: () => t("dashboard", "shadow", "Shadow"),
-    /** Shiny */
-    shiny: () => t("dashboard", "shiny", "Shiny"),
-    /** Buy items and chests with what you have earned */
-    shopSubtitle: () => t("dashboard", "shop_subtitle", "Buy items and chests with what you have earned"),
+    /** Buy items and chests */
+    shopSubtitle: () => t("dashboard", "shop_subtitle", "Buy items and chests"),
     /** Slime */
     slime: () => t("dashboard", "slime", "Slime"),
-    /** You can also turn spawns on by sending this in the channel itself. */
-    spawnEnableHint: () => t("dashboard", "spawn_enable_hint", "You can also turn spawns on by sending this in the channel itself."),
     /** A Fluxer channel where a member enables spawns and PokeFlux confirms it */
     spawnEnableLabel: () => t("dashboard", "spawn_enable_label", "A Fluxer channel where a member enables spawns and PokeFlux confirms it"),
     /** After someone catches it */
@@ -619,8 +649,6 @@ export const m = {
     totalPokemon: () => t("dashboard", "total_pokemon", "Total Pokémon"),
     /** Trainer name */
     trainerNickname: () => t("dashboard", "trainer_nickname", "Trainer name"),
-    /** Trainer */
-    trainerTitle: () => t("dashboard", "trainer_title", "Trainer"),
   },
   discordImport: {
     /** This Discord account has already been imported. */
@@ -637,8 +665,8 @@ export const m = {
     connectTitle: () => t("discord-import", "connect_title", "Find your Discord account"),
     /** Discord sign in was cancelled. */
     denied: () => t("discord-import", "denied", "Discord sign in was cancelled."),
-    /** Nothing changes on Discord. Your data comes from a copy of EeveeCore taken on 3 Novembe... */
-    discordUnchanged: () => t("discord-import", "discord_unchanged", "Nothing changes on Discord. Your data comes from a copy of EeveeCore taken on 3 November 2026, so anything you catch or get on Discord after that stays there. Each Discord account can be imported once, into one PokeFlux account."),
+    /** Nothing changes on Discord. Your data is a copy of EeveeCore from 3 November 2026, so a... */
+    discordUnchanged: () => t("discord-import", "discord_unchanged", "Nothing changes on Discord. Your data is a copy of EeveeCore from 3 November 2026, so anything you get on Discord after that stays there. Each Discord account can be imported once."),
     /** {pokemon} Pokémon and {parties} parties came over. */
     doneBody: (p: { parties: P; pokemon: P }) => t("discord-import", "done_body", "{pokemon} Pokémon and {parties} parties came over.", p),
     /** Import finished */
@@ -665,22 +693,10 @@ export const m = {
     previewTitle: () => t("discord-import", "preview_title", "What comes over"),
     /** Signed in as {name} */
     signedInAs: (p: { name: P }) => t("discord-import", "signed_in_as", "Signed in as {name}", p),
-    /** Credits */
-    statCredits: () => t("discord-import", "stat_credits", "Credits"),
     /** Items */
     statItems: () => t("discord-import", "stat_items", "Items"),
-    /** Milestones */
-    statMilestones: () => t("discord-import", "stat_milestones", "Milestones"),
     /** Parties */
     statParties: () => t("discord-import", "stat_parties", "Parties"),
-    /** Pokémon */
-    statPokemon: () => t("discord-import", "stat_pokemon", "Pokémon"),
-    /** Radiant */
-    statRadiant: () => t("discord-import", "stat_radiant", "Radiant"),
-    /** Redeems */
-    statRedeems: () => t("discord-import", "stat_redeems", "Redeems"),
-    /** Shiny */
-    statShiny: () => t("discord-import", "stat_shiny", "Shiny"),
     /** Use another account */
     switchAccount: () => t("discord-import", "switch_account", "Use another account"),
   },
@@ -701,8 +717,6 @@ export const m = {
     party: () => t("features", "party", "Party"),
     /** Pokédex */
     pokedex: () => t("features", "pokedex", "Pokédex"),
-    /** Pokémon */
-    pokemon: () => t("features", "pokemon", "Pokémon"),
     /** Communities */
     servers: () => t("features", "servers", "Communities"),
     /** Shop */
@@ -715,6 +729,8 @@ export const m = {
     catchMockDesktopLabel: () => t("home", "catch_mock_desktop_label", "A Fluxer community where PokeFlux spawns a Ditto and a member catches it"),
     /** Fluxer on a phone, where PokeFlux spawns a Ditto and a member catches it */
     catchMockMobileLabel: () => t("home", "catch_mock_mobile_label", "Fluxer on a phone, where PokeFlux spawns a Ditto and a member catches it"),
+    /** Questions or ideas? Join the PokeFlux community on Fluxer. */
+    communityLink: () => t("home", "community_link", "Questions or ideas? Join the PokeFlux community on Fluxer."),
     /** A Fluxer channel where ash challenges misty to a duel and both pick a move */
     duelMockLabel: () => t("home", "duel_mock_label", "A Fluxer channel where ash challenges misty to a duel and both pick a move"),
     /** Error {status} */
@@ -723,40 +739,38 @@ export const m = {
     errorReturnHome: () => t("home", "error_return_home", "Return Home"),
     /** Error {status} · PokeFlux */
     errorTitle: (p: { status: P }) => t("home", "error_title", "Error {status} · PokeFlux", p),
-    /** Breed two Pokémon to get an egg, then put it in the hatchery. Eggs hatch as you keep ch... */
-    featureBreedText: () => t("home", "feature_breed_text", "Breed two Pokémon to get an egg, then put it in the hatchery. Eggs hatch as you keep chatting."),
+    /** Breed two Pokémon for an egg. It hatches as you chat. */
+    featureBreedText: () => t("home", "feature_breed_text", "Breed two Pokémon for an egg. It hatches as you chat."),
     /** Breed and hatch */
     featureBreedTitle: () => t("home", "feature_breed_title", "Breed and hatch"),
-    /** Pokémon spawn in your community's channels and the first person to type the name catche... */
-    featureCatchText: () => t("home", "feature_catch_text", "Pokémon spawn in your community's channels and the first person to type the name catches it. Everything you catch shows up in the dashboard."),
+    /** Pokémon spawn in your community's channels. The first person to type the name catches it. */
+    featureCatchText: () => t("home", "feature_catch_text", "Pokémon spawn in your community's channels. The first person to type the name catches it."),
     /** Catch in chat */
     featureCatchTitle: () => t("home", "feature_catch_title", "Catch in chat"),
-    /** Challenge another trainer and each turn the bot posts a picture of the battle, then you... */
-    featureDuelText: () => t("home", "feature_duel_text", "Challenge another trainer and each turn the bot posts a picture of the battle, then you pick a move by reacting with its number or typing its name. You can also fight an NPC trainer for credits."),
+    /** Challenge another trainer and pick moves by reacting with a number or typing the name. ... */
+    featureDuelText: () => t("home", "feature_duel_text", "Challenge another trainer and pick moves by reacting with a number or typing the name. You can also fight an NPC trainer for credits."),
     /** Duel other trainers */
     featureDuelTitle: () => t("home", "feature_duel_title", "Duel other trainers"),
-    /** Missions pay out crystal slime, which you spend in the mission store. The leaderboard r... */
-    featureProgressText: () => t("home", "feature_progress_text", "Missions pay out crystal slime, which you spend in the mission store. The leaderboard ranks trainers across every community."),
+    /** Missions pay crystal slime for the mission store. The leaderboard ranks trainers across... */
+    featureProgressText: () => t("home", "feature_progress_text", "Missions pay crystal slime for the mission store. The leaderboard ranks trainers across every community."),
     /** Missions and achievements */
     featureProgressTitle: () => t("home", "feature_progress_title", "Missions and achievements"),
-    /** List a Pokémon for credits or buy one from another trainer. A listing stays up until so... */
-    featureTradeText: () => t("home", "feature_trade_text", "List a Pokémon for credits or buy one from another trainer. A listing stays up until someone buys it or you take it down."),
+    /** List a Pokémon for credits or buy one from another trainer. */
+    featureTradeText: () => t("home", "feature_trade_text", "List a Pokémon for credits or buy one from another trainer."),
     /** Trade on the market */
     featureTradeTitle: () => t("home", "feature_trade_title", "Trade on the market"),
     /** What PokeFlux does */
     featuresHeading: () => t("home", "features_heading", "What PokeFlux does"),
     /** A Fluxer channel where PokeFlux says a member's egg has hatched */
     hatchMockLabel: () => t("home", "hatch_mock_label", "A Fluxer channel where PokeFlux says a member's egg has hatched"),
-    /** PokeFlux, a Pokémon bot for Fluxer */
-    heroEyebrow: () => t("home", "hero_eyebrow", "PokeFlux, a Pokémon bot for Fluxer"),
     /** Pick a feature to show in the chat */
     heroMockFeatures: () => t("home", "hero_mock_features", "Pick a feature to show in the chat"),
     /** A Fluxer channel showing PokeFlux features one after another */
     heroMockLabel: () => t("home", "hero_mock_label", "A Fluxer channel showing PokeFlux features one after another"),
-    /** Pokémon spawn in your chat and whoever names one first keeps it. There are over a thous... */
-    heroSubtitle: () => t("home", "hero_subtitle", "Pokémon spawn in your chat and whoever names one first keeps it. There are over a thousand to find, plus breeding, duels, a market and missions."),
-    /** A wild bot<br />has <span style="color: {color}">appeared.</span> */
-    heroTitle: (p: { color: P }) => t("home", "hero_title", "A wild bot<br />has <span style=\"color: {color}\">appeared.</span>", p),
+    /** Pokémon spawn in your chat and whoever names one first keeps it. Over a thousand to find. */
+    heroSubtitle: () => t("home", "hero_subtitle", "Pokémon spawn in your chat and whoever names one first keeps it. Over a thousand to find."),
+    /** A wild bot<br />has appeared. */
+    heroTitle: () => t("home", "hero_title", "A wild bot<br />has appeared."),
     /** Eevee icon by Freepik on Flaticon */
     iconCredit: () => t("home", "icon_credit", "Eevee icon by Freepik on Flaticon"),
     /** PokeFlux is a Pokémon collecting bot for Fluxer with a dashboard for managing what you ... */
@@ -777,14 +791,10 @@ export const m = {
     openPokemon: () => t("home", "open_pokemon", "Open your Pokémon"),
     /** PokeFlux · Pokémon collecting on Fluxer */
     pageTitle: () => t("home", "page_title", "PokeFlux · Pokémon collecting on Fluxer"),
-    /** Breeding */
-    pillBreeding: () => t("home", "pill_breeding", "Breeding"),
     /** Catching */
     pillCatching: () => t("home", "pill_catching", "Catching"),
     /** Duels */
     pillDuels: () => t("home", "pill_duels", "Duels"),
-    /** Market */
-    pillMarket: () => t("home", "pill_market", "Market"),
     /** Progress */
     pillProgress: () => t("home", "pill_progress", "Progress"),
     /** {price} credits */
@@ -801,8 +811,8 @@ export const m = {
   layout: {
     /** Close dialog */
     confirmClose: () => t("layout", "confirm_close", "Close dialog"),
-    /** Are you sure you want to proceed? */
-    confirmMessage: () => t("layout", "confirm_message", "Are you sure you want to proceed?"),
+    /** Are you sure? */
+    confirmMessage: () => t("layout", "confirm_message", "Are you sure?"),
     /** Reload Page */
     errorBoundaryReload: () => t("layout", "error_boundary_reload", "Reload Page"),
     /** Frutiger Aero theme */
@@ -837,8 +847,6 @@ export const m = {
     pageLayoutSubNavAria: () => t("layout", "page_layout_sub_nav_aria", "Sub navigation"),
     /** Sub navigation tabs */
     pageLayoutSubTabListAria: () => t("layout", "page_layout_sub_tab_list_aria", "Sub navigation tabs"),
-    /** {tab} Options */
-    pageLayoutSubTabOptions: (p: { tab: P }) => t("layout", "page_layout_sub_tab_options", "{tab} Options", p),
     /** {title} navigation tabs */
     pageLayoutTabListAria: (p: { title: P }) => t("layout", "page_layout_tab_list_aria", "{title} navigation tabs", p),
     /** Page tabs */
@@ -1057,14 +1065,10 @@ export const m = {
     accuracy: () => t("pokeflux", "accuracy", "Accuracy"),
     /** Champion */
     badgeChampion: () => t("pokeflux", "badge_champion", "Champion"),
-    /** Favorite */
-    badgeFavorite: () => t("pokeflux", "badge_favorite", "Favorite"),
     /** In party */
     badgeInParty: () => t("pokeflux", "badge_in_party", "In party"),
     /** Listed on the market */
     badgeMarketListed: () => t("pokeflux", "badge_market_listed", "Listed on the market"),
-    /** Selected Pokémon */
-    badgeSelected: () => t("pokeflux", "badge_selected", "Selected Pokémon"),
     /** Skin: {name} */
     badgeSkin: (p: { name: P }) => t("pokeflux", "badge_skin", "Skin: {name}", p),
     /** Physical */
@@ -1073,16 +1077,12 @@ export const m = {
     categorySpecial: () => t("pokeflux", "category_special", "Special"),
     /** Status */
     categoryStatus: () => t("pokeflux", "category_status", "Status"),
-    /** Clear */
-    clearSelection: () => t("pokeflux", "clear_selection", "Clear"),
-    /** Every shared Pokémon component with sample data */
-    devComponentsSubtitle: () => t("pokeflux", "dev_components_subtitle", "Every shared Pokémon component with sample data"),
+    /** Shared Pokémon components */
+    devComponentsSubtitle: () => t("pokeflux", "dev_components_subtitle", "Shared Pokémon components"),
     /** Component preview */
     devComponentsTitle: () => t("pokeflux", "dev_components_title", "Component preview"),
     /** No move */
     emptyMoveSlot: () => t("pokeflux", "empty_move_slot", "No move"),
-    /** All Pokémon */
-    filterAll: () => t("pokeflux", "filter_all", "All Pokémon"),
     /** Champions */
     filterChampion: () => t("pokeflux", "filter_champion", "Champions"),
     /** Eggs */
@@ -1129,8 +1129,6 @@ export const m = {
     previousPage: () => t("pokeflux", "previous_page", "Previous page"),
     /** Search names, nicknames, tags or moves */
     searchPlaceholder: () => t("pokeflux", "search_placeholder", "Search names, nicknames, tags or moves"),
-    /** {count} selected */
-    selectedCount: (p: { count: P }) => t("pokeflux", "selected_count", "{count} selected", p),
     /** {count} of {max} selected */
     selectedCountMax: (p: { count: P; max: P }) => t("pokeflux", "selected_count_max", "{count} of {max} selected", p),
     /** Champions first */
@@ -1139,8 +1137,6 @@ export const m = {
     sortDefault: () => t("pokeflux", "sort_default", "Default order"),
     /** Favorites first */
     sortFavorite: () => t("pokeflux", "sort_favorite", "Favorites first"),
-    /** IV */
-    sortIv: () => t("pokeflux", "sort_iv", "IV"),
     /** Sort */
     sortLabel: () => t("pokeflux", "sort_label", "Sort"),
     /** Level */
@@ -1151,8 +1147,6 @@ export const m = {
     sortParty: () => t("pokeflux", "sort_party", "Party first"),
     /** Recently caught */
     sortRecent: () => t("pokeflux", "sort_recent", "Recently caught"),
-    /** Type */
-    sortType: () => t("pokeflux", "sort_type", "Type"),
     /** No sprite */
     spriteMissing: () => t("pokeflux", "sprite_missing", "No sprite"),
     /** Attack */
@@ -1203,8 +1197,6 @@ export const m = {
     typeGround: () => t("pokeflux", "type_ground", "Ground"),
     /** Ice */
     typeIce: () => t("pokeflux", "type_ice", "Ice"),
-    /** Normal */
-    typeNormal: () => t("pokeflux", "type_normal", "Normal"),
     /** Poison */
     typePoison: () => t("pokeflux", "type_poison", "Poison"),
     /** Psychic */
@@ -1225,22 +1217,16 @@ export const m = {
     viewEvs: () => t("pokeflux", "view_evs", "EVs"),
     /** IVs */
     viewIvs: () => t("pokeflux", "view_ivs", "IVs"),
-    /** Stats */
-    viewStats: () => t("pokeflux", "view_stats", "Stats"),
     /** Working… */
     working: () => t("pokeflux", "working", "Working…"),
   },
   pokefluxCollection: {
-    /** Ability */
-    ability: () => t("pokeflux-collection", "ability", "Ability"),
     /** Add egg */
     addEgg: () => t("pokeflux-collection", "add_egg", "Add egg"),
     /** Add an egg to group {group}, slot {slot} */
     addEggTo: (p: { group: P; slot: P }) => t("pokeflux-collection", "add_egg_to", "Add an egg to group {group}, slot {slot}", p),
     /** Add Pokémon */
     addPokemon: () => t("pokeflux-collection", "add_pokemon", "Add Pokémon"),
-    /** All */
-    allItems: () => t("pokeflux-collection", "all_items", "All"),
     /** Already in this party */
     alreadyInParty: () => t("pokeflux-collection", "already_in_party", "Already in this party"),
     /** Already in the hatchery */
@@ -1253,8 +1239,6 @@ export const m = {
     breedingCooldown: () => t("pokeflux-collection", "breeding_cooldown", "Breeding cooldown"),
     /** Browse your Pokémon */
     browsePokemon: () => t("pokeflux-collection", "browse_pokemon", "Browse your Pokémon"),
-    /** Clear */
-    clear: () => t("pokeflux-collection", "clear", "Clear"),
     /** Clear slot {slot} */
     clearSlot: (p: { slot: P }) => t("pokeflux-collection", "clear_slot", "Clear slot {slot}", p),
     /** Your daycare is full. Hatch some eggs to breed again. */
@@ -1263,8 +1247,8 @@ export const m = {
     daycareValue: (p: { limit: P; used: P }) => t("pokeflux-collection", "daycare_value", "{used} of {limit} eggs", p),
     /** Delete */
     delete: () => t("pokeflux-collection", "delete", "Delete"),
-    /** Delete the saved party {name}? Your current party stays as it is. */
-    deleteMessage: (p: { name: P }) => t("pokeflux-collection", "delete_message", "Delete the saved party {name}? Your current party stays as it is.", p),
+    /** Delete the saved party {name}? */
+    deleteMessage: (p: { name: P }) => t("pokeflux-collection", "delete_message", "Delete the saved party {name}?", p),
     /** Delete saved party */
     deleteTitle: () => t("pokeflux-collection", "delete_title", "Delete saved party"),
     /** Details of {name} */
@@ -1303,10 +1287,6 @@ export const m = {
     hatchProgress: () => t("pokeflux-collection", "hatch_progress", "Hatching progress"),
     /** Held by {count} */
     heldBy: (p: { count: P }) => t("pokeflux-collection", "held_by", "Held by {count}", p),
-    /** Held item */
-    heldItem: () => t("pokeflux-collection", "held_item", "Held item"),
-    /** How many of your Pokémon hold each item. */
-    heldItemsHint: () => t("pokeflux-collection", "held_items_hint", "How many of your Pokémon hold each item."),
     /** No items in your inventory */
     inventoryEmpty: () => t("pokeflux-collection", "inventory_empty", "No items in your inventory"),
     /** Inventory ({count}) */
@@ -1315,12 +1295,10 @@ export const m = {
     itemGroups: () => t("pokeflux-collection", "item_groups", "Item groups"),
     /** Items held by Pokémon */
     itemsHeld: () => t("pokeflux-collection", "items_held", "Items held by Pokémon"),
-    /** IV */
-    iv: () => t("pokeflux-collection", "iv", "IV"),
     /** Load */
     load: () => t("pokeflux-collection", "load", "Load"),
-    /** Load {name} as your current party? Your current party will be replaced. Save it first i... */
-    loadMessage: (p: { name: P }) => t("pokeflux-collection", "load_message", "Load {name} as your current party? Your current party will be replaced. Save it first if you want to keep it.", p),
+    /** Load {name}? This replaces your current party. */
+    loadMessage: (p: { name: P }) => t("pokeflux-collection", "load_message", "Load {name}? This replaces your current party.", p),
     /** Load saved party */
     loadTitle: () => t("pokeflux-collection", "load_title", "Load saved party"),
     /** About {count} messages to hatch */
@@ -1341,16 +1319,12 @@ export const m = {
     namePlaceholder: () => t("pokeflux-collection", "name_placeholder", "Party name"),
     /** Names can be at most {max} characters */
     nameTooLong: (p: { max: P }) => t("pokeflux-collection", "name_too_long", "Names can be at most {max} characters", p),
-    /** Nature */
-    nature: () => t("pokeflux-collection", "nature", "Nature"),
     /** You have no eggs */
     noEggs: () => t("pokeflux-collection", "no_eggs", "You have no eggs"),
-    /** Breed two Pokémon to get eggs, then place them here to hatch. */
-    noEggsHint: () => t("pokeflux-collection", "no_eggs_hint", "Breed two Pokémon to get eggs, then place them here to hatch."),
+    /** Breed two Pokémon to get one. */
+    noEggsHint: () => t("pokeflux-collection", "no_eggs_hint", "Breed two Pokémon to get one."),
     /** No breeding females */
     noFemales: () => t("pokeflux-collection", "no_females", "No breeding females"),
-    /** Pick some female Pokémon or Dittos to breed from. */
-    noFemalesHint: () => t("pokeflux-collection", "no_females_hint", "Pick some female Pokémon or Dittos to breed from."),
     /** None of your Pokémon hold an item */
     noHeldItems: () => t("pokeflux-collection", "no_held_items", "None of your Pokémon hold an item"),
     /** No hunt set */
@@ -1363,8 +1337,6 @@ export const m = {
     noSavedParties: () => t("pokeflux-collection", "no_saved_parties", "No saved parties yet."),
     /** No Pokémon selected */
     noSelected: () => t("pokeflux-collection", "no_selected", "No Pokémon selected"),
-    /** Select a Pokémon to see it here. */
-    noSelectedHint: () => t("pokeflux-collection", "no_selected_hint", "Select a Pokémon to see it here."),
     /** Not an egg */
     notAnEgg: () => t("pokeflux-collection", "not_an_egg", "Not an egg"),
     /** Overwrite */
@@ -1387,8 +1359,6 @@ export const m = {
     pickFemales: () => t("pokeflux-collection", "pick_females", "Choose breeding females"),
     /** Choose a Pokémon for slot {slot} */
     pickForSlot: (p: { slot: P }) => t("pokeflux-collection", "pick_for_slot", "Choose a Pokémon for slot {slot}", p),
-    /** Choose a saved party to see it here. */
-    pickSavedHint: () => t("pokeflux-collection", "pick_saved_hint", "Choose a saved party to see it here."),
     /** No party chosen */
     pickSavedTitle: () => t("pokeflux-collection", "pick_saved_title", "No party chosen"),
     /** Quantity */
@@ -1411,12 +1381,6 @@ export const m = {
     savedLoadError: () => t("pokeflux-collection", "saved_load_error", "Could not load this party"),
     /** Saved parties */
     savedPartiesTitle: () => t("pokeflux-collection", "saved_parties_title", "Saved parties"),
-    /** Search items */
-    searchItems: () => t("pokeflux-collection", "search_items", "Search items"),
-    /** Selected */
-    selected: () => t("pokeflux-collection", "selected", "Selected"),
-    /** Selected Pokémon */
-    selectedPokemon: () => t("pokeflux-collection", "selected_pokemon", "Selected Pokémon"),
     /** Set females */
     setFemales: () => t("pokeflux-collection", "set_females", "Set females"),
     /** Shadow hunt */
@@ -1425,8 +1389,6 @@ export const m = {
     showHolders: (p: { item: P }) => t("pokeflux-collection", "show_holders", "Show your Pokémon holding {item}", p),
     /** Slot {slot} cleared */
     slotCleared: (p: { slot: P }) => t("pokeflux-collection", "slot_cleared", "Slot {slot} cleared", p),
-    /** Slot {slot} */
-    slotLabel: (p: { slot: P }) => t("pokeflux-collection", "slot_label", "Slot {slot}", p),
     /** Moved {name} to slot {slot} */
     slotMoved: (p: { name: P; slot: P }) => t("pokeflux-collection", "slot_moved", "Moved {name} to slot {slot}", p),
     /** Slot {slot} updated */
@@ -1441,16 +1403,10 @@ export const m = {
     swapHere: (p: { slot: P }) => t("pokeflux-collection", "swap_here", "Swap with slot {slot}", p),
     /** Total items */
     totalItems: () => t("pokeflux-collection", "total_items", "Total items"),
-    /** Trainer card */
-    trainerCard: () => t("pokeflux-collection", "trainer_card", "Trainer card"),
-    /** Trainer */
-    unnamedTrainer: () => t("pokeflux-collection", "unnamed_trainer", "Trainer"),
     /** View details */
     viewDetails: () => t("pokeflux-collection", "view_details", "View details"),
   },
   pokefluxMarket: {
-    /** Ability */
-    ability: () => t("pokeflux-market", "ability", "Ability"),
     /** Achievement categories */
     achievementCategories: () => t("pokeflux-market", "achievement_categories", "Achievement categories"),
     /** Admin */
@@ -1479,12 +1435,10 @@ export const m = {
     balance: () => t("pokeflux-market", "balance", "Your balance"),
     /** Catch command only */
     buttonMode: () => t("pokeflux-market", "button_mode", "Catch command only"),
-    /** People have to use the catch command, just typing the name won't catch anything. */
-    buttonModeHint: () => t("pokeflux-market", "button_mode_hint", "People have to use the catch command, just typing the name won't catch anything."),
     /** Buy */
     buy: () => t("pokeflux-market", "buy", "Buy"),
-    /** Buy {name} from {seller}? The credits leave your balance right away. */
-    buyConfirmMessage: (p: { name: P; seller: P }) => t("pokeflux-market", "buy_confirm_message", "Buy {name} from {seller}? The credits leave your balance right away.", p),
+    /** Buy {name} from {seller}? */
+    buyConfirmMessage: (p: { name: P; seller: P }) => t("pokeflux-market", "buy_confirm_message", "Buy {name} from {seller}?", p),
     /** Buy this Pokémon? */
     buyConfirmTitle: () => t("pokeflux-market", "buy_confirm_title", "Buy this Pokémon?"),
     /** Buy {name} */
@@ -1511,8 +1465,8 @@ export const m = {
     chestLimitReached: () => t("pokeflux-market", "chest_limit_reached", "Weekly limit reached"),
     /** {type} chest */
     chestName: (p: { type: P }) => t("pokeflux-market", "chest_name", "{type} chest", p),
-    /** Open them with the open command. You can buy up to 5 a week with credits. */
-    chestsHint: () => t("pokeflux-market", "chests_hint", "Open them with the open command. You can buy up to 5 a week with credits."),
+    /** Open them with the open command. Up to 5 a week with credits. */
+    chestsHint: () => t("pokeflux-market", "chests_hint", "Open them with the open command. Up to 5 a week with credits."),
     /** Chests */
     chestsTitle: () => t("pokeflux-market", "chests_title", "Chests"),
     /** Choose channels ({count} selected) */
@@ -1531,28 +1485,20 @@ export const m = {
     dailyStreak: () => t("pokeflux-market", "daily_streak", "Daily streak (days)"),
     /** Delete spawns */
     deleteSpawns: () => t("pokeflux-market", "delete_spawns", "Delete spawns"),
-    /** The spawn message disappears after someone catches it. */
-    deleteSpawnsHint: () => t("pokeflux-market", "delete_spawns_hint", "The spawn message disappears after someone catches it."),
     /** Details */
     details: () => t("pokeflux-market", "details", "Details"),
     /** Disabled channels */
     disabledChannels: () => t("pokeflux-market", "disabled_channels", "Disabled channels"),
-    /** Pokémon won't show up in these, even when spawns are on everywhere. */
-    disabledChannelsHint: () => t("pokeflux-market", "disabled_channels_hint", "Pokémon won't show up in these, even when spawns are on everywhere."),
     /** Discard changes */
     discardChanges: () => t("pokeflux-market", "discard_changes", "Discard changes"),
-    /** Pokémon only show up in the channels you pick here. */
-    enabledChannelsHint: () => t("pokeflux-market", "enabled_channels_hint", "Pokémon only show up in the channels you pick here."),
-    /** Spawns in all channels is on, so this list is not used right now. */
-    enabledChannelsIgnored: () => t("pokeflux-market", "enabled_channels_ignored", "Spawns in all channels is on, so this list is not used right now."),
+    /** Not used while spawns in all channels is on. */
+    enabledChannelsIgnored: () => t("pokeflux-market", "enabled_channels_ignored", "Not used while spawns in all channels is on."),
     /** Favorites cannot be listed */
     favoriteCannotList: () => t("pokeflux-market", "favorite_cannot_list", "Favorites cannot be listed"),
     /** All listings */
     filterAll: () => t("pokeflux-market", "filter_all", "All listings"),
     /** Your first Pokémon cannot be listed */
     firstCannotList: () => t("pokeflux-market", "first_cannot_list", "Your first Pokémon cannot be listed"),
-    /** Held item */
-    heldItemLabel: () => t("pokeflux-market", "held_item_label", "Held item"),
     /** Hidden trainer */
     hiddenTrainer: () => t("pokeflux-market", "hidden_trainer", "Hidden trainer"),
     /** IV total */
@@ -1571,8 +1517,6 @@ export const m = {
     leaderboardShinyValue: () => t("pokeflux-market", "leaderboard_shiny_value", "Shinies owned"),
     /** Leaderboard */
     leaderboardTitle: () => t("pokeflux-market", "leaderboard_title", "Leaderboard"),
-    /** Lvl */
-    levelShortLabel: () => t("pokeflux-market", "level_short_label", "Lvl"),
     /** List for sale */
     listForSale: () => t("pokeflux-market", "list_for_sale", "List for sale"),
     /** Listed */
@@ -1581,26 +1525,20 @@ export const m = {
     listedOn: (p: { date: P }) => t("pokeflux-market", "listed_on", "Listed {date}", p),
     /** You have {count} of {limit} listings on the market. */
     listingCount: (p: { count: P; limit: P }) => t("pokeflux-market", "listing_count", "You have {count} of {limit} listings on the market.", p),
-    /** You already have {limit} listings, the most the market allows. Remove one to list another. */
-    listingLimitReached: (p: { limit: P }) => t("pokeflux-market", "listing_limit_reached", "You already have {limit} listings, the most the market allows. Remove one to list another.", p),
+    /** You have {limit} listings, the market limit. Remove one to list another. */
+    listingLimitReached: (p: { limit: P }) => t("pokeflux-market", "listing_limit_reached", "You have {limit} listings, the market limit. Remove one to list another.", p),
     /** Could not load this listing */
     listingLoadError: () => t("pokeflux-market", "listing_load_error", "Could not load this listing"),
     /** Listing */
     listingTitle: () => t("pokeflux-market", "listing_title", "Listing"),
-    /** Locked */
-    locked: () => t("pokeflux-market", "locked", "Locked"),
     /** Loyalty points */
     loyaltyPoints: () => t("pokeflux-market", "loyalty_points", "Loyalty points"),
     /** Loyalty */
     loyaltyTitle: () => t("pokeflux-market", "loyalty_title", "Loyalty"),
     /** The market is empty */
     marketEmpty: () => t("pokeflux-market", "market_empty", "The market is empty"),
-    /** Nobody is selling anything right now. */
-    marketEmptyHint: () => t("pokeflux-market", "market_empty_hint", "Nobody is selling anything right now."),
     /** Top mission level reached, with {xp} XP. */
     maxMissionLevel: (p: { xp: P }) => t("pokeflux-market", "max_mission_level", "Top mission level reached, with {xp} XP.", p),
-    /** Milestones */
-    milestoneLadder: () => t("pokeflux-market", "milestone_ladder", "Milestones"),
     /** Next milestone */
     milestoneNext: () => t("pokeflux-market", "milestone_next", "Next milestone"),
     /** Reached */
@@ -1613,12 +1551,6 @@ export const m = {
     missionBuyMessage: (p: { cost: P; name: P }) => t("pokeflux-market", "mission_buy_message", "Buy {name} for {cost} crystal slime?", p),
     /** Mission store */
     missionStore: () => t("pokeflux-market", "mission_store", "Mission store"),
-    /** Crystal slime from your missions buys these. */
-    missionStoreHint: () => t("pokeflux-market", "mission_store_hint", "Crystal slime from your missions buys these."),
-    /** Moves */
-    moves: () => t("pokeflux-market", "moves", "Moves"),
-    /** Nature */
-    nature: () => t("pokeflux-market", "nature", "Nature"),
     /** Next streak bonus at {days} days ({left} to go). */
     nextStreakBonus: (p: { days: P; left: P }) => t("pokeflux-market", "next_streak_bonus", "Next streak bonus at {days} days ({left} to go).", p),
     /** {points} of {required} points to {tier} */
@@ -1633,16 +1565,14 @@ export const m = {
     noChannelsSelected: () => t("pokeflux-market", "no_channels_selected", "No channels selected."),
     /** You have nothing on the market */
     noListings: () => t("pokeflux-market", "no_listings", "You have nothing on the market"),
-    /** List a Pokémon and it shows up here until someone buys it. */
-    noListingsHint: () => t("pokeflux-market", "no_listings_hint", "List a Pokémon and it shows up here until someone buys it."),
     /** No listings match */
     noMatches: () => t("pokeflux-market", "no_matches", "No listings match"),
     /** No active missions right now */
     noMissions: () => t("pokeflux-market", "no_missions", "No active missions right now"),
     /** No moves known. */
     noMoves: () => t("pokeflux-market", "no_moves", "No moves known."),
-    /** Your communities show up here once PokeFlux is in them and you have Manage Community. */
-    noServersHint: () => t("pokeflux-market", "no_servers_hint", "Your communities show up here once PokeFlux is in them and you have Manage Community."),
+    /** Needs PokeFlux in the community and Manage Community. */
+    noServersHint: () => t("pokeflux-market", "no_servers_hint", "Needs PokeFlux in the community and Manage Community."),
     /** PokeFlux cannot see any text channels in this community. */
     noTextChannels: () => t("pokeflux-market", "no_text_channels", "PokeFlux cannot see any text channels in this community."),
     /** Not enough */
@@ -1661,8 +1591,6 @@ export const m = {
     pickAnother: () => t("pokeflux-market", "pick_another", "Pick another"),
     /** Pin spawns */
     pinSpawns: () => t("pokeflux-market", "pin_spawns", "Pin spawns"),
-    /** Now and then a caught spawn gets pinned, so the lucky ones stick around. */
-    pinSpawnsHint: () => t("pokeflux-market", "pin_spawns_hint", "Now and then a caught spawn gets pinned, so the lucky ones stick around."),
     /** Up to {max} characters, no spaces ({length} of {max}). */
     prefixHint: (p: { length: P; max: P }) => t("pokeflux-market", "prefix_hint", "Up to {max} characters, no spaces ({length} of {max}).", p),
     /** The prefix cannot contain spaces. */
@@ -1673,8 +1601,8 @@ export const m = {
     prefixTooLong: (p: { max: P }) => t("pokeflux-market", "prefix_too_long", "The prefix can be at most {max} characters.", p),
     /** Price */
     price: () => t("pokeflux-market", "price", "Price"),
-    /** This is what the buyer pays. You can take it down any time before it sells. */
-    priceHint: () => t("pokeflux-market", "price_hint", "This is what the buyer pays. You can take it down any time before it sells."),
+    /** You can remove the listing before it sells. */
+    priceHint: () => t("pokeflux-market", "price_hint", "You can remove the listing before it sells."),
     /** Price in credits */
     priceLabel: () => t("pokeflux-market", "price_label", "Price in credits"),
     /** Prices from {min} to {max} credits. */
@@ -1689,8 +1617,8 @@ export const m = {
     progressOf: (p: { max: P; value: P }) => t("pokeflux-market", "progress_of", "{value} / {max}", p),
     /** Rank */
     rank: () => t("pokeflux-market", "rank", "Rank"),
-    /** Spawns get sent to one of these channels at random. Leave it empty and they show up whe... */
-    redirectsHint: () => t("pokeflux-market", "redirects_hint", "Spawns get sent to one of these channels at random. Leave it empty and they show up wherever people are chatting."),
+    /** Spawns go to one of these channels at random. */
+    redirectsHint: () => t("pokeflux-market", "redirects_hint", "Spawns go to one of these channels at random."),
     /** Remove */
     remove: () => t("pokeflux-market", "remove", "Remove"),
     /** Remove #{name} */
@@ -1747,12 +1675,8 @@ export const m = {
     shopRequirement: (p: { count: P; min: P }) => t("pokeflux-market", "shop_requirement", "You need at least {min} Pokémon to buy items from the shop. You have {count}.", p),
     /** You need at least {min} Pokémon to buy items from the shop. You have {count}. Chests ha... */
     shopRequirementChests: (p: { count: P; min: P }) => t("pokeflux-market", "shop_requirement_chests", "You need at least {min} Pokémon to buy items from the shop. You have {count}. Chests have no minimum.", p),
-    /** Search items */
-    shopSearch: () => t("pokeflux-market", "shop_search", "Search items"),
     /** Small images */
     smallImages: () => t("pokeflux-market", "small_images", "Small images"),
-    /** The spawn picture shows as a small thumbnail so it takes up less room in chat. */
-    smallImagesHint: () => t("pokeflux-market", "small_images_hint", "The spawn picture shows as a small thumbnail so it takes up less room in chat."),
     /** Sold out */
     soldOut: () => t("pokeflux-market", "sold_out", "Sold out"),
     /** Highest IV */
@@ -1767,12 +1691,8 @@ export const m = {
     sortPriceDesc: () => t("pokeflux-market", "sort_price_desc", "Priciest first"),
     /** Recently listed */
     sortRecent: () => t("pokeflux-market", "sort_recent", "Recently listed"),
-    /** Pokémon can show up in any text channel, apart from the ones you turned off. */
-    spawnsEverywhereHint: () => t("pokeflux-market", "spawns_everywhere_hint", "Pokémon can show up in any text channel, apart from the ones you turned off."),
-    /** Turn it up for more spawns with shorter waits between them. The default is 10. */
-    speedHint: () => t("pokeflux-market", "speed_hint", "Turn it up for more spawns with shorter waits between them. The default is 10."),
-    /** Stats */
-    statsTitle: () => t("pokeflux-market", "stats_title", "Stats"),
+    /** Higher means more spawns. Default is 10. */
+    speedHint: () => t("pokeflux-market", "speed_hint", "Higher means more spawns. Default is 10."),
     /** {count} in stock */
     stockLeft: (p: { count: P }) => t("pokeflux-market", "stock_left", "{count} in stock", p),
     /** Unlimited stock */
@@ -1807,14 +1727,10 @@ export const m = {
     yourListing: () => t("pokeflux-market", "your_listing", "Your listing"),
   },
   pokefluxPokemon: {
-    /** Ability */
-    ability: () => t("pokeflux-pokemon", "ability", "Ability"),
     /** All categories */
     allCategories: () => t("pokeflux-pokemon", "all_categories", "All categories"),
     /** All types */
     allTypes: () => t("pokeflux-pokemon", "all_types", "All types"),
-    /** All Pokémon */
-    backToList: () => t("pokeflux-pokemon", "back_to_list", "All Pokémon"),
     /** It is a favorite. Unfavorite it first. */
     blockFavorite: () => t("pokeflux-pokemon", "block_favorite", "It is a favorite. Unfavorite it first."),
     /** It is your first Pokémon. */
@@ -1825,8 +1741,6 @@ export const m = {
     blockParty: () => t("pokeflux-pokemon", "block_party", "It is in your party."),
     /** Breedable */
     breedable: () => t("pokeflux-pokemon", "breedable", "Breedable"),
-    /** Caught */
-    caught: () => t("pokeflux-pokemon", "caught", "Caught"),
     /** Change move {slot} */
     changeMove: (p: { slot: P }) => t("pokeflux-pokemon", "change_move", "Change move {slot}", p),
     /** Stop showing only {name} */
@@ -1837,8 +1751,6 @@ export const m = {
     clearFilters: () => t("pokeflux-pokemon", "clear_filters", "Clear filters"),
     /** Stop showing only Pokémon holding {item} */
     clearHeldItem: (p: { item: P }) => t("pokeflux-pokemon", "clear_held_item", "Stop showing only Pokémon holding {item}", p),
-    /** Collection */
-    collection: () => t("pokeflux-pokemon", "collection", "Collection"),
     /** Search and filters */
     controlsLabel: () => t("pokeflux-pokemon", "controls_label", "Search and filters"),
     /** Compact cards */
@@ -1847,8 +1759,6 @@ export const m = {
     densityLabel: () => t("pokeflux-pokemon", "density_label", "Card size"),
     /** Regular cards */
     densityRegular: () => t("pokeflux-pokemon", "density_regular", "Regular cards"),
-    /** You own at least one of every species. */
-    dexCompleteHint: () => t("pokeflux-pokemon", "dex_complete_hint", "You own at least one of every species."),
     /** Nothing missing */
     dexCompleteTitle: () => t("pokeflux-pokemon", "dex_complete_title", "Nothing missing"),
     /** Pokédex entries */
@@ -1869,10 +1779,6 @@ export const m = {
     dexProgress: () => t("pokeflux-pokemon", "dex_progress", "Pokédex progress"),
     /** Search by name or number */
     dexSearch: () => t("pokeflux-pokemon", "dex_search", "Search by name or number"),
-    /** All */
-    dexShowAll: () => t("pokeflux-pokemon", "dex_show_all", "All"),
-    /** Caught */
-    dexShowCaught: () => t("pokeflux-pokemon", "dex_show_caught", "Caught"),
     /** Show */
     dexShowLabel: () => t("pokeflux-pokemon", "dex_show_label", "Show"),
     /** Missing */
@@ -1883,8 +1789,8 @@ export const m = {
     dexSkin: () => t("pokeflux-pokemon", "dex_skin", "Skins"),
     /** Unowned */
     dexUnowned: () => t("pokeflux-pokemon", "dex_unowned", "Unowned"),
-    /** Catch Pokémon in a community with PokeFlux and they show up here. */
-    emptyHint: () => t("pokeflux-pokemon", "empty_hint", "Catch Pokémon in a community with PokeFlux and they show up here."),
+    /** Catch one in a community with PokeFlux. */
+    emptyHint: () => t("pokeflux-pokemon", "empty_hint", "Catch one in a community with PokeFlux."),
     /** No Pokémon yet */
     emptyTitle: () => t("pokeflux-pokemon", "empty_title", "No Pokémon yet"),
     /** Evolution line */
@@ -1893,30 +1799,16 @@ export const m = {
     experience: (p: { cap: P; current: P }) => t("pokeflux-pokemon", "experience", "{current} / {cap} XP", p),
     /** Experience to the next level */
     experienceLabel: () => t("pokeflux-pokemon", "experience_label", "Experience to the next level"),
-    /** Favorite */
-    favorite: () => t("pokeflux-pokemon", "favorite", "Favorite"),
     /** Forms */
     formsTitle: () => t("pokeflux-pokemon", "forms_title", "Forms"),
-    /** Gender */
-    gender: () => t("pokeflux-pokemon", "gender", "Gender"),
-    /** All */
-    genderAll: () => t("pokeflux-pokemon", "gender_all", "All"),
-    /** Gender */
-    genderLabel: () => t("pokeflux-pokemon", "gender_label", "Gender"),
     /** Go to the last page */
     goLastPage: () => t("pokeflux-pokemon", "go_last_page", "Go to the last page"),
     /** Happiness */
     happiness: () => t("pokeflux-pokemon", "happiness", "Happiness"),
-    /** Held item */
-    heldItemLabel: () => t("pokeflux-pokemon", "held_item_label", "Held item"),
-    /** Selected */
-    isSelected: () => t("pokeflux-pokemon", "is_selected", "Selected"),
-    /** IV */
-    iv: () => t("pokeflux-pokemon", "iv", "IV"),
     /** Total IV */
     ivTotal: () => t("pokeflux-pokemon", "iv_total", "Total IV"),
-    /** Use the left and right arrow keys to step through your Pokémon. */
-    keyboardHint: () => t("pokeflux-pokemon", "keyboard_hint", "Use the left and right arrow keys to step through your Pokémon."),
+    /** Left and right arrow keys switch Pokémon. */
+    keyboardHint: () => t("pokeflux-pokemon", "keyboard_hint", "Left and right arrow keys switch Pokémon."),
     /** Known */
     known: () => t("pokeflux-pokemon", "known", "Known"),
     /** Category */
@@ -1937,8 +1829,6 @@ export const m = {
     learnSummary: (p: { current: P; move: P; slot: P }) => t("pokeflux-pokemon", "learn_summary", "Replace {current} in slot {slot} with {move}.", p),
     /** Change a move */
     learnTitle: () => t("pokeflux-pokemon", "learn_title", "Change a move"),
-    /** Type */
-    learnType: () => t("pokeflux-pokemon", "learn_type", "Type"),
     /** {count} moves */
     learnsetCount: (p: { count: P }) => t("pokeflux-pokemon", "learnset_count", "{count} moves", p),
     /** Could not load the moves */
@@ -1951,20 +1841,12 @@ export const m = {
     levelWord: () => t("pokeflux-pokemon", "level_word", "Lv."),
     /** Matching */
     matching: () => t("pokeflux-pokemon", "matching", "Matching"),
-    /** Moves */
-    movesTitle: () => t("pokeflux-pokemon", "moves_title", "Moves"),
-    /** Nature */
-    nature: () => t("pokeflux-pokemon", "nature", "Nature"),
     /** Next Pokémon */
     nextPokemon: () => t("pokeflux-pokemon", "next_pokemon", "Next Pokémon"),
-    /** Nickname */
-    nickname: () => t("pokeflux-pokemon", "nickname", "Nickname"),
     /** Clear nickname */
     nicknameClear: () => t("pokeflux-pokemon", "nickname_clear", "Clear nickname"),
     /** Up to 150 characters. Leave it empty to clear it. */
     nicknameHint: () => t("pokeflux-pokemon", "nickname_hint", "Up to 150 characters. Leave it empty to clear it."),
-    /** Nickname */
-    nicknameLabel: () => t("pokeflux-pokemon", "nickname_label", "Nickname"),
     /** Set a nickname */
     nicknameTitle: () => t("pokeflux-pokemon", "nickname_title", "Set a nickname"),
     /** This species does not evolve. */
@@ -1985,8 +1867,6 @@ export const m = {
     pageSizeOption: (p: { count: P }) => t("pokeflux-pokemon", "page_size_option", "{count} per page", p),
     /** Pages */
     paginationLabel: () => t("pokeflux-pokemon", "pagination_label", "Pages"),
-    /** There's nothing on this page, try an earlier one. */
-    pastEndHint: () => t("pokeflux-pokemon", "past_end_hint", "There's nothing on this page, try an earlier one."),
     /** Nothing on this page */
     pastEndTitle: () => t("pokeflux-pokemon", "past_end_title", "Nothing on this page"),
     /** {position} of {total} */
@@ -2007,8 +1887,6 @@ export const m = {
     select: () => t("pokeflux-pokemon", "select", "Select as active"),
     /** {from} to {to} of {total} */
     showing: (p: { from: P; to: P; total: P }) => t("pokeflux-pokemon", "showing", "{from} to {to} of {total}", p),
-    /** Slot {slot} */
-    slotNumber: (p: { slot: P }) => t("pokeflux-pokemon", "slot_number", "Slot {slot}", p),
     /** Abilities */
     speciesAbilities: () => t("pokeflux-pokemon", "species_abilities", "Abilities"),
     /** Baby Pokémon */
@@ -2019,8 +1897,6 @@ export const m = {
     speciesBaseStats: () => t("pokeflux-pokemon", "species_base_stats", "Base stats"),
     /** Battle only */
     speciesBattleOnly: () => t("pokeflux-pokemon", "species_battle_only", "Battle only"),
-    /** Breeding */
-    speciesBreeding: () => t("pokeflux-pokemon", "species_breeding", "Breeding"),
     /** Catch rate */
     speciesCatchRate: () => t("pokeflux-pokemon", "species_catch_rate", "Catch rate"),
     /** {rate} of 255 */
@@ -2069,16 +1945,14 @@ export const m = {
     speciesInfo: () => t("pokeflux-pokemon", "species_info", "Species info"),
     /** Learnset */
     speciesLearnset: () => t("pokeflux-pokemon", "species_learnset", "Learnset"),
-    /** We know which moves it can learn, but not at what level or how. */
-    speciesLearnsetHint: () => t("pokeflux-pokemon", "species_learnset_hint", "We know which moves it can learn, but not at what level or how."),
+    /** Levels and methods are not listed. */
+    speciesLearnsetHint: () => t("pokeflux-pokemon", "species_learnset_hint", "Levels and methods are not listed."),
     /** {percent}% male */
     speciesMalePercent: (p: { percent: P }) => t("pokeflux-pokemon", "species_male_percent", "{percent}% male", p),
     /** Mega */
     speciesMega: () => t("pokeflux-pokemon", "species_mega", "Mega"),
     /** The game data lists no moves for this form. */
     speciesNoMoves: () => t("pokeflux-pokemon", "species_no_moves", "The game data lists no moves for this form."),
-    /** Normal */
-    speciesNormal: () => t("pokeflux-pokemon", "species_normal", "Normal"),
     /** Species not found */
     speciesNotFound: () => t("pokeflux-pokemon", "species_not_found", "Species not found"),
     /** Show your shiny {name} */
@@ -2097,8 +1971,6 @@ export const m = {
     speciesWeightValue: (p: { kg: P }) => t("pokeflux-pokemon", "species_weight_value", "{kg} kg", p),
     /** Your collection */
     speciesYourCollection: () => t("pokeflux-pokemon", "species_your_collection", "Your collection"),
-    /** Stats */
-    statsTitle: () => t("pokeflux-pokemon", "stats_title", "Stats"),
     /** #{number} · {rest} */
     subtitleNumber: (p: { number: P; rest: P }) => t("pokeflux-pokemon", "subtitle_number", "#{number} · {rest}", p),
     /** {name} · {rest} */

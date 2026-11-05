@@ -97,11 +97,11 @@ A market listing in a modal with Buy or Remove. Loads the listing each time it o
             <dd class="font-semibold tabular-nums" style="color: {ivColor(pokemon.ivPercent)};">{pokemon.ivPercent.toFixed(2)}%</dd>
           </div>
           <div>
-            <dt style="color: {$colorStore.muted};">{m.pokefluxMarket.nature()}</dt>
+            <dt style="color: {$colorStore.muted};">{m.common.nature()}</dt>
             <dd class="font-semibold" style="color: {$colorStore.text};">{detail ? humanize(detail.nature) : "…"}</dd>
           </div>
           <div>
-            <dt style="color: {$colorStore.muted};">{m.pokefluxMarket.ability()}</dt>
+            <dt style="color: {$colorStore.muted};">{m.common.ability()}</dt>
             <dd class="font-semibold" style="color: {$colorStore.text};">{detail ? humanize(detail.ability) : "…"}</dd>
           </div>
           <div>
@@ -110,7 +110,7 @@ A market listing in a modal with Buy or Remove. Loads the listing each time it o
           </div>
           {#if pokemon.heldItem}
             <div class="col-span-2">
-              <dt style="color: {$colorStore.muted};">{m.pokefluxMarket.heldItemLabel()}</dt>
+              <dt style="color: {$colorStore.muted};">{m.common.heldItem()}</dt>
               <dd class="font-semibold" style="color: {$colorStore.text};">{humanize(pokemon.heldItem)}</dd>
             </div>
           {/if}
@@ -131,11 +131,11 @@ A market listing in a modal with Buy or Remove. Loads the listing each time it o
           <AsyncState loading children={nothing} />
         {:else}
           <section class="rounded-xl p-3" style="background: {$colorStore.primary}10;">
-            <h3 class="text-sm font-semibold mb-2" style="color: {$colorStore.text};">{m.pokefluxMarket.statsTitle()}</h3>
+            <h3 class="text-sm font-semibold mb-2" style="color: {$colorStore.text};">{m.common.stats()}</h3>
             <StatBars ivs={detail.ivs} evs={detail.evs} stats={detail.stats} bind:view={statView} />
           </section>
           <section class="rounded-xl p-3" style="background: {$colorStore.primary}10;">
-            <h3 class="text-sm font-semibold mb-2" style="color: {$colorStore.text};">{m.pokefluxMarket.moves()}</h3>
+            <h3 class="text-sm font-semibold mb-2" style="color: {$colorStore.text};">{m.common.moves()}</h3>
             {#if detail.moves.some((move) => move)}
               <ul class="grid sm:grid-cols-2 gap-2">
                 {#each detail.moves as move, i (i)}

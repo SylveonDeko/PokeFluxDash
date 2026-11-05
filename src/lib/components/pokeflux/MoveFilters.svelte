@@ -27,7 +27,7 @@ The search box and type, category and sort menus for a {@link MoveFilter}.
         customIcon="fa-tag"
         options={[{ id: "all", name: m.pokefluxPokemon.allTypes() }, ...filter.types.map((t) => ({ id: t, name: typeLabel(t) }))]}
         selected={filter.type}
-        ariaLabel={m.pokefluxPokemon.learnType()}
+        ariaLabel={m.common.type()}
         onchange={({ selected }) => selected && (filter.type = selected as string)}
       />
     </div>

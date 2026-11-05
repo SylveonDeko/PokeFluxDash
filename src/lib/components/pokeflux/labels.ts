@@ -20,20 +20,20 @@ export const GENDER_FILTERS: GenderFilter[] = ["all", "male", "female", "genderl
 
 export const SORT_LABELS: Record<PokemonSort, () => string> = {
   default: m.pokeflux.sortDefault,
-  iv: m.pokeflux.sortIv,
+  iv: m.common.iv,
   level: m.pokeflux.sortLevel,
   name: m.pokeflux.sortName,
   recent: m.pokeflux.sortRecent,
-  type: m.pokeflux.sortType,
+  type: m.common.type,
   favorite: m.pokeflux.sortFavorite,
   party: m.pokeflux.sortParty,
   champion: m.pokeflux.sortChampion,
 };
 
 export const FILTER_LABELS: Record<PokemonFilter, () => string> = {
-  all: m.pokeflux.filterAll,
-  shiny: m.dashboard.shiny,
-  radiant: m.dashboard.radiant,
+  all: m.common.allPokemon,
+  shiny: m.common.shiny,
+  radiant: m.common.radiant,
   shadow: m.dashboard.shadow,
   legendary: m.dashboard.legendary,
   favorite: m.pokeflux.filterFavorite,

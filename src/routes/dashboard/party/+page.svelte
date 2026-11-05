@@ -257,10 +257,10 @@
             {@const slot = (index + 1) as PartySlot}
             <li class="relative flex flex-col gap-1.5 min-w-0">
               <div class="flex items-center justify-between text-xs px-1 min-h-6">
-                <span class="font-semibold uppercase tracking-wide" style="color: {$colorStore.muted};">{m.pokefluxCollection.slotLabel({ slot })}</span>
+                <span class="font-semibold" style="color: {$colorStore.muted};">{m.common.slotLabel({ slot })}</span>
                 {#if pokemon?.selected}
                   <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-medium" style="background: {$colorStore.primary}20; color: {$colorStore.primary};">
-                    <i class="fa-solid fa-star text-[10px]" aria-hidden="true"></i>{m.pokefluxCollection.selected()}
+                    <i class="fa-solid fa-star text-[10px]" aria-hidden="true"></i>{m.common.selected()}
                   </span>
                 {/if}
               </div>
@@ -277,7 +277,7 @@
                     <button type="button" class={iconButton} style={softButtonStyle} disabled={busy || moving !== null} aria-label={m.pokefluxCollection.moveSlot({ slot })} title={m.pokefluxCollection.move()} onclick={() => (moving = index)}>
                       <i class="fa-solid fa-arrows-up-down-left-right" aria-hidden="true"></i>
                     </button>
-                    <button type="button" class={iconButton} style={dangerButtonStyle} disabled={busy || moving !== null} aria-label={m.pokefluxCollection.clearSlot({ slot })} title={m.pokefluxCollection.clear()} onclick={() => clearSlot(slot)}>
+                    <button type="button" class={iconButton} style={dangerButtonStyle} disabled={busy || moving !== null} aria-label={m.pokefluxCollection.clearSlot({ slot })} title={m.common.clear()} onclick={() => clearSlot(slot)}>
                       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                     </button>
                   </div>
@@ -292,8 +292,8 @@
                 {:else}
                   <button
                     type="button"
-                    class="absolute inset-x-0 bottom-0 top-7 rounded-xl flex flex-col items-center justify-center gap-1 text-sm font-medium backdrop-blur-[2px] transition-all disabled:opacity-50"
-                    style="background: {$colorStore.background}b3; color: {$colorStore.primary}; border: 1px solid {$colorStore.primary}30;"
+                    class="absolute inset-x-0 bottom-0 top-7 rounded-xl flex flex-col items-center justify-center gap-1 text-sm font-medium transition-all disabled:opacity-50"
+                    style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background}); color: {$colorStore.primary}; border: 1px solid {$colorStore.primary}30;"
                     disabled={busy}
                     onclick={() => moveTo(index, party.slots)}
                   >
@@ -371,7 +371,7 @@
           {#if party.saved.length}
           <div class="min-w-0" aria-live="polite">
             {#if !savedName || !party.saved.includes(savedName)}
-              <EmptyState title={m.pokefluxCollection.pickSavedTitle()} message={m.pokefluxCollection.pickSavedHint()} icon="fa-solid fa-users-viewfinder" compact />
+              <EmptyState title={m.pokefluxCollection.pickSavedTitle()} icon="fa-solid fa-users-viewfinder" compact />
             {:else if savedError}
               <EmptyState title={m.pokefluxCollection.savedLoadError()} message={savedError} icon="fa-solid fa-circle-exclamation">
                 <button type="button" class={textButton} style={primaryButtonStyle} onclick={() => savedName && loadSaved(savedName)}>
@@ -419,7 +419,7 @@
                           <i class="fa-solid {pokemon ? 'fa-right-left' : 'fa-plus'}" aria-hidden="true"></i>
                         </button>
                         {#if pokemon}
-                          <button type="button" class="{iconButton} flex-1" style={dangerButtonStyle} disabled={busy} aria-label={m.pokefluxCollection.clearSlot({ slot })} title={m.pokefluxCollection.clear()} onclick={() => clearSavedSlot(slot)}>
+                          <button type="button" class="{iconButton} flex-1" style={dangerButtonStyle} disabled={busy} aria-label={m.pokefluxCollection.clearSlot({ slot })} title={m.common.clear()} onclick={() => clearSavedSlot(slot)}>
                             <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                           </button>
                         {/if}

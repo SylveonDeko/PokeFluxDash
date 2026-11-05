@@ -101,7 +101,7 @@ Picks a move slot and a move from the Pokémon's learnset, then teaches it.
             style={chipStyle($colorStore, active)}
           >
             <input type="radio" class="sr-only" name="learn-slot" {value} checked={active} onchange={() => (slot = value)} />
-            <span class="block text-xs" style="color: {active ? $colorStore.primary : $colorStore.muted};">{m.pokefluxPokemon.slotNumber({ slot: value })}</span>
+            <span class="block text-xs" style="color: {active ? $colorStore.primary : $colorStore.muted};">{m.common.slotLabel({ slot: value })}</span>
             <span class="block text-sm font-medium truncate" style="color: {active ? $colorStore.primary : $colorStore.text};">
               {move ? humanize(move.name) : m.pokeflux.emptyMoveSlot()}
             </span>

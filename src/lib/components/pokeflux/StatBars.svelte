@@ -49,7 +49,7 @@ Horizontal bars for the six stats, with a switch between the stat blocks passed 
         ["ivs", m.pokeflux.viewIvs(), ivs],
         ["evs", m.pokeflux.viewEvs(), evs],
         ["base", m.pokeflux.viewBase(), baseStats],
-        ["stats", m.pokeflux.viewStats(), stats],
+        ["stats", m.common.stats(), stats],
       ] as const
     ).flatMap(([id, label, block]) => (block ? [{ id: id as StatView, label, block }] : [])),
   );
@@ -111,7 +111,7 @@ Horizontal bars for the six stats, with a switch between the stat blocks passed 
             aria-checked={active}
             tabindex={active ? 0 : -1}
             class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 hover:scale-[1.02] min-h-[32px] outline-none focus-visible:ring-2"
-            style="background: {active ? `${$colorStore.primary}25` : 'transparent'}; color: {active ? $colorStore.text : $colorStore.muted}; border: 1px solid {active ? `${$colorStore.primary}30` : 'transparent'}; --tw-ring-color: {$colorStore.primary};"
+            style="background: {active ? $colorStore.selectedSurface : 'transparent'}; color: {active ? $colorStore.text : $colorStore.muted}; border: 1px solid {active ? $colorStore.selectedBorder : 'transparent'}; --tw-ring-color: {$colorStore.primary};"
             onclick={() => choose(v.id)}
           >
             {v.label}

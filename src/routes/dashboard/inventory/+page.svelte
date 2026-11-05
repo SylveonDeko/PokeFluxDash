@@ -39,7 +39,7 @@
   <div class="columns-1 md:columns-2 xl:columns-3 2xl:columns-4 gap-x-4">
     {#each groups as { group, items } (group.key)}
       <section aria-labelledby="group-{group.key}" class="space-y-1.5 break-inside-avoid mb-3">
-        <h3 id="group-{group.key}" class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide pt-1" style="color: {$colorStore.muted}">
+        <h3 id="group-{group.key}" class="flex items-center gap-2 text-sm font-semibold pt-1" style="color: {$colorStore.muted}">
           <i class={group.icon} aria-hidden="true"></i>{group.label()}
           <span class="normal-case font-normal">{items.length}</span>
         </h3>
@@ -84,11 +84,11 @@
               <div class="md:w-44"><StatTile label={stat.label} value={stat.value} tint={stat.tint} /></div>
             {/each}
           </div>
-          <SearchInput class="flex-1" bind:value={search} placeholder={m.pokefluxCollection.searchItems()} />
+          <SearchInput class="flex-1" bind:value={search} placeholder={m.common.searchItems()} />
         </div>
         {#if presentGroups.length > 1}
           <div class="flex flex-wrap gap-1.5" role="group" aria-label={m.pokefluxCollection.itemGroups()}>
-            {#each [{ key: "all" as const, label: m.pokefluxCollection.allItems, icon: "fa-solid fa-border-all" }, ...presentGroups] as chip (chip.key)}
+            {#each [{ key: "all" as const, label: m.common.all, icon: "fa-solid fa-border-all" }, ...presentGroups] as chip (chip.key)}
               {@const active = activeGroup === chip.key}
               <button
                 type="button"
@@ -124,7 +124,7 @@
             {/if}
           </Panel>
 
-        <Panel icon="fa-solid fa-hand-holding" title={m.dashboard.heldItems()} subtitle={m.pokefluxCollection.heldItemsHint()}>
+        <Panel icon="fa-solid fa-hand-holding" title={m.dashboard.heldItems()}>
           {#if inventory.heldItems.length === 0}
             <EmptyState title={m.pokefluxCollection.noHeldItems()} icon="fa-solid fa-hand-holding" compact />
           {:else if held.length === 0}

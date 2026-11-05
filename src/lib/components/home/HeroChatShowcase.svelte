@@ -9,7 +9,7 @@
   const scenes = [
     { label: m.home.pillCatching, scene: catchScene },
     { label: m.home.pillDuels, scene: duelScene() },
-    { label: m.home.pillBreeding, scene: hatchScene },
+    { label: m.common.breeding, scene: hatchScene },
     { label: m.home.pillProgress, scene: missionsScene },
   ];
 
@@ -66,7 +66,7 @@
       <button
         type="button"
         class="px-3 py-1 rounded-full text-xs font-semibold transition-colors"
-        style="background: {active ? `${$colorStore.primary}25` : `${$colorStore.primary}08`}; color: {active ? $colorStore.primary : $colorStore.muted}; border: 1px solid {active ? `${$colorStore.primary}40` : `${$colorStore.primary}15`};"
+        style="background: {active ? $colorStore.selectedSurface : `${$colorStore.primary}08`}; color: {active ? $colorStore.text : $colorStore.muted}; border: 1px solid {active ? $colorStore.selectedBorder : `${$colorStore.primary}15`};"
         aria-pressed={active}
         onclick={() => show(i)}
       >

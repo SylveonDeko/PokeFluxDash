@@ -1,6 +1,7 @@
 <!-- routes/terms/+page.svelte -->
 <script>
   import { m } from "$lib/i18n";
+  import { colorStore } from "$lib/stores/colorStore";
   import { SITE_URL } from "$lib/config/site";
   let date = "3rd November 2026";
   let email = "sylveon@mewdeko.tech";
@@ -15,10 +16,8 @@
   <link href="{SITE_URL}/terms" rel="canonical" />
 </svelte:head>
 
-<div
-        class="min-h-[calc(105vh-5.5rem)] w-screen bg-pf-light-grey p-6 rounded-sm shadow-md flex justify-center items-center text-white"
->
-  <div class="space-y-5 text-center">
+<div class="min-h-[calc(100vh-5.5rem)] w-full px-4 py-12 flex justify-center" style="color: {$colorStore.text};">
+  <div class="space-y-5 w-full max-w-3xl">
     <h1 class="text-3xl font-semibold">{m.legal.termsTitle()}</h1>
 
     <p>{m.legal.termsByUsing()}</p>
@@ -38,8 +37,8 @@
     <h2 class="text-2xl font-semibold">{m.legal.termsFairPlay()}</h2>
 
     <p>{m.legal.termsFairPlayIntro()}</p>
-    <div class="flex justify-center">
-      <ul class="list-disc text-left">
+    <div>
+      <ul class="list-disc pl-6 space-y-1">
         <li>{m.legal.termsFairPlayAutomation()}</li>
         <li>{m.legal.termsFairPlayAlts()}</li>
         <li>{m.legal.termsFairPlayBugs()}</li>

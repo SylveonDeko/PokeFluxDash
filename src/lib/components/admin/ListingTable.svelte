@@ -22,7 +22,7 @@ Market listings as staff see them, with a remove button on active listings when 
 
   const columns = $derived([
     m.pokefluxMarket.listingTitle(),
-    m.features.pokemon(),
+    m.common.pokemon(),
     m.pokefluxMarket.price(),
     m.admin.colStatus(),
     m.pokefluxMarket.seller(),

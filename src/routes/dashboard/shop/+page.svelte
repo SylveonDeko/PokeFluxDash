@@ -21,7 +21,7 @@
 
   const CATEGORY_LABELS: Record<ShopCategory, { label: () => string; icon: string }> = {
     general: { label: m.pokefluxMarket.shopGeneral, icon: "fa-bag-shopping" },
-    radiant: { label: m.dashboard.radiant, icon: "fa-sun" },
+    radiant: { label: m.common.radiant, icon: "fa-sun" },
     crystal: { label: m.pokefluxMarket.shopCrystal, icon: "fa-gem" },
   };
 
@@ -58,8 +58,8 @@
     const crystal = shop.items.some((item) => item.currency === "crystal-slime");
     const credits = chests || shop.items.some((item) => item.currency !== "crystal-slime") || !crystal;
     return [
-      credits && { label: m.dashboard.credits(), value: shop.credits, tint: $colorStore.primary },
-      chests && { label: m.dashboard.redeems(), value: shop.redeems, tint: $colorStore.secondary },
+      credits && { label: m.common.credits(), value: shop.credits, tint: $colorStore.primary },
+      chests && { label: m.common.redeems(), value: shop.redeems, tint: $colorStore.secondary },
       crystal && { label: m.pokefluxMarket.crystalSlime(), value: shop.crystalSlime ?? 0, tint: $colorStore.accent },
     ].filter((balance) => !!balance);
   }
@@ -221,7 +221,7 @@
               <div class="md:w-40"><StatTile label={balance.label} value={balance.value} tint={balance.tint} /></div>
             {/each}
           </div>
-          <SearchInput class="flex-1" bind:value={search} placeholder={m.pokefluxMarket.shopSearch()} />
+          <SearchInput class="flex-1" bind:value={search} placeholder={m.common.searchItems()} />
         </div>
 
         <AsyncState {loading}>
@@ -278,11 +278,11 @@
                     class="px-3 py-1.5 rounded-xl text-sm font-medium transition-all hover:scale-[1.02] min-h-[36px] disabled:cursor-not-allowed disabled:hover:scale-100"
                     style={buttonStyle($colorStore)}
                     disabled={blocked}
-                    title={soldOut ? m.pokefluxMarket.soldOut() : !item.affordable ? m.pokefluxMarket.notEnough() : !shop.meetsRequirement ? m.pokefluxMarket.locked() : undefined}
+                    title={soldOut ? m.pokefluxMarket.soldOut() : !item.affordable ? m.pokefluxMarket.notEnough() : !shop.meetsRequirement ? m.common.locked() : undefined}
                     aria-label={m.pokefluxMarket.buyNamed({ name: itemName(item) })}
                     onclick={() => askBuy(item)}
                   >
-                    {soldOut ? m.pokefluxMarket.soldOut() : !item.affordable ? m.pokefluxMarket.notEnough() : !shop.meetsRequirement ? m.pokefluxMarket.locked() : m.pokefluxMarket.buy()}
+                    {soldOut ? m.pokefluxMarket.soldOut() : !item.affordable ? m.pokefluxMarket.notEnough() : !shop.meetsRequirement ? m.common.locked() : m.pokefluxMarket.buy()}
                   </button>
                 </div>
               </li>

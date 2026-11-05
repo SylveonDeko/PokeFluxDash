@@ -47,7 +47,7 @@
   const selectedPalette = $derived(paletteFor($spritePalettes, selectedSprite));
   const selectedCard = $derived(
     selectedPalette
-      ? `background: linear-gradient(135deg, ${selectedPalette.primary}14, ${selectedPalette.secondary}0a); border-color: ${selectedPalette.primary}30;`
+      ? `background: ${selectedPalette.primary}10; border-color: ${selectedPalette.primary}30;`
       : card,
   );
 </script>
@@ -68,16 +68,15 @@
 
     {#snippet children(profile)}
       <section
-        class="rounded-2xl p-4 md:p-5 transition-all hover:shadow-lg hover:translate-y-[-2px] border"
+        class="rounded-2xl p-4 md:p-5 border"
         style={card}
         aria-labelledby="trainer-card-title"
       >
         <div class="flex items-center gap-3 mb-4">
           <img src={avatar} alt="" class="w-11 h-11 rounded-xl border-2 shrink-0" style="border-color: {$colorStore.primary}30;" />
           <div class="min-w-0 flex-1">
-            <p class="text-xs" style="color: {$colorStore.muted};">{m.pokefluxCollection.trainerCard()}</p>
             <h2 id="trainer-card-title" class="text-lg font-bold truncate leading-tight" style="color: {$colorStore.text};">
-              {profile.trainerNickname || userName || m.pokefluxCollection.unnamedTrainer()}
+              {profile.trainerNickname || userName || m.common.trainer()}
             </h2>
             {#if profile.trainerNickname && userName}
               <p class="text-sm truncate" style="color: {$colorStore.muted};">{userName}</p>
@@ -95,8 +94,8 @@
         <div class="space-y-3">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 items-stretch">
             <div class="grid grid-cols-2 gap-3">
-              <StatTile label={m.dashboard.credits()} value={profile.credits} />
-              <StatTile label={m.dashboard.redeems()} value={profile.redeems} tint={$colorStore.secondary} />
+              <StatTile label={m.common.credits()} value={profile.credits} />
+              <StatTile label={m.common.redeems()} value={profile.redeems} tint={$colorStore.secondary} />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 content-center rounded-xl px-3 py-2.5" style="background: {$colorStore.primary}10;">
@@ -140,8 +139,8 @@
         </div>
       </section>
 
-      <section class="rounded-2xl p-4 md:p-5 transition-all hover:shadow-lg hover:translate-y-[-2px] border" style={selectedCard} aria-label={m.pokefluxCollection.selectedPokemon()}>
-        <SectionHeader icon="fa-arrow-pointer" title={m.pokefluxCollection.selectedPokemon()} />
+      <section class="rounded-2xl p-4 md:p-5 border" style={selectedCard} aria-label={m.common.selectedPokemon()}>
+        <SectionHeader icon="fa-arrow-pointer" title={m.common.selectedPokemon()} />
         {#await data.selected}
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 animate-pulse motion-reduce:animate-none" role="status" aria-busy="true">
             <span class="sr-only">{m.pokeflux.loading()}</span>
@@ -155,7 +154,7 @@
           </div>
         {:then selected}
           {#if !selected || (!selected.ok && selected.status === 404)}
-            <EmptyState title={m.pokefluxCollection.noSelected()} message={m.pokefluxCollection.noSelectedHint()} icon="fa-solid fa-hand-pointer" compact>
+            <EmptyState title={m.pokefluxCollection.noSelected()} icon="fa-solid fa-hand-pointer" compact>
               <a
                 href="/dashboard/pokemon"
                 class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all hover:scale-[1.02] min-h-[40px]"
@@ -188,19 +187,19 @@
                   <div>
                     <dl class="grid grid-cols-2 gap-2 mb-3 text-sm">
                       <div class="px-3 py-2 rounded-lg" style="background: {$colorStore.primary}10;">
-                        <dt style="color: {$colorStore.muted};">{m.pokefluxCollection.iv()}</dt>
+                        <dt style="color: {$colorStore.muted};">{m.common.iv()}</dt>
                         <dd class="font-medium tabular-nums" style="color: {ivColor(iv)};">{iv.toFixed(2)}%</dd>
                       </div>
                       <div class="px-3 py-2 rounded-lg" style="background: {$colorStore.primary}10;">
-                        <dt style="color: {$colorStore.muted};">{m.pokefluxCollection.nature()}</dt>
+                        <dt style="color: {$colorStore.muted};">{m.common.nature()}</dt>
                         <dd class="font-medium truncate" style="color: {$colorStore.text};">{humanize(pokemon.nature)}</dd>
                       </div>
                       <div class="px-3 py-2 rounded-lg" style="background: {$colorStore.primary}10;">
-                        <dt style="color: {$colorStore.muted};">{m.pokefluxCollection.ability()}</dt>
+                        <dt style="color: {$colorStore.muted};">{m.common.ability()}</dt>
                         <dd class="font-medium truncate" style="color: {$colorStore.text};">{humanize(pokemon.ability)}</dd>
                       </div>
                       <div class="px-3 py-2 rounded-lg" style="background: {$colorStore.primary}10;">
-                        <dt style="color: {$colorStore.muted};">{m.pokefluxCollection.heldItem()}</dt>
+                        <dt style="color: {$colorStore.muted};">{m.common.heldItem()}</dt>
                         <dd class="font-medium truncate" style="color: {$colorStore.text};">{pokemon.heldItem ? humanize(pokemon.heldItem) : m.common.none()}</dd>
                       </div>
                     </dl>
@@ -217,7 +216,7 @@
                       class="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl text-sm font-medium transition-all hover:scale-[1.02] min-h-[40px]"
                       style={buttonStyle($colorStore)}
                     >
-                      {m.pokefluxCollection.viewDetails()}<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                      {m.pokefluxCollection.viewDetails()}
                     </a>
                   </div>
 
@@ -229,8 +228,8 @@
         {/await}
       </section>
 
-      <section class="rounded-2xl p-4 md:p-5 transition-all hover:shadow-lg hover:translate-y-[-2px] border" style={card} aria-label={m.dashboard.collectionTitle()}>
-        <SectionHeader icon="fa-paw" title={m.dashboard.collectionTitle()} />
+      <section class="rounded-2xl p-4 md:p-5 border" style={card} aria-label={m.common.collection()}>
+        <SectionHeader icon="fa-paw" title={m.common.collection()} />
         <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {#each COUNTS as count, index (count.key)}
             <li>

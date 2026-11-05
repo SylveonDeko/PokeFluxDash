@@ -12,7 +12,7 @@ removable chips; ids the server no longer has are flagged so they can be removed
   interface Props {
     id: string;
     label: string;
-    description: string;
+    description?: string;
     groups: ChannelGroup[];
     selected: string[];
     disabled?: boolean;
@@ -42,9 +42,11 @@ removable chips; ids the server no longer has are flagged so they can be removed
   }
 </script>
 
-<fieldset class="min-w-0" {disabled} aria-describedby="{id}-hint">
+<fieldset class="min-w-0" {disabled} aria-describedby={description ? `${id}-hint` : undefined}>
   <legend class="block text-sm font-medium mb-1" style="color: {$colorStore.text};">{label}</legend>
-  <p id="{id}-hint" class="text-xs mb-2" style="color: {$colorStore.muted};">{description}</p>
+  {#if description}
+    <p id="{id}-hint" class="text-xs mb-2" style="color: {$colorStore.muted};">{description}</p>
+  {/if}
 
   {#if selected.length}
     <ul class="flex flex-wrap gap-1.5 mb-2" aria-label={m.pokefluxMarket.selectedChannels()}>
@@ -98,7 +100,7 @@ removable chips; ids the server no longer has are flagged so they can be removed
           {@const all = group.channels.every((c) => selectedSet.has(c.id))}
           <div role="group" aria-labelledby="{id}-group-{group.id}">
             <div class="flex items-center justify-between gap-2 mb-1">
-              <span id="{id}-group-{group.id}" class="text-[11px] font-semibold uppercase tracking-wide" style="color: {$colorStore.muted};">{group.label}</span>
+              <span id="{id}-group-{group.id}" class="text-xs font-semibold" style="color: {$colorStore.muted};">{group.label}</span>
               {#if !query}
                 <button
                   type="button"

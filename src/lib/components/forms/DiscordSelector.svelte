@@ -58,21 +58,6 @@
   let containerRef: HTMLDivElement | undefined = $state();
   let focusedIndex = $state(-1);
   let dropdownId = `dropdown-${Math.random().toString(36).substring(2, 9)}`;
-  let buttonMousePositions = $state<{ [key: string]: { x: number, y: number } }>({});
-
-  function handleButtonMouseMove(e: MouseEvent, buttonId: string) {
-    const target = e.currentTarget as HTMLElement;
-    const rect = target.getBoundingClientRect();
-    buttonMousePositions[buttonId] = {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    };
-  }
-
-  function handleButtonMouseLeave(buttonId: string) {
-    delete buttonMousePositions[buttonId];
-  }
-
 
 
 
@@ -154,7 +139,7 @@
       searchTerm = "";
 
       setTimeout(() => {
-        if (searchable && searchInputRef) {
+        if (searchable && searchInputRef && window.matchMedia("(pointer: fine)").matches) {
           searchInputRef.focus();
         }
       }, 0);
@@ -350,9 +335,7 @@
   <button aria-label={ariaLabelledby ? undefined : (ariaLabel ?? placeholder)}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
-          class="group w-full px-3 h-[38px] rounded-xl border text-sm transition-all duration-200 text-left flex items-center backdrop-blur-md relative overflow-hidden"
-          onmouseleave={() => handleButtonMouseLeave('selector-main')}
-          onmousemove={(e) => handleButtonMouseMove(e, 'selector-main')}
+          class="group w-full px-3 h-[38px] rounded-xl border text-sm transition-all duration-200 text-left flex items-center relative overflow-hidden"
     class:cursor-not-allowed={disabled}
     class:opacity-50={disabled}
     {disabled}
@@ -363,19 +346,6 @@
            min-height: 38px;"
     type="button"
   >
-    <!-- Mouse spotlight -->
-    {#if buttonMousePositions['selector-main']}
-      <div
-        class="pointer-events-none absolute w-32 h-32 rounded-full opacity-30 transition-all duration-100 ease-out"
-        style="background: radial-gradient(circle at center, {$colorStore.primary}60, transparent 70%);
-               left: {buttonMousePositions['selector-main'].x}px;
-               top: {buttonMousePositions['selector-main'].y}px;
-               transform: translate(-50%, -50%);
-               filter: blur(20px);"
-      ></div>
-    {/if}
-
-    <!-- Hover gradient overlay -->
     <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
          style="background: {$colorStore.primary}12;"></div>
 
@@ -459,11 +429,9 @@
     <div
       bind:this={dropdownRef}
       id={dropdownId}
-      class="absolute left-0 right-0 mt-1 rounded-lg flex flex-col shadow-2xl border backdrop-blur-md z-[9999] overflow-hidden"
-      style="background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.8)), linear-gradient(135deg, {$colorStore.gradientStart}25, {$colorStore.gradientMid}30, {$colorStore.gradientEnd}25);
+      class="absolute left-0 right-0 mt-1 rounded-lg flex flex-col border z-[9999] overflow-hidden"
+      style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background});
              border-color: {$colorStore.primary}50;
-             box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 0 0 1px {$colorStore.primary}20;
-             max-height: min(16rem, 60vh);
              transform-origin: top;"
       role="listbox"
       aria-multiselectable={multiple}
@@ -490,7 +458,8 @@
       {/if}
 
       <!-- Options list -->
-      <div class="flex-1 overflow-y-auto overflow-x-hidden">
+      <div class="overflow-y-auto overflow-x-hidden overscroll-contain touch-pan-y"
+           style="max-height: {searchable ? 'min(13rem, 45vh)' : 'min(16rem, 60vh)'}; -webkit-overflow-scrolling: touch;">
         {#if filteredOptions.length === 0}
           <div class="px-4 py-3 text-center" style="color: {$colorStore.muted}">
             {searchTerm ? m.widgets.selectorNoMatches() : m.widgets.selectorNoOptions()}
@@ -504,34 +473,19 @@
 
             <button
               type="button"
-              onmousemove={(e) => handleButtonMouseMove(e, `option-${option.id}`)}
-              onmouseleave={() => handleButtonMouseLeave(`option-${option.id}`)}
               class="option-item w-full px-3 py-2 text-sm text-left transition-all duration-200 ease-in-out flex items-center gap-3 border border-transparent rounded-md relative group"
               class:font-medium={isSelected}
               style="color: {$colorStore.text};
-                     background: {isFocused
-                       ? `linear-gradient(135deg, ${$colorStore.primary}25, ${$colorStore.secondary}25)`
-                       : isSelected
-                         ? `linear-gradient(135deg, ${$colorStore.primary}40, ${$colorStore.secondary}40)`
+                     background: {isSelected
+                       ? $colorStore.selectedSurface
+                       : isFocused
+                         ? `${$colorStore.primary}25`
                          : 'transparent'};
-                     border-color: {isSelected ? $colorStore.primary + '50' : 'transparent'};"
+                     border-color: {isSelected ? $colorStore.selectedBorder : 'transparent'};"
               onclick={() => selectOption(option.id)}
               role="option"
               aria-selected={isSelected}
             >
-              <!-- Mouse spotlight -->
-              {#if buttonMousePositions[`option-${option.id}`]}
-                <div
-                  class="pointer-events-none absolute w-24 h-24 rounded-full opacity-25 transition-all duration-100 ease-out"
-                  style="background: radial-gradient(circle at center, {$colorStore.primary}50, transparent 70%);
-                         left: {buttonMousePositions[`option-${option.id}`].x}px;
-                         top: {buttonMousePositions[`option-${option.id}`].y}px;
-                         transform: translate(-50%, -50%);
-                         filter: blur(15px);"
-                ></div>
-              {/if}
-
-              <!-- Hover gradient overlay -->
               <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                    style="background: {$colorStore.primary}12;"></div>
 
@@ -560,7 +514,7 @@
               {#if isSelected}
                 <div
                   class="w-2 h-2 rounded-full shrink-0 relative z-10"
-                  style="background: {$colorStore.primary}"
+                  style="background: {$colorStore.primary}; color: {$colorStore.onPrimary}"
                 ></div>
               {/if}
             </button>

@@ -17,7 +17,7 @@ Skeleton cards shaped like PokemonCard, for lists that are loading.
   let { count = 12, size = "regular", gridClass }: Props = $props();
 
   let compact = $derived(size === "compact");
-  let bone = $derived(`background: linear-gradient(135deg, ${$colorStore.primary}20, ${$colorStore.secondary}20); opacity: 0.3;`);
+  let bone = $derived(`background: ${$colorStore.primary}20; opacity: 0.3;`);
 </script>
 
 <div class={gridClass ?? POKEMON_GRID[size]} role="status" aria-busy="true" aria-live="polite">
@@ -25,7 +25,7 @@ Skeleton cards shaped like PokemonCard, for lists that are loading.
   {#each { length: count }, i (i)}
     <div
       class="rounded-xl border animate-pulse motion-reduce:animate-none {compact ? 'p-2 flex items-center gap-2' : 'p-2.5 flex flex-col items-center gap-2'}"
-      style="background: linear-gradient(135deg, {$colorStore.gradientStart}05, {$colorStore.gradientMid}08); border-color: {$colorStore.primary}15; animation-delay: {(i % 6) * 80}ms;"
+      style="background: {$colorStore.primary}05; border-color: {$colorStore.primary}15; animation-delay: {(i % 6) * 80}ms;"
       aria-hidden="true"
     >
       {#if compact}

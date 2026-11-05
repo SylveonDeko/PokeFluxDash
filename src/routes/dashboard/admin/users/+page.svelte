@@ -39,7 +39,7 @@
   </Panel>
 
   {#if !data.results}
-    <EmptyState title={m.admin.userPrompt()} message={m.admin.userPromptHint()} icon="fa-solid fa-circle-user" />
+    <EmptyState title={m.admin.userPrompt()} icon="fa-solid fa-circle-user" />
   {:else}
     <StaffState response={data.results}>
       {#snippet children(users)}

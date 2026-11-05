@@ -19,7 +19,7 @@ export interface DashboardSection {
 /** The dashboard sections, in sidebar order. */
 export const dashboardSections: DashboardSection[] = [
   { href: "/dashboard", label: m.features.overview, icon: "fa-utility-duo fa-regular fa-id-card" },
-  { href: "/dashboard/pokemon", label: m.features.pokemon, icon: "fa-utility-duo fa-regular fa-paw" },
+  { href: "/dashboard/pokemon", label: m.common.pokemon, icon: "fa-utility-duo fa-regular fa-paw" },
   { href: "/dashboard/pokedex", label: m.features.pokedex, icon: "fa-utility-duo fa-regular fa-book-open" },
   { href: "/dashboard/party", label: m.features.party, icon: "fa-utility-duo fa-regular fa-users" },
   { href: "/dashboard/hatchery", label: m.features.hatchery, icon: "fa-utility-duo fa-regular fa-heart" },

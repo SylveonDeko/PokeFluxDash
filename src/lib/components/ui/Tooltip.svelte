@@ -158,9 +158,9 @@
       bind:this={tooltipElement}
       id={tooltipId}
       role="tooltip"
-      class="absolute z-[100] px-3 py-2 text-xs rounded-lg shadow-lg pointer-events-none backdrop-blur-md {placementClasses[placement]}"
+      class="absolute z-[100] px-3 py-2 text-xs rounded-lg shadow-lg pointer-events-none {placementClasses[placement]}"
       style="max-width: 24rem;
-             background: {$colorStore.background}f5;
+             background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background});
              color: {$colorStore.text};
              border: 1px solid {$colorStore.primary}25;"
       transition:fade={{ duration: 150 }}

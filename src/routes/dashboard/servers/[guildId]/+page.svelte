@@ -39,12 +39,12 @@
     pin: m.pokefluxMarket.pinSpawns,
   };
   const FIELD_ORDER = Object.keys(FIELD_LABELS) as (keyof SpawnSettings)[];
-  const FLAG_TOGGLES: { key: FlagKey; label: () => string; hint: () => string }[] = [
-    { key: "enableSpawnsAll", label: m.dashboard.spawnsEverywhere, hint: m.pokefluxMarket.spawnsEverywhereHint },
-    { key: "smallImages", label: m.pokefluxMarket.smallImages, hint: m.pokefluxMarket.smallImagesHint },
-    { key: "modalView", label: m.pokefluxMarket.buttonMode, hint: m.pokefluxMarket.buttonModeHint },
-    { key: "delete", label: m.pokefluxMarket.deleteSpawns, hint: m.pokefluxMarket.deleteSpawnsHint },
-    { key: "pin", label: m.pokefluxMarket.pinSpawns, hint: m.pokefluxMarket.pinSpawnsHint },
+  const FLAG_TOGGLES: { key: FlagKey; label: () => string }[] = [
+    { key: "enableSpawnsAll", label: m.dashboard.spawnsEverywhere },
+    { key: "smallImages", label: m.pokefluxMarket.smallImages },
+    { key: "modalView", label: m.pokefluxMarket.buttonMode },
+    { key: "delete", label: m.pokefluxMarket.deleteSpawns },
+    { key: "pin", label: m.pokefluxMarket.pinSpawns },
   ];
   const CHANNEL_KEYS: ChannelKey[] = ["enabledChannels", "disabledChannels", "redirects"];
 
@@ -180,7 +180,7 @@
 </script>
 
 {#snippet changedDot()}
-  <span class="ml-2 w-1.5 h-1.5 inline-block rounded-full align-middle" style="background: {$colorStore.primary};" aria-hidden="true"></span>
+  <span class="ml-2 w-1.5 h-1.5 inline-block rounded-full align-middle" style="background: {$colorStore.primary}; color: {$colorStore.onPrimary};" aria-hidden="true"></span>
 {/snippet}
 
 <DashboardPageLayout
@@ -313,7 +313,6 @@
                   <SettingToggle
                     id="pf-{toggle.key}"
                     label={toggle.label()}
-                    hint={toggle.hint()}
                     checked={draft[toggle.key]}
                     onchange={(checked) => draft && (draft[toggle.key] = checked)}
                   />
@@ -327,7 +326,7 @@
                   <ChannelMultiSelect
                     id="pf-enabled"
                     label={m.dashboard.enabledChannels()}
-                    description={draft.enableSpawnsAll ? m.pokefluxMarket.enabledChannelsIgnored() : m.pokefluxMarket.enabledChannelsHint()}
+                    description={draft.enableSpawnsAll ? m.pokefluxMarket.enabledChannelsIgnored() : undefined}
                     {groups}
                     bind:selected={draft.enabledChannels}
                   />
@@ -343,7 +342,6 @@
                   <ChannelMultiSelect
                     id="pf-disabled"
                     label={m.pokefluxMarket.disabledChannels()}
-                    description={m.pokefluxMarket.disabledChannelsHint()}
                     {groups}
                     bind:selected={draft.disabledChannels}
                   />
@@ -379,8 +377,8 @@
           {/if}
 
           <div
-            class="sticky bottom-3 z-10 px-4 py-3 rounded-2xl border shadow-2xl backdrop-blur-md flex flex-col sm:flex-row sm:items-center gap-3"
-            style="background: linear-gradient(135deg, {$colorStore.gradientStart}10, {$colorStore.gradientMid}15), {$colorStore.background}e6; border-color: {$colorStore.primary}30;"
+            class="sticky bottom-3 z-10 px-4 py-3 rounded-2xl border flex flex-col sm:flex-row sm:items-center gap-3"
+            style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background}); border-color: {$colorStore.primary}30;"
           >
             <div class="flex-1 min-w-0">
             {#if changed.length}

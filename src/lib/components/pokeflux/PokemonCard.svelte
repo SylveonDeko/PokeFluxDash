@@ -76,7 +76,7 @@ The grid card for a Pokémon. A link with `href`, a button with `onclick`, a che
     checked
       ? `${$colorStore.primary}20`
       : palette
-        ? `linear-gradient(135deg, ${palette.primary}14, ${palette.secondary}0a)`
+        ? `${palette.primary}14`
         : `${$colorStore.primary}05`,
   );
 
@@ -130,7 +130,7 @@ The grid card for a Pokémon. A link with `href`, a button with `onclick`, a che
   {#if selectable}
     <span
       class="absolute top-1.5 right-1.5 w-5 h-5 rounded-md border flex items-center justify-center text-[10px] transition-colors"
-      style="background: {checked ? $colorStore.primary : 'transparent'}; border-color: {checked ? $colorStore.primary : `${$colorStore.primary}30`}; color: #ffffff;"
+      style="background: {checked ? $colorStore.primary : 'transparent'}; border-color: {checked ? $colorStore.primary : `${$colorStore.primary}30`}; color: {$colorStore.onPrimary};"
       aria-hidden="true"
     >
       {#if checked}<i class="fa-solid fa-check"></i>{/if}

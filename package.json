@@ -13,7 +13,8 @@
     "format": "prettier --write .",
     "generate-i18n": "node generate-i18n.js",
     "check-i18n": "node generate-i18n.js --check",
-    "check-fa-icons": "node validate-fa-icons.js"
+    "check-fa-icons": "node validate-fa-icons.js",
+    "check-contrast": "node check-contrast.js"
   },
   "devDependencies": {
     "@sveltejs/adapter-node": "^5.3.3",

@@ -93,9 +93,8 @@
         <div class="flex items-center gap-3 min-w-0">
           <div
             class="w-12 h-12 rounded-xl flex flex-col items-center justify-center shrink-0"
-            style="background: linear-gradient(135deg, {$colorStore.primary}20, {$colorStore.secondary}20);"
+            style="background: {$colorStore.primary}15;"
           >
-            <span class="text-[10px] uppercase tracking-wide leading-tight" style="color: {$colorStore.muted};">{m.pokefluxMarket.levelShortLabel()}</span>
             <span class="text-xl font-bold leading-none tabular-nums" style="color: {$colorStore.text};">{missions.level}</span>
           </div>
           <div class="min-w-0 flex-1 space-y-1.5">
@@ -162,7 +161,7 @@
         {/if}
         </div>
 
-        <Panel icon="fa-solid fa-gem" title={m.pokefluxMarket.missionStore()} subtitle={m.pokefluxMarket.missionStoreHint()}>
+        <Panel icon="fa-solid fa-gem" title={m.pokefluxMarket.missionStore()}>
           {#if missions.store.length}
             <ul class="space-y-2">
               {#each missions.store as item (item.key)}
@@ -205,7 +204,7 @@
               class="mt-3 inline-flex items-center gap-2 px-4 py-2 min-h-[38px] rounded-xl text-sm font-medium transition-all hover:scale-[1.02]"
               style={buttonStyle($colorStore)}
             >
-              {m.pokefluxMarket.openCrystalShop()}<span aria-hidden="true">→</span>
+              {m.pokefluxMarket.openCrystalShop()}
             </a>
           {:else}
             <EmptyState icon="fa-solid fa-gem" compact />
@@ -283,7 +282,7 @@
                     label={m.pokefluxMarket.toNextMilestone({ value: achievement.value.toLocaleString(), next: next.toLocaleString() })}
                   />
                 {/if}
-                <ol class="flex flex-wrap gap-1" aria-label={m.pokefluxMarket.milestoneLadder()}>
+                <ol class="flex flex-wrap gap-1" aria-label={m.common.milestones()}>
                   {#each achievement.milestones as milestone, i (i)}
                     {@const hit = achievement.value >= milestone}
                     {@const isNext = milestone === next}

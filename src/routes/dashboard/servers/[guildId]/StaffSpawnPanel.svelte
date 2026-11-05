@@ -57,7 +57,7 @@ anyone who is not a bot owner.
 </script>
 
 {#if owner}
-  <Panel icon="fa-solid fa-bolt" title={m.admin.staffSpawnTools()} subtitle={m.admin.staffSpawnToolsHint()}>
+  <Panel icon="fa-solid fa-bolt" title={m.admin.staffSpawnTools()}>
     <AsyncState {loading} {error}>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div class="rounded-xl p-3 space-y-2 self-start" style="background: {$colorStore.primary}10;">
@@ -72,7 +72,6 @@ anyone who is not a bot owner.
               </span>
             {/if}
           </div>
-          <p class="text-sm" style="color: {$colorStore.muted};">{m.admin.spawnStormHint()}</p>
           <button
             type="button"
             class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all hover:scale-[1.02] min-h-[38px] disabled:opacity-50"

@@ -96,8 +96,8 @@ A modal on the native dialog element. Bind `open`.
 >
   {#if open}
     <div
-      class="flex flex-col max-h-[calc(100dvh-1.5rem)] rounded-2xl border shadow-2xl overflow-hidden"
-      style="background: linear-gradient(135deg, {$colorStore.gradientStart}10, {$colorStore.gradientMid}15); border-color: {$colorStore.primary}30; color: {$colorStore.text};"
+      class="flex flex-col max-h-[calc(100dvh-1.5rem)] rounded-2xl border overflow-hidden"
+      style="background: color-mix(in srgb, {$colorStore.primary} 5%, {$colorStore.background}); border-color: {$colorStore.primary}30; color: {$colorStore.text};"
     >
       <header class="flex items-center justify-between gap-3 px-5 py-4 border-b shrink-0" style="border-color: {$colorStore.primary}20;">
         <div class="flex items-center gap-3 min-w-0">

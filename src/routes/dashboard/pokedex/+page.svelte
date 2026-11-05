@@ -23,16 +23,16 @@
 
   const VARIANTS: Record<PokedexVariant, { icon: string; label: () => string }> = {
     national: { icon: "fa-book-open", label: m.pokefluxPokemon.dexNational },
-    shiny: { icon: FLAGS.shiny.icon, label: m.dashboard.shiny },
-    radiant: { icon: FLAGS.radiant.icon, label: m.dashboard.radiant },
+    shiny: { icon: FLAGS.shiny.icon, label: m.common.shiny },
+    radiant: { icon: FLAGS.radiant.icon, label: m.common.radiant },
     shadow: { icon: FLAGS.shadow.icon, label: m.dashboard.shadow },
     skin: { icon: "fa-palette", label: m.pokefluxPokemon.dexSkin },
     unowned: { icon: "fa-circle-question", label: m.pokefluxPokemon.dexUnowned },
   };
 
   const SHOW_LABELS: Record<Show, () => string> = {
-    all: m.pokefluxPokemon.dexShowAll,
-    caught: m.pokefluxPokemon.dexShowCaught,
+    all: m.common.all,
+    caught: m.common.caught,
     missing: m.pokefluxPokemon.dexShowMissing,
   };
 
@@ -105,7 +105,7 @@
       <Panel class="flex flex-col md:flex-row md:items-center gap-3 {loading ? 'opacity-60' : ''}" aria-label={m.pokefluxPokemon.dexProgress()}>
         <div class="grid grid-cols-2 md:flex gap-2 shrink-0">
           <div class="md:w-44">
-            <StatTile label={m.dashboard.caught()}>
+            <StatTile label={m.common.caught()}>
               <span class="text-2xl font-bold tabular-nums leading-tight" style="color: {$colorStore.text}">
                 {dex.caught.toLocaleString()}<span class="text-sm font-semibold" style="color: {$colorStore.muted};">&nbsp;/ {dex.total.toLocaleString()}</span>
               </span>
@@ -152,9 +152,7 @@
 
         {#if dex.entries.length === 0}
           <EmptyState
-            title={data.variant === "unowned" ? m.pokefluxPokemon.dexCompleteTitle() : m.dashboard.emptyList()}
-            message={data.variant === "unowned" ? m.pokefluxPokemon.dexCompleteHint() : undefined}
-            icon={data.variant === "unowned" ? "fa-solid fa-trophy" : "fa-solid fa-book-open"}
+            title={data.variant === "unowned" ? m.pokefluxPokemon.dexCompleteTitle() : m.dashboard.emptyList()}            icon={data.variant === "unowned" ? "fa-solid fa-trophy" : "fa-solid fa-book-open"}
           />
         {:else if shown.length === 0}
           <EmptyState title={m.pokefluxPokemon.dexNoMatch()} message={m.pokeflux.noResultsHint()} icon="fa-solid fa-magnifying-glass">
@@ -210,7 +208,7 @@
                   href={entryHref(entry)}
                   class="h-full flex items-center gap-2 p-2 rounded-xl border transition-all hover:scale-[1.02] outline-none focus-visible:ring-2"
                   style="{entry.count > 0
-                    ? `background: ${palette ? `linear-gradient(135deg, ${palette.primary}14, ${palette.secondary}0a)` : `${$colorStore.primary}10`}; border-color: ${palette ? palette.primary : $colorStore.primary}30;`
+                    ? `background: ${palette ? `${palette.primary}10` : `${$colorStore.primary}10`}; border-color: ${palette ? palette.primary : $colorStore.primary}30;`
                     : `background: ${$colorStore.primary}05; border-color: ${$colorStore.primary}20;`} --tw-ring-color: {$colorStore.primary};"
                   aria-label={label}
                 >

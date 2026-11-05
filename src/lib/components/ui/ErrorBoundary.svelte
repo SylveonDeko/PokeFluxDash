@@ -87,7 +87,6 @@
     class="min-h-64 flex items-center justify-center bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border border-red-200 dark:border-red-800">
     <div class="text-center max-w-md mx-auto">
       <div class="mb-4">
-        <div class="text-4xl mb-2">💥</div>
         <h3 class="text-lg font-semibold text-red-800 dark:text-red-200 mb-2">
           {m.common.somethingWentWrong()}
         </h3>

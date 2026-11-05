@@ -131,15 +131,15 @@
                 {#if !slot.unlocked}
                   <div class="h-full min-h-[84px] rounded-lg border flex flex-col items-center justify-center gap-0.5 p-2 text-center opacity-60" style="background: {$colorStore.primary}05; border-color: {$colorStore.primary}20;">
                     <i class="fa-solid fa-lock text-sm" style="color: {$colorStore.muted};" aria-hidden="true"></i>
-                    <p class="text-xs font-semibold" style="color: {$colorStore.muted};">{m.pokefluxCollection.slotLabel({ slot: slot.slot })}</p>
-                    <p class="text-xs" style="color: {$colorStore.muted};">{m.dashboard.locked()}</p>
+                    <p class="text-xs font-semibold" style="color: {$colorStore.muted};">{m.common.slotLabel({ slot: slot.slot })}</p>
+                    <p class="text-xs" style="color: {$colorStore.muted};">{m.common.locked()}</p>
                   </div>
                 {:else if slot.egg}
                   {@const egg = slot.egg}
                   {@const total = Math.max(slot.totalSteps, slot.counter, 1)}
                   <div class="h-full min-h-[84px] rounded-lg border flex flex-col items-center gap-1 p-2 text-center" style="background: {$colorStore.primary}10; border-color: {$colorStore.primary}30;">
                     <div class="flex items-center justify-between w-full text-[11px]">
-                      <span class="font-semibold" style="color: {$colorStore.muted};">{m.pokefluxCollection.slotLabel({ slot: slot.slot })}</span>
+                      <span class="font-semibold" style="color: {$colorStore.muted};">{m.common.slotLabel({ slot: slot.slot })}</span>
                       <button
                         type="button"
                         class="w-7 h-7 -m-1 rounded-lg flex items-center justify-center transition-all hover:scale-[1.05] disabled:opacity-50"
@@ -176,7 +176,7 @@
                     aria-label={m.pokefluxCollection.addEggTo({ group: group.group, slot: slot.slot })}
                     onclick={() => openEggPicker(group.group, slot.slot, hatchery)}
                   >
-                    <span class="text-[11px] font-semibold" style="color: {$colorStore.muted};">{m.pokefluxCollection.slotLabel({ slot: slot.slot })}</span>
+                    <span class="text-[11px] font-semibold" style="color: {$colorStore.muted};">{m.common.slotLabel({ slot: slot.slot })}</span>
                     <i class="fa-solid fa-plus text-sm my-0.5" style="color: {$colorStore.primary};" aria-hidden="true"></i>
                     <span class="text-xs font-medium" style="color: {$colorStore.text};">{m.pokefluxCollection.addEgg()}</span>
                   </button>
@@ -192,7 +192,7 @@
   <Streamed promise={data.breeding} notStartedOn404>
     {#snippet children(breeding)}
       {@const females = breeding.females.map((f) => f.pokemon)}
-      <Panel icon="fa-solid fa-heart" title={m.dashboard.breedingTitle()}>
+      <Panel icon="fa-solid fa-heart" title={m.common.breeding()}>
         {#snippet actions()}
           <button type="button" class={textButton} style={buttonStyle($colorStore)} disabled={busy} onclick={() => openFemalePicker(females)}>
             <i class="fa-solid fa-venus" aria-hidden="true"></i>{m.pokefluxCollection.setFemales()}
@@ -220,7 +220,7 @@
         </div>
 
         {#if females.length === 0}
-          <EmptyState title={m.pokefluxCollection.noFemales()} message={m.pokefluxCollection.noFemalesHint()} icon="fa-solid fa-venus">
+          <EmptyState title={m.pokefluxCollection.noFemales()} icon="fa-solid fa-venus">
             <button type="button" class={textButton} style={buttonStyle($colorStore)} disabled={busy} onclick={() => openFemalePicker(females)}>
               <i class="fa-solid fa-plus" aria-hidden="true"></i>{m.pokefluxCollection.setFemales()}
             </button>

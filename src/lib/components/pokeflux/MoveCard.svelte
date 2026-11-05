@@ -57,11 +57,11 @@ the card is a button, for picking moves from a learnset.
   </div>
   <dl class="grid grid-cols-3 gap-1 text-center mt-2">
     <div class="rounded-lg py-1" style="background: {$colorStore.primary}10;">
-      <dt class="text-[10px] uppercase tracking-wide" style="color: {$colorStore.muted};">{m.pokeflux.power()}</dt>
+      <dt class="text-[11px]" style="color: {$colorStore.muted};">{m.pokeflux.power()}</dt>
       <dd class="text-sm font-semibold tabular-nums" style="color: {$colorStore.text};">{move.power ?? "-"}</dd>
     </div>
     <div class="rounded-lg py-1" style="background: {$colorStore.primary}10;">
-      <dt class="text-[10px] uppercase tracking-wide" style="color: {$colorStore.muted};">{m.pokeflux.accuracy()}</dt>
+      <dt class="text-[11px]" style="color: {$colorStore.muted};">{m.pokeflux.accuracy()}</dt>
       <dd class="text-sm font-semibold tabular-nums" style="color: {$colorStore.text};">
         {#if move.accuracy === null}
           <span title={m.pokeflux.neverMisses()}>∞<span class="sr-only"> {m.pokeflux.neverMisses()}</span></span>
@@ -71,7 +71,7 @@ the card is a button, for picking moves from a learnset.
       </dd>
     </div>
     <div class="rounded-lg py-1" style="background: {$colorStore.primary}10;">
-      <dt class="text-[10px] uppercase tracking-wide" style="color: {$colorStore.muted};">{m.pokeflux.pp()}</dt>
+      <dt class="text-[11px]" style="color: {$colorStore.muted};">{m.pokeflux.pp()}</dt>
       <dd class="text-sm font-semibold tabular-nums" style="color: {$colorStore.text};">{move.pp}</dd>
     </div>
   </dl>
@@ -88,7 +88,7 @@ the card is a button, for picking moves from a learnset.
   <button
     type="button"
     class="w-full text-left rounded-xl border transition-all outline-none focus-visible:ring-2 hover:scale-[1.02] motion-reduce:hover:scale-100 disabled:opacity-50 disabled:pointer-events-none {compact ? 'p-2' : 'p-2.5'} {className}"
-    style="background: {active ? `${$colorStore.primary}20` : `${$colorStore.primary}05`}; border-color: {active ? `${$colorStore.primary}40` : `${$colorStore.primary}20`}; --tw-ring-color: {accent};"
+    style="background: {active ? $colorStore.selectedSurface : `${$colorStore.primary}05`}; border-color: {active ? $colorStore.selectedBorder : `${$colorStore.primary}20`}; --tw-ring-color: {accent};"
     aria-pressed={active}
     {disabled}
     onclick={() => onselect(move)}

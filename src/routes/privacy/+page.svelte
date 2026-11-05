@@ -1,6 +1,7 @@
 <!-- routes/privacy/+page.svelte -->
 <script>
   import { m } from "$lib/i18n";
+  import { colorStore } from "$lib/stores/colorStore";
   import { SITE_URL } from "$lib/config/site";
   let date = "3rd November 2026";
   let email = "sylveon@mewdeko.tech";
@@ -16,10 +17,8 @@
   <link href="{SITE_URL}/privacy" rel="canonical" />
 </svelte:head>
 
-<div
-        class="min-h-[calc(105vh-5.5rem)] w-screen bg-pf-light-grey text-white p-6 rounded-sm shadow-md flex justify-center items-center"
->
-  <div class="space-y-5 text-center text-left">
+<div class="min-h-[calc(100vh-5.5rem)] w-full px-4 py-12 flex justify-center" style="color: {$colorStore.text};">
+  <div class="space-y-5 w-full max-w-3xl">
     <h1 class="text-3xl font-semibold">{m.legal.privacyDescription()}</h1>
 
     <p>{m.legal.privacyIntro()}</p>
@@ -27,8 +26,8 @@
     <h2 class="text-2xl font-semibold">{m.legal.privacyWhatDataDoWeCollect()}</h2>
 
     <p>{m.legal.privacyWhatDataIntro()}</p>
-    <div class="flex justify-center">
-      <ul class="list-disc text-left">
+    <div>
+      <ul class="list-disc pl-6 space-y-1">
         <li>{m.legal.privacyListUserId()}</li>
         <li>{m.legal.privacyListNames()}</li>
         <li>{m.legal.privacyListGameData()}</li>
@@ -43,8 +42,8 @@
     <h2 class="text-2xl font-semibold">{m.legal.privacyHowDoWeCollect()}</h2>
 
     <p>{m.legal.privacyHowCollectIntro()}</p>
-    <div class="flex justify-center">
-      <ul class="list-disc text-left">
+    <div>
+      <ul class="list-disc pl-6 space-y-1">
         <li>{m.legal.privacyHowCollectCommands()}</li>
         <li>{m.legal.privacyHowCollectMessages()}</li>
         <li>{m.legal.privacyHowCollectTrading()}</li>
@@ -55,8 +54,8 @@
     <h2 class="text-2xl font-semibold">{m.legal.privacyHowWillWeUse()}</h2>
 
     <p>{m.legal.privacyUseIntro()}</p>
-    <div class="flex justify-center">
-      <ul class="list-disc text-left">
+    <div>
+      <ul class="list-disc pl-6 space-y-1">
         <li>{m.legal.privacyUseRunGame()}</li>
         <li>{m.legal.privacyUseLeaderboard()}</li>
         <li>{m.legal.privacyUseFairPlay()}</li>
@@ -117,8 +116,8 @@
     <h2 class="text-2xl font-semibold">{m.legal.privacyYourRights()}</h2>
 
     <p>{m.legal.privacyRightsIntro()}</p>
-    <div class="flex justify-center">
-      <ul class="list-disc text-left">
+    <div>
+      <ul class="list-disc pl-6 space-y-1">
         <li>{m.legal.privacyRightToAccess()}</li>
         <li>{m.legal.privacyRightToRectification()}</li>
         <li>{m.legal.privacyRightToErasure()}</li>

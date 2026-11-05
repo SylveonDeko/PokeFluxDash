@@ -86,7 +86,7 @@
   </Panel>
 
   {#if !data.relationship}
-    <EmptyState title={m.admin.pairPrompt()} message={m.admin.pairPromptHint()} icon="fa-solid fa-arrow-right-arrow-left" />
+    <EmptyState title={m.admin.pairPrompt()} icon="fa-solid fa-arrow-right-arrow-left" />
   {:else if !data.relationship.ok && data.relationship.status === 404}
     <EmptyState title={m.admin.noRelationship()} message={data.relationship.error} icon="fa-solid fa-user-xmark" />
   {:else}

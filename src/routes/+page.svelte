@@ -1,4 +1,3 @@
-<!-- routes/+page.svelte -->
 <script lang="ts">
   import { m } from "$lib/i18n";
   import { fade, fly } from "svelte/transition";
@@ -10,7 +9,7 @@
   import { catchScene, duelScene, hatchScene, missionsScene } from "$lib/components/home/scenes";
   import { PokemonCard } from "$lib/components/pokeflux";
   import type { PokemonCard as PokemonCardData } from "$lib/api";
-  import { SITE_URL } from "$lib/config/site";
+  import { COMMUNITY_URL, SITE_URL } from "$lib/config/site";
   import type { PageData } from "./$types";
 
   let { data }: { data: PageData } = $props();
@@ -49,44 +48,27 @@
 <svelte:head>
   <title>{m.home.pageTitle()}</title>
 
-  <!-- Open Graph -->
   <meta content={m.home.pageTitle()} property="og:title" />
   <meta content={m.home.metaDescription()} property="og:description" />
   <meta content="{SITE_URL}/" property="og:url" />
 
-  <!-- Primary Meta Tags -->
   <meta content={m.home.metaDescription()} name="description" />
   <link href="{SITE_URL}/" rel="canonical" />
 </svelte:head>
 
-<main
+<div
   style="--color-primary: {$colorStore.primary};
          --color-secondary: {$colorStore.secondary};
          --color-accent: {$colorStore.accent};
          --color-text: {$colorStore.text};
          --color-muted: {$colorStore.muted};"
 >
-  <header
-          class="py-12 sm:py-16 px-4 sm:px-12 flex flex-col items-center relative"
-    in:fade={{ duration: 300 }}
-    style="background: radial-gradient(circle at top,
-      {$colorStore.gradientStart}15 0%,
-      {$colorStore.gradientEnd}10 50%,
-      {$colorStore.gradientEnd}05 100%
-    );"
-  >
+  <header class="py-12 sm:py-16 px-4 sm:px-12 flex flex-col items-center relative" in:fade={{ duration: 300 }}>
     <HomeHero />
 
-    <section
-      aria-labelledby="top-trainers-heading"
-      class="relative mt-16 w-full"
-    >
+    <section aria-labelledby="top-trainers-heading" class="relative mt-16 w-full">
       <div class="text-center mb-8">
-        <h2
-          id="top-trainers-heading"
-          class="mb-3 text-2xl lg:text-3xl font-bold"
-          style="color: {$colorStore.text}"
-        >
+        <h2 id="top-trainers-heading" class="mb-3 text-2xl lg:text-3xl font-bold" style="color: {$colorStore.text}">
           {m.home.topTrainersHeading()}
         </h2>
         {#if data.stats}
@@ -101,35 +83,27 @@
             {#each data.trainers as trainer, index (trainer.userId)}
               {@const medal = MEDALS[trainer.rank - 1] ?? $colorStore.primary}
               <div
-                class="group relative rounded-xl border transition-all duration-300 hover:scale-[1.02] overflow-hidden w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] xl:w-[calc(25%-0.75rem)]"
-                style="background: linear-gradient(135deg, {$colorStore.gradientStart}08, {$colorStore.gradientMid}10);
-                       border-color: {$colorStore.primary}20;
-                       box-shadow: 0 2px 12px {$colorStore.primary}05;"
+                class="rounded-xl border overflow-hidden p-4 w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] xl:w-[calc(25%-0.75rem)]"
+                style="background: {$colorStore.primary}08; border-color: {$colorStore.primary}20;"
                 in:fly={{ y: 20, duration: 300, delay: index * 50 }}
                 role="listitem"
               >
-                <!-- Hover gradient overlay -->
-                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                     style="background: linear-gradient(135deg, {$colorStore.primary}10, {$colorStore.secondary}08);"></div>
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center flex-shrink-0 text-lg font-bold tabular-nums"
+                       style="background: {medal}20; color: {medal};">
+                    <span class="sr-only">{m.pokefluxMarket.rank()} </span>#{trainer.rank}
+                  </div>
 
-                <div class="relative p-4">
-                  <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center flex-shrink-0 text-lg font-bold tabular-nums"
-                         style="background: {medal}20; color: {medal};">
-                      <span class="sr-only">{m.pokefluxMarket.rank()} </span>#{trainer.rank}
-                    </div>
-
-                    <div class="flex-1 min-w-0">
-                      <h3 class="font-semibold text-sm sm:text-base truncate"
-                          style="color: {trainer.name?.trim() ? $colorStore.text : $colorStore.muted}">
-                        {trainer.name?.trim() || m.pokefluxMarket.hiddenTrainer()}
-                      </h3>
-                      <div class="flex items-center gap-1 mt-1">
-                        <i class="fa-solid fa-paw text-xs sm:text-sm" style="color: {$colorStore.muted}" aria-hidden="true"></i>
-                        <span class="text-xs sm:text-sm" style="color: {$colorStore.muted}">
-                          {m.home.topTrainersValue({ count: trainer.value.toLocaleString() })}
-                        </span>
-                      </div>
+                  <div class="flex-1 min-w-0">
+                    <h3 class="font-semibold text-sm sm:text-base truncate"
+                        style="color: {trainer.name?.trim() ? $colorStore.text : $colorStore.muted}">
+                      {trainer.name?.trim() || m.pokefluxMarket.hiddenTrainer()}
+                    </h3>
+                    <div class="flex items-center gap-1 mt-1">
+                      <i class="fa-solid fa-paw text-xs sm:text-sm" style="color: {$colorStore.muted}" aria-hidden="true"></i>
+                      <span class="text-xs sm:text-sm" style="color: {$colorStore.muted}">
+                        {m.home.topTrainersValue({ count: trainer.value.toLocaleString() })}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -139,79 +113,31 @@
         </div>
       {:else}
         <div class="text-center py-8">
-          <p style="color: {$colorStore.muted}">
-            {m.home.topTrainersEmpty()}
-          </p>
+          <p style="color: {$colorStore.muted}">{m.home.topTrainersEmpty()}</p>
         </div>
       {/if}
 
       <div class="text-center mt-6">
-        <a class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-[1.02]"
-           href="/leaderboard"
-           style="background: linear-gradient(135deg, {$colorStore.primary}15, {$colorStore.secondary}10); color: {$colorStore.text}; border: 1px solid {$colorStore.primary}30; box-shadow: 0 4px 20px {$colorStore.primary}10;">
-          {m.pokefluxMarket.viewLeaderboard()}
-          <span>→</span>
-        </a>
+        {@render action("/leaderboard", m.pokefluxMarket.viewLeaderboard())}
       </div>
     </section>
   </header>
 
-  <section
-    aria-labelledby="features-heading"
-    class="py-24  relative overflow-hidden"
-    style="background: radial-gradient(circle at center,
-      {$colorStore.gradientStart}15 0%,
-      {$colorStore.gradientEnd}10 50%,
-      {$colorStore.gradientEnd}05 100%
-    );"
-  >
-    <!-- Floating background elements -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full opacity-10 animate-float-slow"
-           style="background: radial-gradient(circle, {$colorStore.primary}40, transparent);"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full opacity-15 animate-float-slower"
-           style="background: radial-gradient(circle, {$colorStore.secondary}40, transparent);"></div>
-      <div class="absolute top-1/2 right-1/3 w-32 h-32 rounded-full opacity-20 animate-float"
-           style="background: radial-gradient(circle, {$colorStore.accent}40, transparent);"></div>
-    </div>
-
+  <section aria-labelledby="features-heading" class="py-24 relative overflow-hidden">
     <div class="container mx-auto px-4 max-w-7xl relative z-10">
-      <div class="text-center mb-16">
-        <h2
-          class="text-4xl lg:text-5xl font-extrabold mb-4 bg-gradient-to-r bg-clip-text text-transparent leading-tight scroll-mt-28"
+      <h2 class="text-3xl lg:text-4xl font-extrabold mb-16 text-center leading-tight scroll-mt-28"
           id="features-heading"
-          style="background-image: linear-gradient(135deg, {$colorStore.text}, {$colorStore.primary}, {$colorStore.secondary});"
-        >
-          {m.home.featuresHeading()}
-        </h2>
-        <div class="w-24 h-1 mx-auto rounded-full"
-             style="background: linear-gradient(90deg, {$colorStore.primary}, {$colorStore.secondary}, {$colorStore.accent});"></div>
-      </div>
+          style="color: {$colorStore.text}">
+        {m.home.featuresHeading()}
+      </h2>
 
       <div class="mb-16 px-4">
-        <div class="max-w-6xl mx-auto space-y-12">
+        <div class="max-w-6xl mx-auto space-y-16">
 
-          <div class="relative left-1/2 -translate-x-1/2 w-[96vw] max-w-[1440px] pt-12 border-t border-white/10 lg:pt-0 lg:border-t-0 first:pt-0 first:border-t-0"
-               in:fly={{ y: 20, duration: 400, delay: 100 }}>
+          <div class="relative left-1/2 -translate-x-1/2 w-[96vw] max-w-[1440px]" in:fly={{ y: 20, duration: 400, delay: 100 }}>
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-10 items-center">
-              <!-- Text side -->
               <div class="pb-6 lg:py-0 flex flex-col justify-center order-1">
-                <div class="inline-block px-3 py-1 rounded-full mb-3 self-start"
-                     style="background: {$colorStore.primary}15; border: 1px solid {$colorStore.primary}30;">
-                  <span class="text-xs font-semibold" style="color: {$colorStore.primary}">{m.home.pillCatching()}</span>
-                </div>
-                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-3" style="color: {$colorStore.text}">
-                  {m.home.featureCatchTitle()}
-                </h3>
-                <p class="text-base sm:text-lg mb-6 leading-relaxed" style="color: {$colorStore.muted}">
-                  {m.home.featureCatchText()}
-                </p>
-                <a class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-[1.02] self-start"
-                   href="/dashboard/pokemon"
-                   style="background: linear-gradient(135deg, {$colorStore.primary}15, {$colorStore.secondary}10); color: {$colorStore.text}; border: 1px solid {$colorStore.primary}30; box-shadow: 0 4px 20px {$colorStore.primary}10;">
-                  {m.home.openPokemon()}
-                  <span>→</span>
-                </a>
+                {@render copy(m.home.featureCatchTitle(), m.home.featureCatchText(), "/dashboard/pokemon", m.home.openPokemon())}
               </div>
 
               <div class="order-2 lg:col-span-3 flex items-center justify-center">
@@ -221,56 +147,22 @@
             </div>
           </div>
 
-          <div class="relative left-1/2 -translate-x-1/2 w-[96vw] max-w-[1440px] pt-12 border-t border-white/10 lg:pt-0 lg:border-t-0 first:pt-0 first:border-t-0"
-               in:fly={{ y: 20, duration: 400, delay: 200 }}>
+          <div class="relative left-1/2 -translate-x-1/2 w-[96vw] max-w-[1440px]" in:fly={{ y: 20, duration: 400, delay: 200 }}>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
               <div class="order-2 lg:order-1 flex items-center justify-center">
                 <div class="w-full max-w-[480px]"><FluxerChatCompact scene={hatchScene} label={m.home.hatchMockLabel()} width={480} height={270} /></div>
               </div>
 
-              <!-- Text side (right on desktop) -->
               <div class="pb-6 lg:py-0 flex flex-col justify-center order-1 lg:order-2">
-                <div class="inline-block px-3 py-1 rounded-full mb-3 self-start"
-                     style="background: {$colorStore.secondary}15; border: 1px solid {$colorStore.secondary}30;">
-                  <span class="text-xs font-semibold" style="color: {$colorStore.secondary}">{m.home.pillBreeding()}</span>
-                </div>
-                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-3" style="color: {$colorStore.text}">
-                  {m.home.featureBreedTitle()}
-                </h3>
-                <p class="text-base sm:text-lg mb-6 leading-relaxed" style="color: {$colorStore.muted}">
-                  {m.home.featureBreedText()}
-                </p>
-                <a class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-[1.02] self-start"
-                   href="/dashboard/hatchery"
-                   style="background: linear-gradient(135deg, {$colorStore.secondary}15, {$colorStore.accent}10); color: {$colorStore.text}; border: 1px solid {$colorStore.secondary}30; box-shadow: 0 4px 20px {$colorStore.secondary}10;">
-                  {m.home.openHatchery()}
-                  <span>→</span>
-                </a>
+                {@render copy(m.home.featureBreedTitle(), m.home.featureBreedText(), "/dashboard/hatchery", m.home.openHatchery())}
               </div>
             </div>
           </div>
 
-          <div class="relative left-1/2 -translate-x-1/2 w-[96vw] max-w-[1440px] pt-12 border-t border-white/10 lg:pt-0 lg:border-t-0 first:pt-0 first:border-t-0"
-               in:fly={{ y: 20, duration: 400, delay: 300 }}>
+          <div class="relative left-1/2 -translate-x-1/2 w-[96vw] max-w-[1440px]" in:fly={{ y: 20, duration: 400, delay: 300 }}>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
-              <!-- Text side -->
               <div class="pb-6 lg:py-0 flex flex-col justify-center order-1">
-                <div class="inline-block px-3 py-1 rounded-full mb-3 self-start"
-                     style="background: {$colorStore.accent}15; border: 1px solid {$colorStore.accent}30;">
-                  <span class="text-xs font-semibold" style="color: {$colorStore.accent}">{m.home.pillMarket()}</span>
-                </div>
-                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-3" style="color: {$colorStore.text}">
-                  {m.home.featureTradeTitle()}
-                </h3>
-                <p class="text-base sm:text-lg mb-6 leading-relaxed" style="color: {$colorStore.muted}">
-                  {m.home.featureTradeText()}
-                </p>
-                <a class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-[1.02] self-start"
-                   href="/dashboard/market"
-                   style="background: linear-gradient(135deg, {$colorStore.accent}15, {$colorStore.primary}10); color: {$colorStore.text}; border: 1px solid {$colorStore.accent}30; box-shadow: 0 4px 20px {$colorStore.accent}10;">
-                  {m.home.openMarket()}
-                  <span>→</span>
-                </a>
+                {@render copy(m.home.featureTradeTitle(), m.home.featureTradeText(), "/dashboard/market", m.home.openMarket())}
               </div>
 
               <div class="order-2 flex items-center justify-center">
@@ -287,56 +179,22 @@
             </div>
           </div>
 
-          <div class="relative left-1/2 -translate-x-1/2 w-[96vw] max-w-[1440px] pt-12 border-t border-white/10 lg:pt-0 lg:border-t-0 first:pt-0 first:border-t-0"
-               in:fly={{ y: 20, duration: 400, delay: 400 }}>
+          <div class="relative left-1/2 -translate-x-1/2 w-[96vw] max-w-[1440px]" in:fly={{ y: 20, duration: 400, delay: 400 }}>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
               <div class="order-2 lg:order-1 flex items-center justify-center">
                 <div class="w-full max-w-[480px]"><FluxerChatCompact scene={missionsScene} label={m.home.missionsMockLabel()} width={480} height={500} /></div>
               </div>
 
-              <!-- Text side (right on desktop) -->
               <div class="pb-6 lg:py-0 flex flex-col justify-center order-1 lg:order-2">
-                <div class="inline-block px-3 py-1 rounded-full mb-3 self-start"
-                     style="background: {$colorStore.primary}15; border: 1px solid {$colorStore.primary}30;">
-                  <span class="text-xs font-semibold" style="color: {$colorStore.primary}">{m.home.pillProgress()}</span>
-                </div>
-                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-3" style="color: {$colorStore.text}">
-                  {m.home.featureProgressTitle()}
-                </h3>
-                <p class="text-base sm:text-lg mb-6 leading-relaxed" style="color: {$colorStore.muted}">
-                  {m.home.featureProgressText()}
-                </p>
-                <a class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-[1.02] self-start"
-                   href="/dashboard/missions"
-                   style="background: linear-gradient(135deg, {$colorStore.primary}15, {$colorStore.secondary}10); color: {$colorStore.text}; border: 1px solid {$colorStore.primary}30; box-shadow: 0 4px 20px {$colorStore.primary}10;">
-                  {m.home.openMissions()}
-                  <span>→</span>
-                </a>
+                {@render copy(m.home.featureProgressTitle(), m.home.featureProgressText(), "/dashboard/missions", m.home.openMissions())}
               </div>
             </div>
           </div>
 
-          <div class="relative left-1/2 -translate-x-1/2 w-[96vw] max-w-[1440px] pt-12 border-t border-white/10 lg:pt-0 lg:border-t-0 first:pt-0 first:border-t-0"
-               in:fly={{ y: 20, duration: 400, delay: 500 }}>
+          <div class="relative left-1/2 -translate-x-1/2 w-[96vw] max-w-[1440px]" in:fly={{ y: 20, duration: 400, delay: 500 }}>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
-              <!-- Text side -->
               <div class="pb-6 lg:py-0 flex flex-col justify-center order-1">
-                <div class="inline-block px-3 py-1 rounded-full mb-3 self-start"
-                     style="background: {$colorStore.secondary}15; border: 1px solid {$colorStore.secondary}30;">
-                  <span class="text-xs font-semibold" style="color: {$colorStore.secondary}">{m.home.pillDuels()}</span>
-                </div>
-                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-3" style="color: {$colorStore.text}">
-                  {m.home.featureDuelTitle()}
-                </h3>
-                <p class="text-base sm:text-lg mb-6 leading-relaxed" style="color: {$colorStore.muted}">
-                  {m.home.featureDuelText()}
-                </p>
-                <a class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-[1.02] self-start"
-                   href="/commands?module=duels"
-                   style="background: linear-gradient(135deg, {$colorStore.secondary}15, {$colorStore.accent}10); color: {$colorStore.text}; border: 1px solid {$colorStore.secondary}30; box-shadow: 0 4px 20px {$colorStore.secondary}10;">
-                  {m.home.openDuelCommands()}
-                  <span>→</span>
-                </a>
+                {@render copy(m.home.featureDuelTitle(), m.home.featureDuelText(), "/commands?module=duels", m.home.openDuelCommands())}
               </div>
 
               <div class="order-2 flex items-center justify-center">
@@ -354,38 +212,24 @@
         </a>
       </p>
       <p class="text-center text-xs sm:text-sm mt-2 space-x-4" style="color: {$colorStore.muted}">
+        <a href={COMMUNITY_URL} target="_blank" rel="noreferrer" class="hover:underline">{m.common.community()}</a>
         <a href="/privacy" class="hover:underline">{m.common.privacy()}</a>
         <a href="/terms" class="hover:underline">{m.common.terms()}</a>
       </p>
     </div>
   </section>
-</main>
+</div>
 
-<style>
-    .animate-float {
-        animation: float 20s ease-in-out infinite;
-    }
+{#snippet action(href: string, label: string)}
+  <a class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-colors self-start"
+     {href}
+     style="background: {$colorStore.primary}10; color: {$colorStore.text}; border: 1px solid {$colorStore.primary}30;">
+    {label}
+  </a>
+{/snippet}
 
-    .animate-float-slow {
-        animation: float 25s ease-in-out infinite;
-    }
-
-    .animate-float-slower {
-        animation: float 30s ease-in-out infinite;
-    }
-
-    @keyframes float {
-        0%, 100% {
-            transform: translate(0, 0);
-        }
-        25% {
-            transform: translate(-20px, -20px);
-        }
-        50% {
-            transform: translate(20px, -10px);
-        }
-        75% {
-            transform: translate(-10px, 20px);
-        }
-    }
-</style>
+{#snippet copy(title: string, text: string, href: string, label: string)}
+  <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-3" style="color: {$colorStore.text}">{title}</h3>
+  <p class="text-base sm:text-lg mb-6 leading-relaxed" style="color: {$colorStore.muted}">{text}</p>
+  {@render action(href, label)}
+{/snippet}

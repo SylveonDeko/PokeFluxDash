@@ -108,14 +108,14 @@
         {@const preview = data.preview.data}
         {@const reason = blocker(preview)}
         <dl class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
-          <StatTile label={m.discordImport.statPokemon()} value={preview.pokemon.toLocaleString()} />
-          <StatTile label={m.discordImport.statShiny()} value={preview.shiny.toLocaleString()} />
-          <StatTile label={m.discordImport.statRadiant()} value={preview.radiant.toLocaleString()} />
+          <StatTile label={m.common.pokemon()} value={preview.pokemon.toLocaleString()} />
+          <StatTile label={m.common.shiny()} value={preview.shiny.toLocaleString()} />
+          <StatTile label={m.common.radiant()} value={preview.radiant.toLocaleString()} />
           <StatTile label={m.discordImport.statParties()} value={preview.parties.toLocaleString()} />
-          <StatTile label={m.discordImport.statCredits()} value={preview.credits.toLocaleString()} />
-          <StatTile label={m.discordImport.statRedeems()} value={preview.redeems.toLocaleString()} />
+          <StatTile label={m.common.credits()} value={preview.credits.toLocaleString()} />
+          <StatTile label={m.common.redeems()} value={preview.redeems.toLocaleString()} />
           <StatTile label={m.discordImport.statItems()} value={preview.items.toLocaleString()} />
-          <StatTile label={m.discordImport.statMilestones()} value={preview.milestones.toLocaleString()} />
+          <StatTile label={m.common.milestones()} value={preview.milestones.toLocaleString()} />
         </dl>
 
         {#if reason}

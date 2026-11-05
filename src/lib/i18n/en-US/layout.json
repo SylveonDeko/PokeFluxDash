@@ -1,6 +1,6 @@
 {
   "confirm_close": "Close dialog",
-  "confirm_message": "Are you sure you want to proceed?",
+  "confirm_message": "Are you sure?",
   "error_boundary_reload": "Reload Page",
   "nav_aero_theme": "Frutiger Aero theme",
   "nav_aria": "Main navigation",
@@ -18,7 +18,6 @@
   "page_layout_scroll_tabs_right": "Scroll tabs right",
   "page_layout_sub_nav_aria": "Sub navigation",
   "page_layout_sub_tab_list_aria": "Sub navigation tabs",
-  "page_layout_sub_tab_options": "{tab} Options",
   "page_layout_tab_list_aria": "{title} navigation tabs",
   "page_layout_tabs_aria": "Page tabs",
   "sidebar_aria": "Dashboard sidebar navigation",
